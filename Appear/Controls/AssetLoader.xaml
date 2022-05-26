@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Appear.Controls.AssetLoader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Appear.Controls">
+    <Border Background="white" CornerRadius="25" Height="100" Width="500">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Foreground="#272522" FontFamily="Verdana" Grid.Column="1" Grid.Row="1">No Asset Folder Selected</TextBlock>
+            <Button Style="{StaticResource ButtonDefault_Rect}" Grid.Column="1" Grid.Row="2">SEARCH</Button>
+        </Grid>
+    </Border>
+</UserControl>

@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Appear"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ButtonDefault.xaml"/>
+                <ResourceDictionary Source="Styles/WindowDefault.xaml"/>
+                <ResourceDictionary Source="../Assets/Icons/icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
