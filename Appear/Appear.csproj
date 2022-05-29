@@ -67,20 +67,29 @@
     <Compile Include="Controls\MenuBar.xaml.cs">
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SelectionList.xaml.cs">
+      <DependentUpon>SelectionList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextButton.xaml.cs">
       <DependentUpon>TextButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\KeyToAssetConverter.cs" />
+    <Compile Include="Converters\KeyToItemsSourceConverter.cs" />
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Events\DialogOpenEventArgs.cs" />
     <Compile Include="Events\IconButtonClickedEventArgs.cs" />
+    <Compile Include="Events\RoutedWindowEventArgs.cs" />
+    <Compile Include="Events\SelectionListChangedEventArgs.cs" />
     <Compile Include="Events\TextButtonClickedEventArgs.cs" />
+    <Compile Include="Services\StyleManager.cs" />
     <Compile Include="Services\WindowsService.cs" />
     <Compile Include="StylesWindow.xaml.cs">
       <DependentUpon>StylesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Controls\IconButtonViewModel.cs" />
+    <Compile Include="ViewModel\Controls\SelectionListViewModel.cs" />
     <Compile Include="ViewModel\Controls\TextButtonViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -90,6 +99,10 @@
     <Page Include="Assets\Icons\icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Source\source.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\AssetLoader.xaml">
       <SubType>Designer</SubType>
@@ -104,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MenuBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SelectionList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +147,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\ButtonDefault.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Bar_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListDefault.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

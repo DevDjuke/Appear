@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Appear.Controls">
-    <Border Padding="15,0" Background="white" Height="50" CornerRadius="20,20,0,0">
+
+    <Border Style="{StaticResource BarDefault}">
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
                 <local:IconButton Icon="max" Action="MaxMain"></local:IconButton>

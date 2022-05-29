@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Appear.Views
     /// </summary>
     public partial class StylesView : Page
     {
+
         public StylesView()
         {
             InitializeComponent();

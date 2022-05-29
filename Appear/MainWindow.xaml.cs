@@ -1,6 +1,8 @@
 ﻿    using Appear.Controls;
 using Appear.Core;
 using Appear.Events;
+using Appear.Services;
+using Appear.ViewModel;
 using Appear.Views;
 using System;
 using System.Collections.Generic;
@@ -24,7 +26,6 @@ namespace Appear
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool isFocused = true;
         private bool isPresenting = false;
 
         public MainWindow()
@@ -34,11 +35,13 @@ namespace Appear
 
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
+
+            StyleManager.SetTheme();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            if (isFocused)
+            if (IsEnabled)
             {
                 base.OnMouseLeftButtonDown(e);
                 DragMove();
@@ -57,7 +60,6 @@ namespace Appear
                     window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                     window.Closed += new EventHandler(ReturnFocus);
                     window.Show();
-                    isFocused = false;
                     IsEnabled = false;
                     break;
                 default:
@@ -67,7 +69,6 @@ namespace Appear
 
         private void ReturnFocus(object sender, EventArgs e)
         {
-            isFocused = true;
             IsEnabled = true;
         }
 
@@ -80,18 +81,18 @@ namespace Appear
                 case "MaxMain":
                     if (isPresenting)
                     {
-                        App.Current.Resources["Corner"] = new CornerRadius(25);
+                        StyleManager.UpdateStyle("Restore");
                         WindowState = WindowState.Normal;
                     }
                     else
                     {
-                        App.Current.Resources["Corner"] = new CornerRadius(0);
+                        StyleManager.UpdateStyle("Maximize");
                         WindowState = WindowState.Maximized;
                     }
                     isPresenting = !isPresenting;
                     break;
                 case "CloseStyles":
-                    isFocused = true;
+                    IsEnabled = true;
                     break;
                 case "CloseMain":
                     Close();

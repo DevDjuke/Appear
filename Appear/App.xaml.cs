@@ -14,6 +14,6 @@ namespace Appear
     /// </summary>
     public partial class App : Application
     {
-
+        
     }
 }

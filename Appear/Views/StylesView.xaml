@@ -8,7 +8,8 @@
     <DockPanel>
         <contr:CloseBar DockPanel.Dock="Top"></contr:CloseBar>
         <StackPanel Orientation="Vertical">
-            
+            <contr:SelectionList Source="DockPositions" Text="MenuBar Dock"></contr:SelectionList>
+            <contr:SelectionList Source="Styles" Text="Theme"></contr:SelectionList>
         </StackPanel>
     </DockPanel>
 </Page>

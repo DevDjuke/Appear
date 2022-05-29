@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Appear.Controls;
+using Appear.Events;
+using Appear.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,16 @@ namespace Appear.Views
     /// </summary>
     public partial class MainView : Page
     {
+        MainViewModel vm;
+
         public MainView()
         {
+            vm = new MainViewModel();
+            vm.DockPosition = Properties.Settings.Default.DockPositions;
+
             InitializeComponent();
+
+            DataContext = vm;
         }
     }
 }
