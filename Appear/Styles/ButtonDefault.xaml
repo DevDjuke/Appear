@@ -7,7 +7,7 @@
 
     <Style x:Key="ButtonDefault_Rect" TargetType="Button">
         <Style.Resources>
-            <CornerRadius x:Key="Corner">10</CornerRadius>
+            <CornerRadius x:Key="Corner">10,0,10,0</CornerRadius>
         </Style.Resources>
 
         <Setter Property="Template">
@@ -37,7 +37,7 @@
 
     <Style x:Key="ButtonDefault_Square" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonDefault_Rect}">
         <Style.Resources>
-            <CornerRadius x:Key="Corner">5</CornerRadius>
+            <CornerRadius x:Key="Corner">5,5,0,0</CornerRadius>
         </Style.Resources>
     </Style>
 
