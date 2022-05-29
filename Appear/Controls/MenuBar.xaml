@@ -12,8 +12,8 @@
                 <local:IconButton Icon="exit" Action="CloseMain"></local:IconButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                <local:TextButton Text="ASSETS" Size="100"></local:TextButton>
-                <local:TextButton Text="CONTROLS" Size="100"></local:TextButton>
+                <local:TextButton Text="PRESENT" Size="100"></local:TextButton>
+                <local:TextButton Text="ASSETS" Action="OpenAssets" Size="100"></local:TextButton>
                 <local:TextButton Text="STYLES" Action="OpenStyles" Size="100"></local:TextButton>
             </StackPanel>
         </DockPanel>

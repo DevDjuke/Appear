@@ -1,6 +1,5 @@
 ﻿using Appear.Controls;
 using Appear.Events;
-using Appear.Services;
 using Appear.Views;
 using System;
 using System.Collections.Generic;
@@ -19,13 +18,13 @@ using System.Windows.Shapes;
 namespace Appear
 {
     /// <summary>
-    /// Interaction logic for StylesWindow.xaml
+    /// Interaction logic for AssetWindow.xaml
     /// </summary>
-    public partial class StylesWindow : Window
+    public partial class AssetWindow : Window
     {
-        public StylesWindow()
+        public AssetWindow()
         {
-            Content = new StylesView();
+            Content = new AssetView();
             InitializeComponent();
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));

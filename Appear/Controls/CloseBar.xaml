@@ -7,7 +7,7 @@
 
     <Border Style="{StaticResource BarDialog}">
         <StackPanel VerticalAlignment="Center" Orientation="Vertical" HorizontalAlignment="Right"> 
-            <local:IconButton Icon="exit" Action="CloseStyles"></local:IconButton>
+            <local:IconButton Icon="exit" Action="CloseDialog"></local:IconButton>
         </StackPanel>
     </Border>
 </UserControl>

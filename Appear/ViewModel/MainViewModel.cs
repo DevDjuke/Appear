@@ -15,5 +15,12 @@ namespace Appear.ViewModel
             get { return dockPosition; }
             set { dockPosition = value; OnPropertyChanged(); }
         }
+
+        private bool hasAssets { get; set; }
+        public bool HasAssets
+        {
+            get { return hasAssets; }
+            set { hasAssets = value; OnPropertyChanged(); }
+        }
     }
 }

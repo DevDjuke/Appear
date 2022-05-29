@@ -17,8 +17,8 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Foreground="#272522" FontFamily="Verdana" Grid.Column="1" Grid.Row="1">No Asset Folder Selected</TextBlock>
-            <Button Style="{StaticResource ButtonDefault_Rect}" Grid.Column="1" Grid.Row="2">SEARCH</Button>
+            <TextBlock HorizontalAlignment="Center" Foreground="#272522" FontFamily="Verdana" Grid.Column="1" Grid.Row="1">No Asset Folder Selected</TextBlock>
+            <local:TextButton Text="SEARCH" Action="OpenAssets" Size="150" Grid.Column="1" Grid.Row="2"></local:TextButton>
         </Grid>
     </Border>
 </UserControl>

@@ -1,0 +1,31 @@
+﻿<Page x:Class="Appear.Views.AssetView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Appear.Views"
+      xmlns:contr="clr-namespace:Appear.Controls"
+      xmlns:vm="clr-namespace:Appear.ViewModel"
+      xmlns:conv="clr-namespace:Appear.Converters">
+    <Page.DataContext>
+        <vm:AssetViewModel></vm:AssetViewModel>
+    </Page.DataContext>
+    <Page.Resources>
+        <conv:BooleanToVisibilityConverter x:Key="isVisible"></conv:BooleanToVisibilityConverter>
+    </Page.Resources>
+    <DockPanel>
+        <contr:CloseBar DockPanel.Dock="Top"></contr:CloseBar>
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" Margin="0,0,0,20">
+            <contr:FolderEntry></contr:FolderEntry>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <ListBox ItemsSource="{Binding Assets}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </DockPanel>
+</Page>

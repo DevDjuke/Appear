@@ -46,5 +46,16 @@ namespace Appear.Properties {
                 this["Styles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection Assets {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["Assets"]));
+            }
+            set {
+                this["Assets"] = value;
+            }
+        }
     }
 }

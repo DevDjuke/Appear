@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,11 +56,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AssetWindow.xaml.cs">
+      <DependentUpon>AssetWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AssetLoader.xaml.cs">
       <DependentUpon>AssetLoader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CloseBar.xaml.cs">
       <DependentUpon>CloseBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FolderEntry.xaml.cs">
+      <DependentUpon>FolderEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
@@ -73,23 +80,28 @@
     <Compile Include="Controls\TextButton.xaml.cs">
       <DependentUpon>TextButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BooleanInverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\KeyToAssetConverter.cs" />
-    <Compile Include="Converters\KeyToItemsSourceConverter.cs" />
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Events\DialogOpenEventArgs.cs" />
     <Compile Include="Events\IconButtonClickedEventArgs.cs" />
-    <Compile Include="Events\RoutedWindowEventArgs.cs" />
     <Compile Include="Events\SelectionListChangedEventArgs.cs" />
     <Compile Include="Events\TextButtonClickedEventArgs.cs" />
+    <Compile Include="Events\UpdateAssetsEventArgs.cs" />
     <Compile Include="Services\StyleManager.cs" />
     <Compile Include="Services\WindowsService.cs" />
     <Compile Include="StylesWindow.xaml.cs">
       <DependentUpon>StylesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AssetViewModel.cs" />
     <Compile Include="ViewModel\Controls\IconButtonViewModel.cs" />
     <Compile Include="ViewModel\Controls\SelectionListViewModel.cs" />
     <Compile Include="ViewModel\Controls\TextButtonViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="Views\AssetView.xaml.cs">
+      <DependentUpon>AssetView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -104,11 +116,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AssetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\AssetLoader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CloseBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FolderEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\WindowDefault.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AssetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

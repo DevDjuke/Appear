@@ -55,16 +55,23 @@ namespace Appear
             switch (arg.Action)
             {
                 case "OpenStyles":
-                    StylesWindow window = new StylesWindow();
-                    window.Owner = this;
-                    window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                    window.Closed += new EventHandler(ReturnFocus);
-                    window.Show();
-                    IsEnabled = false;
+                    SurrenderFocus(new StylesWindow());
+                    break;
+                case "OpenAssets":
+                    SurrenderFocus(new AssetWindow());
                     break;
                 default:
                     break;
             }
+        }
+
+        private void SurrenderFocus(Window window)
+        {
+            window.Owner = this;
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.Closed += new EventHandler(ReturnFocus);
+            window.Show();
+            IsEnabled = false;
         }
 
         private void ReturnFocus(object sender, EventArgs e)
