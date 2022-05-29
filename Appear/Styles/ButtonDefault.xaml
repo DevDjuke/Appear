@@ -40,4 +40,12 @@
             <CornerRadius x:Key="Corner">5</CornerRadius>
         </Style.Resources>
     </Style>
+
+    <Style x:Key="ButtonDefault_Square_Small" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonDefault_Rect}">
+        <Style.Resources>
+            <CornerRadius x:Key="Corner">5</CornerRadius>
+        </Style.Resources>
+        <Setter Property="Width" Value="15"/>
+        <Setter Property="Height" Value="15"/>
+    </Style>
 </ResourceDictionary>

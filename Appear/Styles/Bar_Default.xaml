@@ -13,6 +13,6 @@
     <Style x:Key="BarDialog" TargetType="Border" BasedOn="{StaticResource BarDefault}">
         <Setter Property="Background" Value="{DynamicResource Background_Bar}"/>
         <Setter Property="CornerRadius" Value="20,20,0,0"/>
-        <Setter Property="Height" Value="30"/>
+        <Setter Property="Height" Value="40"/>
     </Style>
 </ResourceDictionary>
