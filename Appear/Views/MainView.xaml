@@ -20,8 +20,16 @@
     </Page.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="{Binding DockPosition}">
-            <contr:MenuBar></contr:MenuBar> 
+            <contr:MenuBar></contr:MenuBar>
         </StackPanel>
-        <contr:AssetLoader Visibility="{Binding HasAssets, Converter={StaticResource isVisibleInvert}}"></contr:AssetLoader>
+        <StackPanel VerticalAlignment="Center">
+            <contr:AssetLoader Visibility="{Binding HasAssets, Converter={StaticResource isVisibleInvert}}"></contr:AssetLoader>
+            <DockPanel Visibility="{Binding HasAssets, Converter={StaticResource isVisible}}">
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+
+                </StackPanel>
+                <contr:AssetGrid></contr:AssetGrid>
+            </DockPanel>
+        </StackPanel>
     </DockPanel>
 </Page>

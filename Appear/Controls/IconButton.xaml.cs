@@ -1,6 +1,5 @@
 ﻿using Appear.Events;
 using Appear.Services;
-using Appear.ViewModel.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;

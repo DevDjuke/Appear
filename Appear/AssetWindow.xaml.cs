@@ -28,6 +28,7 @@ namespace Appear
             InitializeComponent();
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
+            
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -43,5 +44,7 @@ namespace Appear
                     break;
             }
         }
+
+        
     }
 }

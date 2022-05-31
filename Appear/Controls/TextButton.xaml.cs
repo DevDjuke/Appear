@@ -1,5 +1,4 @@
 ﻿using Appear.Events;
-using Appear.ViewModel.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;

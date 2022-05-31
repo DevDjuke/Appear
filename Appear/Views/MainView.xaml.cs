@@ -29,7 +29,8 @@ namespace Appear.Views
         {
             vm = new MainViewModel();
             vm.DockPosition = Properties.Settings.Default.DockPositions;
-            vm.HasAssets = Properties.Settings.Default.Assets != null;
+            vm.HasAssets = Properties.Settings.Default.Assets != null 
+                                && Properties.Settings.Default.Assets.Count > 0;
 
             InitializeComponent();
 

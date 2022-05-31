@@ -1,5 +1,4 @@
 ﻿using Appear.Events;
-using Appear.ViewModel.Controls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -77,15 +76,15 @@ namespace Appear.Controls
             InitializeComponent();
         }
 
-        public static readonly RoutedEvent SelectionChangedEvent =
-            EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble,
-                typeof(RoutedEventHandler), typeof(SelectionList));
-
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        public static readonly RoutedEvent SelectionChangedEvent =
+            EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble,
+                typeof(RoutedEventHandler), typeof(SelectionList));
 
         public event RoutedEventHandler SelectionChanged
         {

@@ -7,9 +7,6 @@
       xmlns:contr="clr-namespace:Appear.Controls"
       xmlns:vm="clr-namespace:Appear.ViewModel"
       xmlns:conv="clr-namespace:Appear.Converters">
-    <Page.DataContext>
-        <vm:AssetViewModel></vm:AssetViewModel>
-    </Page.DataContext>
     <Page.Resources>
         <conv:BooleanToVisibilityConverter x:Key="isVisible"></conv:BooleanToVisibilityConverter>
     </Page.Resources>
@@ -18,30 +15,6 @@
         <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" Margin="0,0,0,20">
             <contr:FolderEntry></contr:FolderEntry>
         </StackPanel>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="10,20" Height="Auto">
-            <ListView ItemsSource="{Binding Assets}" Height="300" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,10">
-                <ListView.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="20"/>
-                    </Style>
-                </ListView.Resources>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                    <ContentPresenter/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <contr:AssetListItem Text="{Binding}"></contr:AssetListItem>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
+        <contr:AssetList></contr:AssetList>
     </DockPanel>
 </Page>

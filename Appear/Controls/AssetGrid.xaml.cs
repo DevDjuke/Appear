@@ -1,9 +1,5 @@
-﻿using Appear.Controls;
-using Appear.Events;
-using Appear.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appear.Views
+namespace Appear.Controls
 {
     /// <summary>
-    /// Interaction logic for AssetView.xaml
+    /// Interaction logic for AssetGrid.xaml
     /// </summary>
-    public partial class AssetView : Page
+    public partial class AssetGrid : UserControl
     {
-        public AssetView()
+        public AssetGrid()
         {
             InitializeComponent();
         }
