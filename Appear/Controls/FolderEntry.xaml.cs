@@ -43,7 +43,7 @@ namespace Appear.Controls
             switch (arg.Action)
             {
                 case "AddAsset":
-                    RaiseEvent(new UpdateAssetsEventArgs(UpdateAssetsEvent, Text));
+                    RaiseEvent(new UpdateAssetsEventArgs(UpdateAssetsEvent, Text, UpdateAssetsEventArgs.ActionType.ADD));
                     break;
                 default:
                     break;
@@ -71,7 +71,7 @@ namespace Appear.Controls
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     Text = dlg.SelectedPath;
-                    RaiseEvent(new UpdateAssetsEventArgs(UpdateAssetsEvent, Text));
+                    RaiseEvent(new UpdateAssetsEventArgs(UpdateAssetsEvent, Text, UpdateAssetsEventArgs.ActionType.ADD));
                 }
             }
         }

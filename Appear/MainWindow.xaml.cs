@@ -48,21 +48,14 @@ namespace Appear
             }
         }
 
-        private void TextButtonClickedEventHandler(object sender, RoutedEventArgs e)
-        {
-            TextButtonClickedEventArgs arg = (TextButtonClickedEventArgs)e;
+        public static readonly RoutedEvent MenuBarChangedEvent =
+            EventManager.RegisterRoutedEvent("MenuBarChanged", RoutingStrategy.Tunnel,
+                typeof(RoutedEventHandler), typeof(MainWindow));
 
-            switch (arg.Action)
-            {
-                case "OpenStyles":
-                    SurrenderFocus(new StylesWindow());
-                    break;
-                case "OpenAssets":
-                    SurrenderFocus(new AssetWindow());
-                    break;
-                default:
-                    break;
-            }
+        public event RoutedEventHandler MenuBarChanged
+        {
+            add { AddHandler(MenuBarChangedEvent, value); }
+            remove { RemoveHandler(MenuBarChangedEvent, value); }
         }
 
         private void SurrenderFocus(Window window)
@@ -72,6 +65,17 @@ namespace Appear
             window.Closed += new EventHandler(ReturnFocus);
             window.Show();
             IsEnabled = false;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            StyleManager.SetTheme();
+        }
+
+        private void OnMenuBarChanged(object sender, EventArgs e)
+        {
+            (Content as MainView).vm.DockPosition = Properties.Settings.Default.DockPositions;
+            StyleManager.UpdateMenuBar();
         }
 
         private void ReturnFocus(object sender, EventArgs e)
@@ -103,6 +107,26 @@ namespace Appear
                     break;
                 case "CloseMain":
                     Close();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void TextButtonClickedEventHandler(object sender, RoutedEventArgs e)
+        {
+            TextButtonClickedEventArgs arg = (TextButtonClickedEventArgs)e;
+
+            switch (arg.Action)
+            {
+                case "OpenStyles":
+                    StylesWindow window = new StylesWindow();
+                    window.ThemeChanged += new EventHandler(OnThemeChanged);
+                    window.MenuBarChanged += new EventHandler(OnMenuBarChanged);
+                    SurrenderFocus(window);
+                    break;
+                case "OpenAssets":
+                    SurrenderFocus(new AssetWindow());
                     break;
                 default:
                     break;

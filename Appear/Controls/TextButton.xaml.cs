@@ -19,8 +19,6 @@ namespace Appear.Controls
 {
     public partial class TextButton : UserControl
     {
-        TextButtonViewModel vm;
-
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -65,29 +63,24 @@ namespace Appear.Controls
 
         public static void TextPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            ((TextButton)sender).vm.Text = e.NewValue.ToString();
         }
 
         public static void SizePropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            ((TextButton)sender).vm.Size = e.NewValue.ToString();
         }
 
         public static void ActionPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            ((TextButton)sender).vm.Action = e.NewValue.ToString();
         }
 
         public TextButton()
         {
-            vm = new TextButtonViewModel();
             InitializeComponent();
-            DataContext = vm;
         }
 
         private void OnClick(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new TextButtonClickedEventArgs(TextButtonClickedEvent, vm.Action));
+            RaiseEvent(new TextButtonClickedEventArgs(TextButtonClickedEvent, Action));
         }
 
         public static readonly RoutedEvent TextButtonClickedEvent =

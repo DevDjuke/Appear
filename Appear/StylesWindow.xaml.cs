@@ -23,12 +23,31 @@ namespace Appear
     /// </summary>
     public partial class StylesWindow : Window
     {
+        public event EventHandler ThemeChanged;
+        protected void OnThemeChanged()
+        {
+            if(ThemeChanged != null)
+            {
+                ThemeChanged(this, EventArgs.Empty);
+            }
+        }
+
+        public event EventHandler MenuBarChanged;
+        protected void OnMenuBarChanged()
+        {
+            if (MenuBarChanged != null)
+            {
+                MenuBarChanged(this, EventArgs.Empty);
+            }
+        }
+
         public StylesWindow()
         {
             Content = new StylesView();
             InitializeComponent();
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
+            AddHandler(SelectionList.SelectionChangedEvent, new RoutedEventHandler(SelectionChangedEventHandler));
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -43,6 +62,24 @@ namespace Appear
                 default:
                     break;
             }
+        }
+
+        private void SelectionChangedEventHandler(object sender, RoutedEventArgs e)
+        {
+            SelectionListChangedEventArgs arg = (SelectionListChangedEventArgs)e;
+
+            switch (arg.Id)
+            {
+                case "Styles":
+                    this.OnThemeChanged();
+                    break;
+                case "DockPositions":
+                    this.OnMenuBarChanged();
+                    break;
+                default:
+                    break;
+            }
+                
         }
     }
 }

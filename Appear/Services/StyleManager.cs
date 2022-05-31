@@ -55,6 +55,21 @@ namespace Appear.Services
             ApplyTheme(themes[Properties.Settings.Default["Styles"].ToString()]);
         }
 
+        public static void UpdateMenuBar()
+        {
+            switch (Properties.Settings.Default["DockPositions"])
+            {
+                case "Top":
+                    UpdateStyle("BarTop");
+                    break;
+                case "Bottom":
+                    UpdateStyle("BarBottom");
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public static void UpdateStyle(string state)
         {
             switch (state)

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Appear.Controls">
     <DockPanel Width="200">
-        <Button Margin="0" Padding="0" DockPanel.Dock="Right" Width="20" Click="BrowseFolder">
+        <Button Margin="0" Padding="0" DockPanel.Dock="Right" Width="20" Click="BrowseFolder" FontFamily="Verdana">
             ...
             <Button.Resources>
                 <Style TargetType="Border">
@@ -22,7 +22,7 @@
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBlock IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+            <TextBlock FontFamily="Verdana" IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>

@@ -15,9 +15,22 @@ namespace Appear.Events
             get { return assetPath; }
         }
 
-        public UpdateAssetsEventArgs(RoutedEvent e, string path) : base(e)
+        private ActionType action { get; set; }
+        public ActionType Action
+        {
+            get { return action; }
+        }
+
+        public UpdateAssetsEventArgs(RoutedEvent e, string path, ActionType action) : base(e)
         {
             assetPath = path;
+            this.action = action;
+        }
+
+        public enum ActionType
+        {
+            ADD,
+            REMOVE
         }
     }
 }

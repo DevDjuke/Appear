@@ -23,8 +23,6 @@ namespace Appear.Controls
     /// </summary>
     public partial class IconButton : UserControl
     {
-        IconButtonViewModel vm;
-
         public string Action
         {
             get { return (string)GetValue(ActionProperty); }
@@ -58,19 +56,15 @@ namespace Appear.Controls
 
         public static void IconPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            ((IconButton)sender).vm.Icon = e.NewValue.ToString();
         }
 
         public static void ActionPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            ((IconButton)sender).vm.Action = e.NewValue.ToString();
         }
 
         public IconButton()
         {
-            vm = new IconButtonViewModel();
             InitializeComponent();
-            DataContext = vm;
         }
 
         public static readonly RoutedEvent IconButtonClickedEvent = 
@@ -85,7 +79,7 @@ namespace Appear.Controls
 
         private void OnClick(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new IconButtonClickedEventArgs(IconButtonClickedEvent, vm.Action));
+            RaiseEvent(new IconButtonClickedEventArgs(IconButtonClickedEvent, Action));
         }
     }
 }

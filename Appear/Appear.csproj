@@ -59,6 +59,9 @@
     <Compile Include="AssetWindow.xaml.cs">
       <DependentUpon>AssetWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AssetListItem.xaml.cs">
+      <DependentUpon>AssetListItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AssetLoader.xaml.cs">
       <DependentUpon>AssetLoader.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,7 @@
       <DependentUpon>StylesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AssetViewModel.cs" />
+    <Compile Include="ViewModel\Controls\AssetListItemViewModel.cs" />
     <Compile Include="ViewModel\Controls\IconButtonViewModel.cs" />
     <Compile Include="ViewModel\Controls\SelectionListViewModel.cs" />
     <Compile Include="ViewModel\Controls\TextButtonViewModel.cs" />
@@ -117,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AssetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AssetListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

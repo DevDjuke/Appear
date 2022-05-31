@@ -43,20 +43,34 @@ namespace Appear.Views
             DataContext = vm;
 
             AddHandler(FolderEntry.UpdateAssetsEvent, new RoutedEventHandler(UpdateAssetsEventHandler));
+            AddHandler(AssetListItem.RemoveAssetEvent, new RoutedEventHandler(UpdateAssetsEventHandler));
         }
 
         private void UpdateAssetsEventHandler(object sender, RoutedEventArgs e)
         {
             UpdateAssetsEventArgs args = (UpdateAssetsEventArgs)e;
-            vm.Assets.Add(args.AssetPath);
 
-            if(Properties.Settings.Default.Assets == null)
+            if(args.Action == UpdateAssetsEventArgs.ActionType.ADD)
             {
-                Properties.Settings.Default.Assets = new System.Collections.Specialized.StringCollection();
-            }
+                vm.Assets.Add(args.AssetPath);
 
-            Properties.Settings.Default.Assets.Add(args.AssetPath.ToString());
+                if (Properties.Settings.Default.Assets == null)
+                {
+                    Properties.Settings.Default.Assets = new System.Collections.Specialized.StringCollection();
+                }
+                
+            }
+            else if(args.Action == UpdateAssetsEventArgs.ActionType.REMOVE)
+            {
+                vm.Assets.Remove(args.AssetPath);
+                Properties.Settings.Default.Assets.Remove(args.AssetPath.ToString());
+            }
+            
+
+            
             Properties.Settings.Default.Save(); 
         }
+
+        
     }
 }

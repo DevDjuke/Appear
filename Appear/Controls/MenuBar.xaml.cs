@@ -23,18 +23,7 @@ namespace Appear.Controls
     {
         public MenuBar()
         {
-            switch (Properties.Settings.Default["DockPositions"])
-            {
-                case "Top":
-                    StyleManager.UpdateStyle("BarTop");
-                    break;
-                case "Bottom":
-                    StyleManager.UpdateStyle("BarBottom");
-                    break;
-                default:
-                    break;
-            }
-
+            StyleManager.UpdateMenuBar();
             InitializeComponent();
         }
     }

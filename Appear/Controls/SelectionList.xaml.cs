@@ -13,6 +13,8 @@ namespace Appear.Controls
     {
         SelectionListViewModel vm;
 
+        #region PROPERTIES
+
         public string Source
         {
             get { return (string)GetValue(SourceProperty); }
@@ -53,6 +55,7 @@ namespace Appear.Controls
             string value = e.NewValue as string;
             ((SelectionList)sender).vm.Text = value;
         }
+        #endregion
 
         public SelectionList()
         {
@@ -81,10 +84,7 @@ namespace Appear.Controls
                 Properties.Settings.Default[vm.Id] = vm.SelectedItem;
                 Properties.Settings.Default.Save();
 
-                //RaiseEvent(new SelectionListChangedEventArgs(SelectionChangedEvent, vm.Id, vm.SelectedItem));
-
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                Application.Current.Shutdown();
+                RaiseEvent(new SelectionListChangedEventArgs(SelectionChangedEvent, vm.Id, vm.SelectedItem));            
             }
         }
     }

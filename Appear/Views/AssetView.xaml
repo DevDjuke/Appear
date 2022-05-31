@@ -18,14 +18,30 @@
         <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" Margin="0,0,0,20">
             <contr:FolderEntry></contr:FolderEntry>
         </StackPanel>
-        <StackPanel Orientation="Vertical">
-            <ListBox ItemsSource="{Binding Assets}">
-                <ListBox.ItemTemplate>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="10,20" Height="Auto">
+            <ListView ItemsSource="{Binding Assets}" Height="300" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,10">
+                <ListView.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding}"/>
+                        <contr:AssetListItem Text="{Binding}"></contr:AssetListItem>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
     </DockPanel>
 </Page>

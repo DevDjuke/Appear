@@ -23,7 +23,7 @@ namespace Appear.Views
     /// </summary>
     public partial class MainView : Page
     {
-        MainViewModel vm;
+        public MainViewModel vm { get; }
 
         public MainView()
         {
