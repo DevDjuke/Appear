@@ -1,6 +1,9 @@
 ﻿using Appear.Events;
 using Appear.ViewModel.Controls;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,11 +12,23 @@ namespace Appear.Controls
     /// <summary>
     /// Interaction logic for SelectionList.xaml
     /// </summary>
-    public partial class SelectionList : UserControl
+    public partial class SelectionList : UserControl, INotifyPropertyChanged
     {
-        SelectionListViewModel vm;
-
         #region PROPERTIES
+
+        private string selectedItem;
+        public string SelectedItem
+        {
+            get { return selectedItem; }
+            set { selectedItem = value; OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<string> itemList; 
+        public ObservableCollection<string> ItemList
+        {
+            get { return itemList; }
+            set { itemList = value; OnPropertyChanged(); }
+        }
 
         public string Source
         {
@@ -31,10 +46,10 @@ namespace Appear.Controls
         public static void SourcePropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             string value = e.NewValue as string;
-            ((SelectionList)sender).vm.Id = value;
+            ((SelectionList)sender).Source = value;
             string[] res = Application.Current.FindResource(value) as string[];
-            ((SelectionList)sender).vm.ItemList = new List<string>(res);
-            ((SelectionList)sender).vm.SelectedItem = Properties.Settings.Default[value].ToString();
+            ((SelectionList)sender).ItemList = new ObservableCollection<string>(res);
+            ((SelectionList)sender).SelectedItem = Properties.Settings.Default[value].ToString();
         }
 
         public string Text
@@ -53,21 +68,24 @@ namespace Appear.Controls
         public static void TextPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             string value = e.NewValue as string;
-            ((SelectionList)sender).vm.Text = value;
+            ((SelectionList)sender).Text = value;
         }
         #endregion
 
         public SelectionList()
         {
-            vm = new SelectionListViewModel();
-
             InitializeComponent();
-            DataContext = vm;
         }
 
         public static readonly RoutedEvent SelectionChangedEvent =
             EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler), typeof(SelectionList));
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         public event RoutedEventHandler SelectionChanged
         {
@@ -77,14 +95,14 @@ namespace Appear.Controls
 
         private void OnSelectionChanged(object sender, RoutedEventArgs e)
         {
-            if(!(sender as ComboBox).SelectedValue.Equals(Properties.Settings.Default[vm.Id].ToString()))
+            if(!(sender as ComboBox).SelectedValue.Equals(Properties.Settings.Default[Source].ToString()))
             {
-                vm.SelectedItem = (sender as ComboBox).SelectedValue as string;
+                SelectedItem = (sender as ComboBox).SelectedValue as string;
 
-                Properties.Settings.Default[vm.Id] = vm.SelectedItem;
+                Properties.Settings.Default[Source] = SelectedItem;
                 Properties.Settings.Default.Save();
 
-                RaiseEvent(new SelectionListChangedEventArgs(SelectionChangedEvent, vm.Id, vm.SelectedItem));            
+                RaiseEvent(new SelectionListChangedEventArgs(SelectionChangedEvent, Source, SelectedItem));            
             }
         }
     }

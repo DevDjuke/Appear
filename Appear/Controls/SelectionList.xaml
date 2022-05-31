@@ -1,14 +1,11 @@
-﻿<UserControl x:Class="Appear.Controls.SelectionList"
+﻿<UserControl x:Class="Appear.Controls.SelectionList" Name="SelectionListControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Appear.Controls"
              xmlns:vm="clr-namespace:Appear.ViewModel.Controls">
-    <UserControl.DataContext>
-        <vm:SelectionListViewModel></vm:SelectionListViewModel>
-    </UserControl.DataContext>
-    <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Vertical" DataContext="{Binding ElementName=SelectionListControl}">
         <TextBlock Text="{Binding Text}" 
                    FontFamily="Verdana" 
                    Margin="10,10,0,0" 
