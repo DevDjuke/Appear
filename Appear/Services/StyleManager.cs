@@ -50,6 +50,29 @@ namespace Appear.Services
             } },
         };
 
+        public static void SetPreferences(Window window)
+        {
+            if (Properties.Settings.Default.MaxOnStart)
+            {
+                UpdateStyle("Maximize", window);
+            }
+        }
+
+        public static void SetWindowState(Window window, string state)
+        {
+            switch (state)
+            {
+                case "Maximize":
+                    window.WindowState = WindowState.Maximized;
+                    break;
+                case "Restore":
+                    window.WindowState = WindowState.Normal;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public static void SetTheme()
         {
             ApplyTheme(themes[Properties.Settings.Default["Styles"].ToString()]);
@@ -70,13 +93,14 @@ namespace Appear.Services
             }
         }
 
-        public static void UpdateStyle(string state)
+        public static void UpdateStyle(string state, Window window = null)
         {
             switch (state)
             {
                 case "Maximize":
                     App.Current.Resources["Corner_Bar"] = new CornerRadius(0);
                     App.Current.Resources["Corner"] = new CornerRadius(0);
+                    SetWindowState(window, state);
                     break;
                 case "Restore":
                     App.Current.Resources["Corner"] = new CornerRadius(25);
@@ -91,6 +115,7 @@ namespace Appear.Services
                         default:
                             break;
                     }
+                    SetWindowState(window, state);
                     break;
                 case "BarTop":
                     App.Current.Resources["Corner_Bar"] = new CornerRadius(20, 20, 0, 0);

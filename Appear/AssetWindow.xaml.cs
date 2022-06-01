@@ -1,5 +1,8 @@
 ﻿using Appear.Controls;
+using Appear.Controls.AssetList;
+using Appear.Controls.Buttons;
 using Appear.Events;
+using Appear.Services;
 using Appear.Views;
 using System;
 using System.Collections.Generic;
@@ -22,13 +25,24 @@ namespace Appear
     /// </summary>
     public partial class AssetWindow : Window
     {
+        public event EventHandler AssetListChanged;
+        protected void OnAssetListChanged()
+        {
+            if (AssetListChanged != null)
+            {
+                AssetListChanged(this, EventArgs.Empty);
+            }
+        }
+
         public AssetWindow()
         {
             Content = new AssetView();
+
             InitializeComponent();
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
-            
+            AddHandler(FolderEntry.UpdateAssetsEvent, new RoutedEventHandler(UpdateAssetsEventHandler));
+            AddHandler(AssetListItem.RemoveAssetEvent, new RoutedEventHandler(UpdateAssetsEventHandler));
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -45,6 +59,21 @@ namespace Appear
             }
         }
 
-        
+        private void UpdateAssetsEventHandler(object sender, RoutedEventArgs e)
+        {
+            UpdateAssetsEventArgs args = (UpdateAssetsEventArgs)e;
+            if (args.Action == UpdateAssetsEventArgs.ActionType.ADD)
+            {
+                AssetManager.AddAsset(args.AssetPath.ToString());
+            }
+            else if (args.Action == UpdateAssetsEventArgs.ActionType.REMOVE)
+            {
+                AssetManager.RemoveAsset(args.AssetPath.ToString());
+            }
+
+            (Content as AssetView).AssetList.UpdateAssetsEventHandler();
+
+            this.OnAssetListChanged();
+        }
     }
 }

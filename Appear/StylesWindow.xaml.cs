@@ -1,4 +1,5 @@
 ﻿using Appear.Controls;
+using Appear.Controls.Buttons;
 using Appear.Events;
 using Appear.Services;
 using Appear.Views;
@@ -48,6 +49,7 @@ namespace Appear
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
             AddHandler(SelectionList.SelectionChangedEvent, new RoutedEventHandler(SelectionChangedEventHandler));
+            AddHandler(CheckBoxButton.CheckboxToggledEvent, new RoutedEventHandler(CheckBoxToggledEventHandler));
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -78,8 +80,23 @@ namespace Appear
                     break;
                 default:
                     break;
-            }
-                
+            }               
         }
+
+        private void CheckBoxToggledEventHandler(object sender, RoutedEventArgs e)
+        {
+            CheckBoxToggledEventArgs arg = (CheckBoxToggledEventArgs)e;
+
+            switch (arg.Id)
+            {
+                case "StartUpMax":
+                    Properties.Settings.Default.MaxOnStart = arg.IsChecked;
+                    Properties.Settings.Default.Save();
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 }

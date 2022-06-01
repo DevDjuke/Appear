@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appear.Controls
+namespace Appear.Controls.AssetList
 {
     /// <summary>
     /// Interaction logic for AssetListItem.xaml
@@ -32,13 +32,8 @@ namespace Appear.Controls
             "Text",
             typeof(string),
             typeof(AssetListItem),
-            new UIPropertyMetadata(TextPropertyChangedHandler)
+            new UIPropertyMetadata("")
         );
-
-        public static void TextPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            //((AssetListItem)sender).vm.Text = e.NewValue.ToString();
-        }
 
         public AssetListItem()
         {
@@ -46,7 +41,7 @@ namespace Appear.Controls
         }
 
         public static readonly RoutedEvent RemoveAssetEvent =
-            EventManager.RegisterRoutedEvent("RemoveAssetClicked", RoutingStrategy.Tunnel,
+            EventManager.RegisterRoutedEvent("RemoveAssetClicked", RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler), typeof(AssetListItem));
 
         public event RoutedEventHandler RemoveAssetClicked

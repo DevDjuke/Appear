@@ -1,5 +1,9 @@
 ﻿using Appear.Controls;
+using Appear.Controls.AssetGrid;
+using Appear.Controls.Control;
+using Appear.Core;
 using Appear.Events;
+using Appear.Services;
 using Appear.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -25,12 +29,27 @@ namespace Appear.Views
     {
         public MainViewModel vm { get; }
 
+        public ControlPanel ControlPanel
+        {
+            get
+            {
+                return this.GetChildOfType<ControlPanel>();
+            }
+        }
+
+        public AssetGrid AssetGrid
+        {
+            get
+            {
+                return this.GetChildOfType<AssetGrid>();
+            }
+        }
+
         public MainView()
         {
             vm = new MainViewModel();
             vm.DockPosition = Properties.Settings.Default.DockPositions;
-            vm.HasAssets = Properties.Settings.Default.Assets != null 
-                                && Properties.Settings.Default.Assets.Count > 0;
+            vm.HasAssets = AssetManager.HasAssets();
 
             InitializeComponent();
 

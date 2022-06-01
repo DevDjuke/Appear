@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appear.Controls
+namespace Appear.Controls.Buttons
 {
     /// <summary>
     /// Interaction logic for IconButton.xaml
@@ -67,7 +67,7 @@ namespace Appear.Controls
         }
 
         public static readonly RoutedEvent IconButtonClickedEvent = 
-            EventManager.RegisterRoutedEvent("IconButtonClicked", RoutingStrategy.Tunnel,
+            EventManager.RegisterRoutedEvent("IconButtonClicked", RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler), typeof(IconButton));
 
         public event RoutedEventHandler IconButtonClicked

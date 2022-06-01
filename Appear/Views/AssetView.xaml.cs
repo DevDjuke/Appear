@@ -1,4 +1,6 @@
 ﻿using Appear.Controls;
+using Appear.Controls.AssetList;
+using Appear.Core;
 using Appear.Events;
 using Appear.ViewModel;
 using System;
@@ -24,6 +26,14 @@ namespace Appear.Views
     /// </summary>
     public partial class AssetView : Page
     {
+        public AssetList AssetList
+        {
+            get
+            {
+                return this.GetChildOfType<AssetList>();
+            }
+        }
+
         public AssetView()
         {
             InitializeComponent();

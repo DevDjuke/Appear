@@ -1,4 +1,6 @@
 ﻿    using Appear.Controls;
+using Appear.Controls.AssetGrid;
+using Appear.Controls.Buttons;
 using Appear.Core;
 using Appear.Events;
 using Appear.Services;
@@ -26,17 +28,20 @@ namespace Appear
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool isPresenting = false;
-
         public MainWindow()
         {
+            //DataManager.DatabaseSetup();
+
             Content = new MainView();
             InitializeComponent();
 
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
 
+            AddHandler(AssetGrid.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
+
             StyleManager.SetTheme();
+            StyleManager.SetPreferences(this);
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -78,6 +83,16 @@ namespace Appear
             StyleManager.UpdateMenuBar();
         }
 
+        private void OnAssetListChanged(object sender, EventArgs e)
+        {
+            (Content as MainView).vm.HasAssets = AssetManager.HasAssets();
+
+            if (AssetManager.HasAssets())
+            {
+                (Content as MainView).AssetGrid.UpdateGrid();
+            }
+        }
+
         private void ReturnFocus(object sender, EventArgs e)
         {
             IsEnabled = true;
@@ -90,17 +105,14 @@ namespace Appear
             switch (arg.Action)
             {
                 case "MaxMain":
-                    if (isPresenting)
+                    if (this.WindowState == WindowState.Maximized)
                     {
-                        StyleManager.UpdateStyle("Restore");
-                        WindowState = WindowState.Normal;
+                        StyleManager.UpdateStyle("Restore", this);
                     }
                     else
                     {
-                        StyleManager.UpdateStyle("Maximize");
-                        WindowState = WindowState.Maximized;
+                        StyleManager.UpdateStyle("Maximize", this);
                     }
-                    isPresenting = !isPresenting;
                     break;
                 case "CloseStyles":
                     IsEnabled = true;
@@ -120,17 +132,25 @@ namespace Appear
             switch (arg.Action)
             {
                 case "OpenStyles":
-                    StylesWindow window = new StylesWindow();
-                    window.ThemeChanged += new EventHandler(OnThemeChanged);
-                    window.MenuBarChanged += new EventHandler(OnMenuBarChanged);
-                    SurrenderFocus(window);
+                    StylesWindow window_styles = new StylesWindow();
+                    window_styles.ThemeChanged += new EventHandler(OnThemeChanged);
+                    window_styles.MenuBarChanged += new EventHandler(OnMenuBarChanged);
+                    SurrenderFocus(window_styles);
                     break;
                 case "OpenAssets":
-                    SurrenderFocus(new AssetWindow());
+                    AssetWindow window_assets = new AssetWindow();
+                    window_assets.AssetListChanged += new EventHandler(OnAssetListChanged);
+                    SurrenderFocus(window_assets);
                     break;
                 default:
                     break;
             }
+        }
+
+        private void AssetSelectionChangedEventHandler(object sender, RoutedEventArgs e)
+        {
+            SelectedAssetChangedEventArgs arg = (SelectedAssetChangedEventArgs)e;
+            (Content as MainView).ControlPanel.SelectedAsset = arg.Asset;
         }
     }
 }

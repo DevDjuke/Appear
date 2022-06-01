@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appear.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,15 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appear.Controls
+namespace Appear.Controls.Bars
 {
     /// <summary>
-    /// Interaction logic for AssetGrid.xaml
+    /// Interaction logic for MenuBar.xaml
     /// </summary>
-    public partial class AssetGrid : UserControl
+    public partial class MenuBar : UserControl
     {
-        public AssetGrid()
+        public MenuBar()
         {
+            StyleManager.UpdateMenuBar();
             InitializeComponent();
         }
     }

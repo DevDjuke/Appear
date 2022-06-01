@@ -7,7 +7,10 @@
       xmlns:contr="clr-namespace:Appear.Controls"
       xmlns:vm="clr-namespace:Appear.ViewModel"
       xmlns:conv="clr-namespace:Appear.Converters"
-      xmlns:core="clr-namespace:Appear.Core">
+      xmlns:core="clr-namespace:Appear.Core"
+      xmlns:bar="clr-namespace:Appear.Controls.Bars"
+      xmlns:ass="clr-namespace:Appear.Controls.AssetGrid"
+      xmlns:cont="clr-namespace:Appear.Controls.Control">
     <Page.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Page.DataContext>
@@ -20,15 +23,15 @@
     </Page.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="{Binding DockPosition}">
-            <contr:MenuBar></contr:MenuBar>
+            <bar:MenuBar></bar:MenuBar>
         </StackPanel>
         <StackPanel VerticalAlignment="Center">
             <contr:AssetLoader Visibility="{Binding HasAssets, Converter={StaticResource isVisibleInvert}}"></contr:AssetLoader>
             <DockPanel Visibility="{Binding HasAssets, Converter={StaticResource isVisible}}">
                 <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
-
+                    <cont:ControlPanel></cont:ControlPanel>
                 </StackPanel>
-                <contr:AssetGrid></contr:AssetGrid>
+                <ass:AssetGrid></ass:AssetGrid>
             </DockPanel>
         </StackPanel>
     </DockPanel>

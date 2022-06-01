@@ -1,9 +1,8 @@
 ﻿<UserControl x:Class="Appear.Controls.AssetLoader"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Appear.Controls">
+             xmlns:local="clr-namespace:Appear.Controls"
+             xmlns:butt="clr-namespace:Appear.Controls.Buttons">
     <Border Background="white" CornerRadius="25" Height="100" Width="500">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -18,7 +17,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock HorizontalAlignment="Center" Foreground="#272522" FontFamily="Verdana" Grid.Column="1" Grid.Row="1">No Asset Folder Selected</TextBlock>
-            <local:TextButton Text="SEARCH" Action="OpenAssets" Size="150" Grid.Column="1" Grid.Row="2"></local:TextButton>
+            <butt:TextButton Text="SEARCH" Action="OpenAssets" Size="150" Grid.Column="1" Grid.Row="2"></butt:TextButton>
         </Grid>
     </Border>
 </UserControl>

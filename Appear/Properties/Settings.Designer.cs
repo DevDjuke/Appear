@@ -57,5 +57,17 @@ namespace Appear.Properties {
                 this["Assets"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MaxOnStart {
+            get {
+                return ((bool)(this["MaxOnStart"]));
+            }
+            set {
+                this["MaxOnStart"] = value;
+            }
+        }
     }
 }
