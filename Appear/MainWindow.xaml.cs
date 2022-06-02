@@ -41,7 +41,12 @@ namespace Appear
             AddHandler(AssetGrid.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
 
             StyleManager.SetTheme();
-            StyleManager.SetPreferences(this);
+            StyleManager.SetPreferences(this);         
+        }
+
+        void OnLoad(object sender, RoutedEventArgs e)
+        {
+            (Content as MainView).AssetGrid.SetWidth(this);
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -108,11 +113,17 @@ namespace Appear
                     if (this.WindowState == WindowState.Maximized)
                     {
                         StyleManager.UpdateStyle("Restore", this);
+                        (Content as MainView).AssetGrid.SetWidth(this);
                     }
                     else
                     {
                         StyleManager.UpdateStyle("Maximize", this);
+                        (Content as MainView).AssetGrid.SetWidth(this);
                     }
+                    break;
+                case "OpenInfo":
+                    AboutWindow window_about = new AboutWindow();
+                    SurrenderFocus(window_about);
                     break;
                 case "CloseStyles":
                     IsEnabled = true;

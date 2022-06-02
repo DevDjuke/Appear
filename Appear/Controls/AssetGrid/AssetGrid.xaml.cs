@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Appear.Controls.AssetGrid
 {
@@ -24,17 +25,51 @@ namespace Appear.Controls.AssetGrid
             set { assets = value; OnPropertyChanged(); }
         }
 
+        private int columnCount { get; set; }
+        public int ColumnCount
+        {
+            get { return columnCount; }
+            set { columnCount = value; OnPropertyChanged(); }
+        }
+
+        private double viewWidth { get; set; }
+        public double ViewWidth
+        {
+            get { return viewWidth; }
+            set { viewWidth = value; OnPropertyChanged(); }
+        }
+
+        private double imagew { get; set; }
+        public double Imagew
+        {
+            get { return imagew; }
+            set { imagew = value; OnPropertyChanged(); }
+        }
+
         public AssetGrid()
         {
             UpdateGrid();
-
             InitializeComponent();
+
+            ViewWidth = 250;
+            ColumnCount = 5;
+            Imagew = 100;
+        }
+
+        public void SetWidth(Window window)
+        {
+            ViewWidth = window.Width;
+            ColumnCount = (int)Math.Floor(ViewWidth / 100);
+            Imagew = 250;
+
+            ObservableCollection<AssetCollection> temp = assets;
+            Assets = new ObservableCollection<AssetCollection>();
+            Assets = temp;
         }
 
         public void UpdateGrid()
         {
             Assets = new ObservableCollection<AssetCollection>();
-
             foreach (string folder in Properties.Settings.Default.Assets)
             {
                 AddToGrid(folder);

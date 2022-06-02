@@ -9,7 +9,7 @@
         <conv:HeightToActualHeightConverter x:Key="reduceHeight"></conv:HeightToActualHeightConverter>
 
         <DataTemplate x:Key="ItemTemplate">
-            <WrapPanel HorizontalAlignment="Center" >
+            <WrapPanel>
                 <Image Width="100">
                     <Image.Source>
                         <BitmapImage DecodePixelWidth="200" UriSource="{Binding Path}"/>
@@ -18,12 +18,13 @@
             </WrapPanel>
         </DataTemplate>
 
-        <DataTemplate x:Key="ListTemplate">
-            <ListView Margin="10" ItemsSource="{Binding Assets}" 
-                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnSelectionChanged" Height="Auto">
+        <DataTemplate x:Key="ListTemplate" >
+            <ListView Margin="10" ItemsSource="{Binding Assets.Assets}" DataContext="{Binding ElementName=AssetGridControl}"
+                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnSelectionChanged" Height="Auto"
+                  Width="{Binding ViewWidth}" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="5" />
+                        <UniformGrid Columns="{Binding ColumnCount}" />
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
             </ListView>
@@ -31,7 +32,7 @@
 
     </UserControl.Resources>
 
-    <ListView HorizontalAlignment="Stretch" DataContext="{Binding ElementName=AssetGridControl}" ScrollViewer.CanContentScroll="False"
+    <ListView Margin="20,0" HorizontalAlignment="Stretch" DataContext="{Binding ElementName=AssetGridControl}" ScrollViewer.CanContentScroll="False"
                   ItemsSource="{Binding Assets}" 
                   ItemTemplate="{StaticResource ListTemplate}"  
                   Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},Path=ActualHeight, Converter={StaticResource reduceHeight}}">

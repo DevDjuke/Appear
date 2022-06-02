@@ -36,7 +36,6 @@ namespace Appear.Views
                 return this.GetChildOfType<ControlPanel>();
             }
         }
-
         public AssetGrid AssetGrid
         {
             get
