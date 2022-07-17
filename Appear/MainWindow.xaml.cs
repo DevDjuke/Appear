@@ -1,4 +1,4 @@
-﻿    using Appear.Controls;
+﻿using Appear.Controls;
 using Appear.Controls.AssetGrid;
 using Appear.Controls.Buttons;
 using Appear.Core;
@@ -6,6 +6,8 @@ using Appear.Events;
 using Appear.Services;
 using Appear.ViewModel;
 using Appear.Views;
+using Appear.Windows;
+using Appear.Windows.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,12 +43,22 @@ namespace Appear
             AddHandler(AssetGrid.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
 
             StyleManager.SetTheme();
-            StyleManager.SetPreferences(this);         
+            StyleManager.SetPreferences(this);
+
+            Loaded += OnLoad;
         }
 
         void OnLoad(object sender, RoutedEventArgs e)
         {
             (Content as MainView).AssetGrid.SetWidth(this);
+
+#if !DEBUG
+            if (Properties.Settings.Default.UpdateOnStart)
+            {
+                OkDialog dialog = new OkDialog("A new version is available.");
+                SurrenderFocus(dialog);
+            }           
+#endif
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)

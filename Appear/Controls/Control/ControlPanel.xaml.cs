@@ -38,7 +38,7 @@ namespace Appear.Controls.Control
             set
             {
                 selectedAsset = value;
-                AssetName = value.Name;
+                AssetName = value == null ? null : value.Name;
             }
         } 
 

@@ -63,6 +63,9 @@ namespace Appear.Controls.Buttons
                 case "StartUpMax":
                     ((CheckBoxButton)sender).IsChecked = Properties.Settings.Default.MaxOnStart;
                     break;
+                case "StartUpUpdate":
+                    ((CheckBoxButton)sender).IsChecked = Properties.Settings.Default.UpdateOnStart;
+                    break;
                 default:
                     break;
             }

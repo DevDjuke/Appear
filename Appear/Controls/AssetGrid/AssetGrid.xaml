@@ -19,12 +19,11 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ListTemplate" >
-            <ListView Margin="10" ItemsSource="{Binding Assets.Assets}" DataContext="{Binding ElementName=AssetGridControl}"
-                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnSelectionChanged" Height="Auto"
-                  Width="{Binding ViewWidth}" >
+            <ListView Margin="10" ItemsSource="{Binding Assets}"
+                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnSelectionChanged" Height="Auto">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="{Binding ColumnCount}" />
+                        <UniformGrid Width="{Binding ViewWidth}" DataContext="{Binding ElementName=AssetGridControl}" Columns="{Binding ColumnCount}" />
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
             </ListView>
@@ -32,7 +31,7 @@
 
     </UserControl.Resources>
 
-    <ListView Margin="20,0" HorizontalAlignment="Stretch" DataContext="{Binding ElementName=AssetGridControl}" ScrollViewer.CanContentScroll="False"
+    <ListView Margin="20,0" HorizontalAlignment="Center" DataContext="{Binding ElementName=AssetGridControl}" ScrollViewer.CanContentScroll="False"
                   ItemsSource="{Binding Assets}" 
                   ItemTemplate="{StaticResource ListTemplate}"  
                   Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},Path=ActualHeight, Converter={StaticResource reduceHeight}}">

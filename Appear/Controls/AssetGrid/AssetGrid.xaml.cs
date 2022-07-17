@@ -50,17 +50,13 @@ namespace Appear.Controls.AssetGrid
         {
             UpdateGrid();
             InitializeComponent();
-
-            ViewWidth = 250;
-            ColumnCount = 5;
-            Imagew = 100;
         }
 
         public void SetWidth(Window window)
         {
-            ViewWidth = window.Width;
-            ColumnCount = (int)Math.Floor(ViewWidth / 100);
-            Imagew = 250;
+            ViewWidth = window.Width - 500;
+            Imagew = 100;
+            ColumnCount = (int)Math.Floor(ViewWidth / Imagew);            
 
             ObservableCollection<AssetCollection> temp = assets;
             Assets = new ObservableCollection<AssetCollection>();

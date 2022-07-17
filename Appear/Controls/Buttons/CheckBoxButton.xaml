@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Appear.Controls.Buttons">
-    <StackPanel Margin="10" Orientation="Horizontal" DataContext="{Binding ElementName=CheckBoxButtonControl}">
-        <TextBlock Text="{Binding Text}" FontFamily="Verdana" FontWeight="DemiBold" Padding="5">
-            <TextBlock.TextDecorations>
+    <DockPanel Margin="10,2" DataContext="{Binding ElementName=CheckBoxButtonControl}">
+        <CheckBox Margin="0,0,10,0" DockPanel.Dock="Right" VerticalAlignment="Center" IsChecked="{Binding IsChecked}" Checked="HandleChecked" Unchecked="HandleUnchecked"></CheckBox>
+        <TextBlock Text="{Binding Text}" FontFamily="Verdana" FontWeight="DemiBold" Padding="5,2">
+            <!--<TextBlock.TextDecorations>
                 <TextDecoration PenOffset="3" PenOffsetUnit="Pixel"/>
-            </TextBlock.TextDecorations>
+            </TextBlock.TextDecorations>-->
         </TextBlock>
-        <CheckBox VerticalAlignment="Center" Margin="40,0,0,0" IsChecked="{Binding IsChecked}" Checked="HandleChecked" Unchecked="HandleUnchecked"></CheckBox>
-    </StackPanel>
+    </DockPanel>
 </UserControl>

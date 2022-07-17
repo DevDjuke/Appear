@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appear.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,17 @@ namespace Appear.Views
     /// </summary>
     public partial class AboutView : Page
     {
+        AboutViewModel vm;
+
         public AboutView()
         {
+            vm = new AboutViewModel();
+
+            vm.Version = $"v {Properties.Settings.Default.Release} - {Properties.Settings.Default.Name}";
+
             InitializeComponent();
+
+            DataContext = vm;
         }
     }
 }

@@ -6,7 +6,11 @@
       xmlns:local="clr-namespace:Appear.Views"
       xmlns:contr="clr-namespace:Appear.Controls"
       xmlns:bar="clr-namespace:Appear.Controls.Bars"
-      xmlns:butt="clr-namespace:Appear.Controls.Buttons">
+      xmlns:butt="clr-namespace:Appear.Controls.Buttons"
+      xmlns:vm="clr-namespace:Appear.ViewModel">
+    <Page.DataContext>
+        <vm:AboutViewModel></vm:AboutViewModel>
+    </Page.DataContext>
     <DockPanel >
         <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
         <TextBlock Margin="10" DockPanel.Dock="Bottom" FontFamily="Verdana" FontStyle="Italic" HorizontalAlignment="Center"> © Pandamonium Labs</TextBlock>
@@ -19,7 +23,7 @@
                         <TextDecoration PenOffset="3" PenOffsetUnit="Pixel"/>
                     </TextBlock.TextDecorations>
                 </TextBlock>
-                <TextBlock FontFamily="Verdana" FontStyle="Italic" HorizontalAlignment="Center"> v 0.1 - Agnostic Albatros</TextBlock>
+                <TextBlock FontFamily="Verdana" FontStyle="Italic" HorizontalAlignment="Center" Text="{Binding Version}"></TextBlock>
                 <Separator Width="150" Margin="0,20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="25">
