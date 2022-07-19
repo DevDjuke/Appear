@@ -10,5 +10,6 @@ namespace Appear.Domain
     public class AssetCollection
     {
         public ObservableCollection<Asset> Assets { get; set; }
+        public string Path { get; set; }
     }
 }

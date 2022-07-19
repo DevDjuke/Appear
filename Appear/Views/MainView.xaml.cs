@@ -1,6 +1,7 @@
 ﻿using Appear.Controls;
 using Appear.Controls.AssetGrid;
 using Appear.Controls.Control;
+using Appear.Controls.Present;
 using Appear.Core;
 using Appear.Events;
 using Appear.Services;
@@ -43,12 +44,20 @@ namespace Appear.Views
                 return this.GetChildOfType<AssetGrid>();
             }
         }
+        public PresenterControl PresenterControl
+        {
+            get
+            {
+                return this.GetChildOfType<PresenterControl>();
+            }
+        }
 
         public MainView()
         {
             vm = new MainViewModel();
             vm.DockPosition = Properties.Settings.Default.DockPositions;
             vm.HasAssets = AssetManager.HasAssets();
+            vm.IsPresenting = false;
 
             InitializeComponent();
 

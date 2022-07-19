@@ -19,20 +19,24 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ListTemplate" >
-            <ListView Margin="10" ItemsSource="{Binding Assets}"
-                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnSelectionChanged" Height="Auto">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Width="{Binding ViewWidth}" DataContext="{Binding ElementName=AssetGridControl}" Columns="{Binding ColumnCount}" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="10,5,0,0" Text="{Binding Path}" FontSize="16" Style="{StaticResource TextDefault}">
+                </TextBlock>
+                <ListView Margin="10" ItemsSource="{Binding Assets}"
+                  ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="OnAssetSelectionChanged" Height="Auto">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Width="{Binding ViewWidth}" DataContext="{Binding ElementName=AssetGridControl}" Columns="{Binding ColumnCount}" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+            </StackPanel>
         </DataTemplate>
 
     </UserControl.Resources>
 
     <ListView Margin="20,0" HorizontalAlignment="Center" DataContext="{Binding ElementName=AssetGridControl}" ScrollViewer.CanContentScroll="False"
-                  ItemsSource="{Binding Assets}" 
+                  ItemsSource="{Binding Assets}" SelectionChanged="OnAssetListSelectionChanged"
                   ItemTemplate="{StaticResource ListTemplate}"  
                   Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},Path=ActualHeight, Converter={StaticResource reduceHeight}}">
     </ListView>

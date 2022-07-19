@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Styles/ButtonDefault.xaml"/>
                 <ResourceDictionary Source="Styles/WindowDefault.xaml"/>
                 <ResourceDictionary Source="Styles/Bar_Default.xaml"/>
+                <ResourceDictionary Source="Styles/TextDefault.xaml"/>
                 <ResourceDictionary Source="../Assets/Icons/icons.xaml"/>
                 <ResourceDictionary Source="../Assets/Source/source.xaml"/>
             </ResourceDictionary.MergedDictionaries>

@@ -1,0 +1,22 @@
+﻿<Page x:Class="Appear.Views.PresentView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Appear.Views"
+      xmlns:contr="clr-namespace:Appear.Controls"
+      xmlns:bar="clr-namespace:Appear.Controls.Bars"
+      xmlns:vm="clr-namespace:Appear.ViewModel"
+      xmlns:conv="clr-namespace:Appear.Converters"
+      xmlns:butt="clr-namespace:Appear.Controls.Buttons">
+    <Page.DataContext>
+        <vm:PresentViewModel></vm:PresentViewModel>
+    </Page.DataContext>
+    <DockPanel >
+        <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
+        <StackPanel Orientation="Vertical">
+            <butt:TextButton Text="NEXT" Action="NextAsset" Size="150"></butt:TextButton>
+            <butt:TextButton Text="PREVIOUS" Action="PreviousAsset" Size="150"></butt:TextButton>
+        </StackPanel>
+    </DockPanel>
+</Page>

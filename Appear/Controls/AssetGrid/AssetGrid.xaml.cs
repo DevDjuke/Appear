@@ -77,6 +77,7 @@ namespace Appear.Controls.AssetGrid
             string[] extensions = { ".png", ".jpg" };
 
             AssetCollection collection = new AssetCollection();
+            collection.Path = folder;
             collection.Assets = new ObservableCollection<Asset>();
 
             foreach (string path in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories)
@@ -108,9 +109,16 @@ namespace Appear.Controls.AssetGrid
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public void OnSelectionChanged(object sender, RoutedEventArgs e)
+        public void OnAssetSelectionChanged(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new SelectedAssetChangedEventArgs(SelectionChangedEvent, (sender as ListView).SelectedItem as Asset));
+            List<Asset> assets = new List<Asset>() { (sender as ListView).SelectedItem as Asset };
+            RaiseEvent(new SelectedAssetChangedEventArgs(SelectionChangedEvent, assets));
+        }
+
+        public void OnAssetListSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            List<Asset> assets = ((sender as ListView).SelectedItem as AssetCollection).Assets.ToList();
+            RaiseEvent(new SelectedAssetChangedEventArgs(SelectionChangedEvent, assets));
         }
     }
 }

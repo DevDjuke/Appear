@@ -1,27 +1,14 @@
-﻿using Appear.Controls;
-using Appear.Controls.AssetGrid;
+﻿using Appear.Controls.AssetGrid;
 using Appear.Controls.Buttons;
-using Appear.Core;
+using Appear.Domain;
 using Appear.Events;
 using Appear.Services;
-using Appear.ViewModel;
 using Appear.Views;
 using Appear.Windows;
-using Appear.Windows.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Appear
 {
@@ -51,6 +38,7 @@ namespace Appear
         void OnLoad(object sender, RoutedEventArgs e)
         {
             (Content as MainView).AssetGrid.SetWidth(this);
+            (Content as MainView).PresenterControl.SetDimensions(this);
 
 #if !DEBUG
             if (Properties.Settings.Default.UpdateOnStart)
@@ -165,15 +153,50 @@ namespace Appear
                     window_assets.AssetListChanged += new EventHandler(OnAssetListChanged);
                     SurrenderFocus(window_assets);
                     break;
+                case "PresentAsset":
+                    StartPresenting();
+                    break;
                 default:
                     break;
             }
         }
 
+        private void StopPresenting(object sender, EventArgs e)
+        {
+            StyleManager.UpdateStyle("Restore", this);
+            (Content as MainView).vm.IsPresenting = false;
+        }
+
+        private void StartPresenting()
+        {
+            this.Visibility = Visibility.Hidden;
+            StyleManager.UpdateStyle("Maximize", this);
+            (Content as MainView).vm.IsPresenting = true;
+            PresentWindow window_presents = new PresentWindow();
+            window_presents.Closed += new EventHandler(StopPresenting);
+
+            window_presents.NextAsset += new EventHandler(NextAsset);
+            window_presents.PreviousAsset += new EventHandler(PrevAsset);
+
+            SurrenderFocus(window_presents);
+            this.Visibility = Visibility.Visible;
+        }
+
+        private void NextAsset(object sender, EventArgs e)
+        {
+            (Content as MainView).PresenterControl.Next();
+        }
+
+        private void PrevAsset(object sender, EventArgs e)
+        {
+            (Content as MainView).PresenterControl.Previous();
+        }
+
         private void AssetSelectionChangedEventHandler(object sender, RoutedEventArgs e)
         {
             SelectedAssetChangedEventArgs arg = (SelectedAssetChangedEventArgs)e;
-            (Content as MainView).ControlPanel.SelectedAsset = arg.Asset;
+            (Content as MainView).ControlPanel.SelectedAsset = arg.Assets[0];
+            (Content as MainView).PresenterControl.Assets = arg.Assets;
         }
     }
 }

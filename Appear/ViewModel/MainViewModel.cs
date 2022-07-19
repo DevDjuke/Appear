@@ -22,5 +22,12 @@ namespace Appear.ViewModel
             get { return hasAssets; }
             set { hasAssets = value; OnPropertyChanged(); }
         }
+
+        private bool isPresenting { get; set; }
+        public bool IsPresenting
+        {
+            get { return isPresenting; }
+            set { isPresenting = value; OnPropertyChanged(); }
+        }
     }
 }

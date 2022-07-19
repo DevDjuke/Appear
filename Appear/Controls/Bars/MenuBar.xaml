@@ -14,7 +14,6 @@
                 <butt:IconButton Icon="exit" Action="CloseMain"></butt:IconButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                <butt:TextButton Text="PRESENT" Size="100"></butt:TextButton>
                 <butt:TextButton Text="ASSETS" Action="OpenAssets" Size="100"></butt:TextButton>
                 <butt:TextButton Text="OPTIONS" Action="OpenStyles" Size="100"></butt:TextButton>
             </StackPanel>

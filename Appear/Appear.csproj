@@ -256,6 +256,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Present\ImagePresenter.xaml.cs">
+      <DependentUpon>ImagePresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Present\PresenterControl.xaml.cs">
+      <DependentUpon>PresenterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Text\TextControl.xaml.cs">
+      <DependentUpon>TextControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\PresentViewModel.cs" />
+    <Compile Include="Views\PresentView.xaml.cs">
+      <DependentUpon>PresentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -328,6 +341,9 @@
     <Compile Include="Services\StyleManager.cs" />
     <Compile Include="Services\VersionHelper.cs" />
     <Compile Include="Services\WindowsService.cs" />
+    <Compile Include="Windows\PresentWindow.xaml.cs">
+      <DependentUpon>PresentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\StylesWindow.xaml.cs">
       <DependentUpon>StylesWindow.xaml</DependentUpon>
     </Compile>
@@ -349,6 +365,26 @@
     <Compile Include="Views\StylesView.xaml.cs">
       <DependentUpon>StylesView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\Present\ImagePresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Present\PresenterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Text\TextControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextDefault.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PresentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -432,6 +468,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\Dialogs\OkDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\PresentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

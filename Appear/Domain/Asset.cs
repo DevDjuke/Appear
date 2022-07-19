@@ -8,9 +8,9 @@ namespace Appear.Domain
 {
     public class Asset
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
-
         public int FileTypeId { get; set; }
     }
 }

@@ -10,16 +10,16 @@ namespace Appear.Events
 {
     public class SelectedAssetChangedEventArgs: RoutedEventArgs
     {
-        private Asset asset { get; set; }
-        public Asset Asset 
+        private List<Asset> assets { get; set; }
+        public List<Asset> Assets 
         { 
-            get { return asset; } 
-            set { asset = value; }
+            get { return assets; } 
+            set { assets = value; }
         }
 
-        public SelectedAssetChangedEventArgs(RoutedEvent e, Asset asset) : base(e)
+        public SelectedAssetChangedEventArgs(RoutedEvent e, List<Asset> assets) : base(e)
         {
-            this.asset = asset;
+            this.assets = assets;
         }
     }
 }
