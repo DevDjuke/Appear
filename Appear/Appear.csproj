@@ -271,7 +271,7 @@
     <Compile Include="Controls\Text\TextControl.xaml.cs">
       <DependentUpon>TextControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\PresentViewModel.cs" />
+    <Compile Include="Core\ObservablePage.cs" />
     <Compile Include="Views\PresentView.xaml.cs">
       <DependentUpon>PresentView.xaml</DependentUpon>
     </Compile>
@@ -353,9 +353,6 @@
     <Compile Include="Windows\StylesWindow.xaml.cs">
       <DependentUpon>StylesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AboutViewModel.cs" />
-    <Compile Include="ViewModel\DialogViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>

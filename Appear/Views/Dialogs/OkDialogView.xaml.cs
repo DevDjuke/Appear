@@ -1,4 +1,4 @@
-﻿using Appear.ViewModel;
+﻿using Appear.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +19,19 @@ namespace Appear.Views.Dialogs
     /// <summary>
     /// Interaction logic for OkDialogView.xaml
     /// </summary>
-    public partial class OkDialogView : Page
+    public partial class OkDialogView : ObservablePage
     {
-        DialogViewModel vm;
-
-        public OkDialogView(DialogViewModel vm)
+        private string text { get; set; }
+        public string Text
         {
-            this.vm = vm;
+            get { return text; }
+            set { text = value; OnPropertyChanged(); } 
+        }
+
+        public OkDialogView(string text)
+        {
+            Text = text;
             InitializeComponent();
-            DataContext = vm;
         }
     }
 }

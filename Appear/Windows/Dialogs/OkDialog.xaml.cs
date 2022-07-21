@@ -1,6 +1,5 @@
 ﻿using Appear.Controls.Buttons;
 using Appear.Events;
-using Appear.ViewModel;
 using Appear.Views;
 using Appear.Views.Dialogs;
 using System;
@@ -26,12 +25,7 @@ namespace Appear.Windows.Dialogs
     {
         public OkDialog(string text)
         {
-            DialogViewModel vm = new DialogViewModel()
-            {
-                Text = text
-            };
-
-            Content = new OkDialogView(vm);
+            Content = new OkDialogView(text);
             InitializeComponent();
 
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));

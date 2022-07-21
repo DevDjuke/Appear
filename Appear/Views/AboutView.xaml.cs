@@ -1,7 +1,9 @@
-﻿using Appear.ViewModel;
+﻿using Appear.Core;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,19 +21,23 @@ namespace Appear.Views
     /// <summary>
     /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class AboutView : Page
+    public partial class AboutView : ObservablePage
     {
-        AboutViewModel vm;
+        private string version { get; set; }
+        public string Version
+        {
+            get { return version; }
+            set { version = value; OnPropertyChanged(); }
+        }
+
 
         public AboutView()
         {
-            vm = new AboutViewModel();
-
-            vm.Version = $"v {Properties.Settings.Default.Release} - {Properties.Settings.Default.Name}";
+            Version = $"v {Properties.Settings.Default.Release} - {Properties.Settings.Default.Name}";
 
             InitializeComponent();
-
-            DataContext = vm;
         }
+
+        
     }
 }

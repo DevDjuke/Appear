@@ -5,7 +5,6 @@ using Appear.Controls.Present;
 using Appear.Core;
 using Appear.Events;
 using Appear.Services;
-using Appear.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +25,8 @@ namespace Appear.Views
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : Page
+    public partial class MainView : ObservablePage
     {
-        public MainViewModel vm { get; }
-
         public ControlPanel ControlPanel
         {
             get
@@ -52,16 +49,34 @@ namespace Appear.Views
             }
         }
 
+        private string dockPosition { get; set; }
+        public string DockPosition
+        {
+            get { return dockPosition; }
+            set { dockPosition = value; OnPropertyChanged(); }
+        }
+
+        private bool hasAssets { get; set; }
+        public bool HasAssets
+        {
+            get { return hasAssets; }
+            set { hasAssets = value; OnPropertyChanged(); }
+        }
+
+        private bool isPresenting { get; set; }
+        public bool IsPresenting
+        {
+            get { return isPresenting; }
+            set { isPresenting = value; OnPropertyChanged(); }
+        }
+
         public MainView()
         {
-            vm = new MainViewModel();
-            vm.DockPosition = Properties.Settings.Default.DockPositions;
-            vm.HasAssets = AssetManager.HasAssets();
-            vm.IsPresenting = false;
+            DockPosition = Properties.Settings.Default.DockPositions;
+            HasAssets = AssetManager.HasAssets();
+            IsPresenting = false;
 
             InitializeComponent();
-
-            DataContext = vm;
         }
     }
 }

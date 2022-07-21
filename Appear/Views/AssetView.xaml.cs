@@ -2,7 +2,6 @@
 using Appear.Controls.AssetList;
 using Appear.Core;
 using Appear.Events;
-using Appear.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

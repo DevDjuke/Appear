@@ -86,13 +86,13 @@ namespace Appear
 
         private void OnMenuBarChanged(object sender, EventArgs e)
         {
-            (Content as MainView).vm.DockPosition = Properties.Settings.Default.DockPositions;
+            (Content as MainView).DockPosition = Properties.Settings.Default.DockPositions;
             StyleManager.UpdateMenuBar();
         }
 
         private void OnAssetListChanged(object sender, EventArgs e)
         {
-            (Content as MainView).vm.HasAssets = AssetManager.HasAssets();
+            (Content as MainView).HasAssets = AssetManager.HasAssets();
 
             if (AssetManager.HasAssets())
             {
@@ -166,14 +166,14 @@ namespace Appear
         private void StopPresenting(object sender, EventArgs e)
         {
             StyleManager.SetWindowState(this, "StopPresenting");           
-            (Content as MainView).vm.IsPresenting = false;
+            (Content as MainView).IsPresenting = false;
         }
 
         private void StartPresenting()
         {
             this.Visibility = Visibility.Hidden;
             StyleManager.SetWindowState(this, "Present");
-            (Content as MainView).vm.IsPresenting = true;
+            (Content as MainView).IsPresenting = true;
             PresentWindow window_presents = new PresentWindow(SelectedAssets);
             window_presents.Closed += new EventHandler(StopPresenting);
             window_presents.NextAsset += new EventHandler(NextAsset);

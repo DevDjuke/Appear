@@ -2,7 +2,6 @@
 using Appear.Controls.Present;
 using Appear.Core;
 using Appear.Domain;
-using Appear.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,14 +25,8 @@ namespace Appear.Views
     /// <summary>
     /// Interaction logic for PresentView.xaml
     /// </summary>
-    public partial class PresentView: Page, INotifyPropertyChanged
+    public partial class PresentView: ObservablePage
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
         private ObservableCollection<Asset> assets { get; set; }
         public ObservableCollection<Asset> Assets
         {

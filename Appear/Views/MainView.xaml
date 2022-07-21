@@ -1,20 +1,16 @@
-﻿<Page x:Class="Appear.Views.MainView"
+﻿<core:ObservablePage x:Class="Appear.Views.MainView" x:Name="MainWindowView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Appear.Views"
       xmlns:contr="clr-namespace:Appear.Controls"
-      xmlns:vm="clr-namespace:Appear.ViewModel"
       xmlns:conv="clr-namespace:Appear.Converters"
       xmlns:core="clr-namespace:Appear.Core"
       xmlns:bar="clr-namespace:Appear.Controls.Bars"
       xmlns:ass="clr-namespace:Appear.Controls.AssetGrid"
       xmlns:cont="clr-namespace:Appear.Controls.Control"
       xmlns:pres="clr-namespace:Appear.Controls.Present">
-    <Page.DataContext>
-        <vm:MainViewModel></vm:MainViewModel>
-    </Page.DataContext>
     <Page.Resources>
         <conv:BooleanToVisibilityConverter x:Key="isVisible"></conv:BooleanToVisibilityConverter>
         <core:ValueConverterGroup x:Key="isVisibleInvert">
@@ -22,7 +18,7 @@
             <conv:BooleanToVisibilityConverter></conv:BooleanToVisibilityConverter>
         </core:ValueConverterGroup>
     </Page.Resources>
-    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+    <StackPanel DataContext="{Binding ElementName=MainWindowView}" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <DockPanel Visibility="{Binding IsPresenting, Converter={StaticResource isVisibleInvert}}">
             <StackPanel DockPanel.Dock="{Binding DockPosition}" >
                 <bar:MenuBar></bar:MenuBar>
@@ -40,4 +36,4 @@
         <pres:PresenterControl Visibility="{Binding IsPresenting, Converter={StaticResource isVisible}}"></pres:PresenterControl>
     </StackPanel>
   
-</Page>
+</core:ObservablePage>
