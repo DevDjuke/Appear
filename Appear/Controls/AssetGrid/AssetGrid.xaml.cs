@@ -1,4 +1,5 @@
-﻿using Appear.Domain;
+﻿using Appear.Core;
+using Appear.Domain;
 using Appear.Events;
 using System;
 using System.Collections.Generic;
@@ -103,12 +104,6 @@ namespace Appear.Controls.AssetGrid
             remove { RemoveHandler(SelectionChangedEvent, value); }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
         public void OnAssetSelectionChanged(object sender, RoutedEventArgs e)
         {
             List<Asset> assets = new List<Asset>() { (sender as ListView).SelectedItem as Asset };
@@ -123,6 +118,12 @@ namespace Appear.Controls.AssetGrid
                 List<Asset> assets = collection.Assets.ToList();
                 RaiseEvent(new SelectedAssetChangedEventArgs(SelectionChangedEvent, assets));
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

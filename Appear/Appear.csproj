@@ -256,7 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\Control\PicturePreview.xaml.cs">
+    <Compile Include="Controls\Present\ManualPanel.xaml.cs">
+      <DependentUpon>ManualPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Present\PicturePreview.xaml.cs">
       <DependentUpon>PicturePreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Present\ImagePresenter.xaml.cs">
@@ -368,7 +371,11 @@
     <Compile Include="Views\StylesView.xaml.cs">
       <DependentUpon>StylesView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\Control\PicturePreview.xaml">
+    <Page Include="Controls\Present\ManualPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Present\PicturePreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

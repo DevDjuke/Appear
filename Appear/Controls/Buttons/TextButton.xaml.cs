@@ -1,4 +1,5 @@
-﻿using Appear.Events;
+﻿using Appear.Core;
+using Appear.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;

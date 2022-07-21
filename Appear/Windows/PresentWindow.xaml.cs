@@ -4,6 +4,7 @@ using Appear.Events;
 using Appear.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,9 +44,9 @@ namespace Appear.Windows
             }
         }
 
-        public PresentWindow()
+        public PresentWindow(List<Asset> assets)
         {
-            Content = new PresentView();
+            Content = new PresentView(assets);
             InitializeComponent();
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
@@ -91,11 +92,6 @@ namespace Appear.Windows
                 base.OnMouseLeftButtonDown(e);
                 DragMove();
             }
-        }
-
-        public void SetAssets(List<Asset> assets)
-        {
-            (Content as PresentView).PicturePreview.Assets = assets.ToArray<Asset>();
         }
     }
 }

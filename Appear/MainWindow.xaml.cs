@@ -96,7 +96,7 @@ namespace Appear
 
             if (AssetManager.HasAssets())
             {
-                (Content as MainView).AssetGrid.UpdateGrid();
+                (Content as MainView).AssetGrid.UpdateGrid();   
             }
         }
 
@@ -174,12 +174,11 @@ namespace Appear
             this.Visibility = Visibility.Hidden;
             StyleManager.SetWindowState(this, "Present");
             (Content as MainView).vm.IsPresenting = true;
-            PresentWindow window_presents = new PresentWindow();
+            PresentWindow window_presents = new PresentWindow(SelectedAssets);
             window_presents.Closed += new EventHandler(StopPresenting);
             window_presents.NextAsset += new EventHandler(NextAsset);
             window_presents.PreviousAsset += new EventHandler(PrevAsset);
             SurrenderFocus(window_presents);
-            window_presents.SetAssets(SelectedAssets);
             this.Visibility = Visibility.Visible;
         }
 
@@ -196,7 +195,7 @@ namespace Appear
         private void AssetSelectionChangedEventHandler(object sender, RoutedEventArgs e)
         {
             SelectedAssetChangedEventArgs arg = (SelectedAssetChangedEventArgs)e;
-            (Content as MainView).ControlPanel.SelectedAsset = arg.Assets[0];
+            (Content as MainView).ControlPanel.SelectedAsset = arg.Assets[0];          
             (Content as MainView).PresenterControl.Assets = arg.Assets;
             SelectedAssets = arg.Assets;
         }

@@ -1,6 +1,7 @@
 ﻿using Appear.Domain;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -16,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appear.Controls.Control
+namespace Appear.Controls.Present
 {
     /// <summary>
     /// Interaction logic for PicturePreview.xaml
@@ -45,17 +46,7 @@ namespace Appear.Controls.Control
         {
             get { return nextPath; }
             set { nextPath = value; OnPropertyChanged(); }
-        }
-
-        public Asset[] Assets
-        {
-            get { return (Asset[])GetValue(AssetsProperty); }
-            set 
-            { 
-                SetValue(AssetsProperty, value);
-                UpdatePreviews();
-            }
-        }
+        }   
 
         public void NextPreview()
         {
@@ -69,20 +60,31 @@ namespace Appear.Controls.Control
             UpdatePreviews();
         }
 
+        public ObservableCollection<Asset> Assets
+        {
+            get { return (ObservableCollection<Asset>)GetValue(AssetsProperty); }
+            set
+            {
+                SetValue(AssetsProperty, value);
+            }
+        }
+
         public static readonly DependencyProperty AssetsProperty =
             DependencyProperty.Register(
             "Assets",
-            typeof(Asset[]),
+            typeof(ObservableCollection<Asset>),
             typeof(PicturePreview),
-            new UIPropertyMetadata(new Asset[3])
+            new UIPropertyMetadata(AssetPropertyChangedHandler)
         );
 
-        //public static void AssetPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //}
+        public static void AssetPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as PicturePreview).UpdatePreviews();
+        }
 
         public PicturePreview()
         {
+            //Assets = new ObservableCollection<Asset>();
             InitializeComponent();
         }
 
@@ -95,30 +97,33 @@ namespace Appear.Controls.Control
         private void UpdateIndex(int dir)
         {
             previewIndex += dir;
-            if(previewIndex > Assets.Length - 1)
+            if(previewIndex > Assets.Count - 1)
             {
                 previewIndex = 0;
             }
             else if(previewIndex < 0)
             {
-                previewIndex = Assets.Length - 1;
+                previewIndex = Assets.Count - 1;
             }
         }
 
         private void UpdatePreviews()
         {
-            CurrentPath = Assets[previewIndex].Path;
-            NextPath = GetNextPath();
-            PreviousPath = GetPreviousPath();
+            if(Assets != null && Assets.Count > 0)
+            {
+                CurrentPath = Assets[previewIndex].Path;
+                NextPath = GetNextPath();
+                PreviousPath = GetPreviousPath();
+            }
         }
 
         private string GetNextPath()
         {
             string value = "";
 
-            if(Assets != null && Assets.Length > 1)
+            if(Assets != null && Assets.Count > 1)
             {
-                if(previewIndex == Assets.Length - 1)
+                if(previewIndex == Assets.Count - 1)
                 {
                     value = Assets[0].Path;
                 }
@@ -135,11 +140,11 @@ namespace Appear.Controls.Control
         {
             string value = "";
 
-            if(Assets != null  && Assets.Length > 1)
+            if(Assets != null  && Assets.Count > 1)
             {
                 if(previewIndex == 0)
                 {
-                    value = Assets[Assets.Length - 1].Path;
+                    value = Assets[Assets.Count - 1].Path;
                 }
                 else
                 {
