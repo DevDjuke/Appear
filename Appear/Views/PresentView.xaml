@@ -4,19 +4,31 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Appear.Views"
-      xmlns:contr="clr-namespace:Appear.Controls"
       xmlns:bar="clr-namespace:Appear.Controls.Bars"
       xmlns:vm="clr-namespace:Appear.ViewModel"
       xmlns:conv="clr-namespace:Appear.Converters"
+      xmlns:cont="clr-namespace:Appear.Controls.Control"
       xmlns:butt="clr-namespace:Appear.Controls.Buttons">
     <Page.DataContext>
         <vm:PresentViewModel></vm:PresentViewModel>
     </Page.DataContext>
     <DockPanel >
         <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
-        <StackPanel Orientation="Vertical">
-            <butt:TextButton Text="NEXT" Action="NextAsset" Size="150"></butt:TextButton>
-            <butt:TextButton Text="PREVIOUS" Action="PreviousAsset" Size="150"></butt:TextButton>
+        <StackPanel>
+            <StackPanel Orientation="Vertical">
+                <cont:PicturePreview Assets="{Binding Assets}"></cont:PicturePreview>
+                
+                
+                
+                <StackPanel Orientation="Horizontal">
+                    <butt:TextButton Text="NEXT" Action="NextAsset" Size="150"></butt:TextButton>
+                    <butt:TextButton Text="SELECTED" Action="SelectedAsset" Size="150"></butt:TextButton>
+                    <butt:TextButton Text="PREVIOUS" Action="PreviousAsset" Size="150"></butt:TextButton>
+                </StackPanel>
+                
+                
+                
+            </StackPanel>
         </StackPanel>
     </DockPanel>
 </Page>

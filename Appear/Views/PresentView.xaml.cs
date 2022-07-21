@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Appear.Controls.Control;
+using Appear.Core;
+using Appear.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,20 @@ namespace Appear.Views
     /// </summary>
     public partial class PresentView : Page
     {
+        public PresentViewModel vm;
+        public PicturePreview PicturePreview
+        {
+            get
+            {
+                return this.GetChildOfType<PicturePreview>();
+            }
+        }
+
         public PresentView()
         {
+            vm = new PresentViewModel();
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

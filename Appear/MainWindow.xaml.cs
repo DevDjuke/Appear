@@ -17,6 +17,8 @@ namespace Appear
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Asset> SelectedAssets;
+
         public MainWindow()
         {
             //DataManager.DatabaseSetup();
@@ -112,12 +114,12 @@ namespace Appear
                 case "MaxMain":
                     if (this.WindowState == WindowState.Maximized)
                     {
-                        StyleManager.UpdateStyle("Restore", this);
+                        StyleManager.SetWindowState(this, "Restore");
                         (Content as MainView).AssetGrid.SetWidth(this);
                     }
                     else
                     {
-                        StyleManager.UpdateStyle("Maximize", this);
+                        StyleManager.SetWindowState(this, "Maximize");
                         (Content as MainView).AssetGrid.SetWidth(this);
                     }
                     break;
@@ -163,22 +165,21 @@ namespace Appear
 
         private void StopPresenting(object sender, EventArgs e)
         {
-            StyleManager.UpdateStyle("Restore", this);
+            StyleManager.SetWindowState(this, "Restore");           
             (Content as MainView).vm.IsPresenting = false;
         }
 
         private void StartPresenting()
         {
             this.Visibility = Visibility.Hidden;
-            StyleManager.UpdateStyle("Maximize", this);
+            StyleManager.SetWindowState(this, "Present");
             (Content as MainView).vm.IsPresenting = true;
             PresentWindow window_presents = new PresentWindow();
             window_presents.Closed += new EventHandler(StopPresenting);
-
             window_presents.NextAsset += new EventHandler(NextAsset);
             window_presents.PreviousAsset += new EventHandler(PrevAsset);
-
             SurrenderFocus(window_presents);
+            window_presents.SetAssets(SelectedAssets);
             this.Visibility = Visibility.Visible;
         }
 
@@ -197,6 +198,7 @@ namespace Appear
             SelectedAssetChangedEventArgs arg = (SelectedAssetChangedEventArgs)e;
             (Content as MainView).ControlPanel.SelectedAsset = arg.Assets[0];
             (Content as MainView).PresenterControl.Assets = arg.Assets;
+            SelectedAssets = arg.Assets;
         }
     }
 }

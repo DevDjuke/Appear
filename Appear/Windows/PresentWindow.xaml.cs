@@ -1,4 +1,5 @@
 ﻿using Appear.Controls.Buttons;
+using Appear.Domain;
 using Appear.Events;
 using Appear.Views;
 using System;
@@ -28,6 +29,7 @@ namespace Appear.Windows
             if (NextAsset != null)
             {
                 NextAsset(this, EventArgs.Empty);
+                (Content as PresentView).PicturePreview.NextPreview();
             }
         }
 
@@ -37,6 +39,7 @@ namespace Appear.Windows
             if (PreviousAsset != null)
             {
                 PreviousAsset(this, EventArgs.Empty);
+                (Content as PresentView).PicturePreview.PreviousPreview();
             }
         }
 
@@ -88,6 +91,11 @@ namespace Appear.Windows
                 base.OnMouseLeftButtonDown(e);
                 DragMove();
             }
+        }
+
+        public void SetAssets(List<Asset> assets)
+        {
+            (Content as PresentView).PicturePreview.Assets = assets.ToArray<Asset>();
         }
     }
 }

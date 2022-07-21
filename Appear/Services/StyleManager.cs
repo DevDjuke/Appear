@@ -10,6 +10,9 @@ namespace Appear.Services
 {
     public static class StyleManager
     {
+        private static WindowState currentState;
+        private static WindowState previousState;
+
         private static Dictionary<string, Dictionary<string, Color>> themes = new Dictionary<string, Dictionary<string, Color>>()
         {
             {"Default", new Dictionary<string, Color>() {
@@ -54,8 +57,15 @@ namespace Appear.Services
         {
             if (Properties.Settings.Default.MaxOnStart)
             {
-                UpdateStyle("Maximize", window);
+                SetWindowState(window, "Maximize");
             }
+            else
+            {
+                currentState = WindowState.Normal;
+                previousState = WindowState.Normal;
+            }
+
+            UpdateStyle(currentState, window);
         }
 
         public static void SetWindowState(Window window, string state)
@@ -63,14 +73,27 @@ namespace Appear.Services
             switch (state)
             {
                 case "Maximize":
-                    window.WindowState = WindowState.Maximized;
+                    if(window.WindowState != WindowState.Maximized)
+                    {
+                        window.WindowState = WindowState.Maximized;
+                        previousState = currentState;
+                        currentState = window.WindowState;
+                    }
                     break;
                 case "Restore":
-                    window.WindowState = WindowState.Normal;
+                    window.WindowState = previousState;
+                    previousState = currentState;
+                    currentState = window.WindowState;
+                    break;
+                case "Present":
+                    window.WindowState = WindowState.Maximized;
+                    previousState = currentState;
                     break;
                 default:
                     break;
             }
+
+            UpdateStyle(currentState, window);
         }
 
         public static void SetTheme()
@@ -83,26 +106,25 @@ namespace Appear.Services
             switch (Properties.Settings.Default["DockPositions"])
             {
                 case "Top":
-                    UpdateStyle("BarTop");
+                    App.Current.Resources["Corner_Bar"] = new CornerRadius(20, 20, 0, 0);
                     break;
                 case "Bottom":
-                    UpdateStyle("BarBottom");
+                    App.Current.Resources["Corner_Bar"] = new CornerRadius(0, 0, 20, 20);
                     break;
                 default:
                     break;
             }
         }
 
-        public static void UpdateStyle(string state, Window window = null)
+        private static void UpdateStyle(WindowState state, Window window = null)
         {
             switch (state)
             {
-                case "Maximize":
+                case WindowState.Maximized:
                     App.Current.Resources["Corner_Bar"] = new CornerRadius(0);
                     App.Current.Resources["Corner"] = new CornerRadius(0);
-                    SetWindowState(window, state);
                     break;
-                case "Restore":
+                case WindowState.Normal:
                     App.Current.Resources["Corner"] = new CornerRadius(25);
                     switch (Properties.Settings.Default["DockPositions"])
                     {
@@ -115,13 +137,6 @@ namespace Appear.Services
                         default:
                             break;
                     }
-                    SetWindowState(window, state);
-                    break;
-                case "BarTop":
-                    App.Current.Resources["Corner_Bar"] = new CornerRadius(20, 20, 0, 0);
-                    break;
-                case "BarBottom":
-                    App.Current.Resources["Corner_Bar"] = new CornerRadius(0, 0, 20, 20);
                     break;
                 default:
                     break;

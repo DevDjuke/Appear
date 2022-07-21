@@ -117,8 +117,12 @@ namespace Appear.Controls.AssetGrid
 
         public void OnAssetListSelectionChanged(object sender, RoutedEventArgs e)
         {
-            List<Asset> assets = ((sender as ListView).SelectedItem as AssetCollection).Assets.ToList();
-            RaiseEvent(new SelectedAssetChangedEventArgs(SelectionChangedEvent, assets));
+            AssetCollection collection = ((sender as ListView).SelectedItem as AssetCollection);
+            if(collection != null && collection.Assets != null)
+            {
+                List<Asset> assets = collection.Assets.ToList();
+                RaiseEvent(new SelectedAssetChangedEventArgs(SelectionChangedEvent, assets));
+            }
         }
     }
 }
