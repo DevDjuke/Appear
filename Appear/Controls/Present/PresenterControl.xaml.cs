@@ -51,7 +51,7 @@ namespace Appear.Controls.Present
             set { 
                 assets = value;
                 OnPropertyChanged();
-                Path = assets[selectedIndex].Path;
+                Path = (assets != null && assets[selectedIndex] != null) ? assets[selectedIndex].Path : "";
             }
         }
 

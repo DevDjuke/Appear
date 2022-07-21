@@ -165,7 +165,7 @@ namespace Appear
 
         private void StopPresenting(object sender, EventArgs e)
         {
-            StyleManager.SetWindowState(this, "Restore");           
+            StyleManager.SetWindowState(this, "StopPresenting");           
             (Content as MainView).vm.IsPresenting = false;
         }
 

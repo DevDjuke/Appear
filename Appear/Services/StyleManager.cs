@@ -57,6 +57,7 @@ namespace Appear.Services
         {
             if (Properties.Settings.Default.MaxOnStart)
             {
+                currentState = WindowState.Normal;
                 SetWindowState(window, "Maximize");
             }
             else
@@ -79,21 +80,23 @@ namespace Appear.Services
                         previousState = currentState;
                         currentState = window.WindowState;
                     }
+                    UpdateStyle(currentState, window);
                     break;
                 case "Restore":
                     window.WindowState = previousState;
                     previousState = currentState;
                     currentState = window.WindowState;
+                    UpdateStyle(currentState, window);
                     break;
                 case "Present":
                     window.WindowState = WindowState.Maximized;
-                    previousState = currentState;
+                    break;
+                case "StopPresenting":
+                    window.WindowState = currentState;
                     break;
                 default:
                     break;
             }
-
-            UpdateStyle(currentState, window);
         }
 
         public static void SetTheme()
