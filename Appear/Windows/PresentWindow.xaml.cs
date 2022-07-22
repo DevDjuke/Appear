@@ -65,7 +65,7 @@ namespace Appear.Windows
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));
-
+            AddHandler(AutoPanel.TimerTickEvent, new RoutedEventHandler(TimerTickEventHandler));
             AddHandler(ManualPanel.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
             AddHandler(SelectionList.SelectionChangedEvent, new RoutedEventHandler(SelectionChangedEventHandler));
         }
@@ -108,6 +108,11 @@ namespace Appear.Windows
         {
             SelectedAssetChangedEventArgs arg = (SelectedAssetChangedEventArgs)e;
             selectedAsset = arg.Assets[0];
+        }
+
+        private void TimerTickEventHandler(object sender, RoutedEventArgs e)
+        {
+            this.OnNextAsset();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)

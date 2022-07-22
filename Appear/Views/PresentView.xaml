@@ -20,6 +20,7 @@
             <StackPanel Orientation="Vertical">
                 <pres:PicturePreview Assets="{Binding Assets}"></pres:PicturePreview>
                 <pres:ManualPanel Visibility="{Binding IsManualMode, Converter={StaticResource isVisible}}" Assets="{Binding Assets}"></pres:ManualPanel>
+                <pres:AutoPanel Margin="20,50" Visibility="{Binding IsManualMode, Converter={StaticResource isVisibleInvert}}"></pres:AutoPanel>
             </StackPanel>
         </DockPanel>
     </DockPanel>

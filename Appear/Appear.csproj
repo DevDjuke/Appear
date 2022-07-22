@@ -256,6 +256,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Present\AutoPanel.xaml.cs">
+      <DependentUpon>AutoPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Present\ManualPanel.xaml.cs">
       <DependentUpon>ManualPanel.xaml</DependentUpon>
     </Compile>
@@ -268,10 +271,8 @@
     <Compile Include="Controls\Present\PresenterControl.xaml.cs">
       <DependentUpon>PresenterControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Text\TextControl.xaml.cs">
-      <DependentUpon>TextControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\ObservablePage.cs" />
+    <Compile Include="Events\TimerTickEventArgs.cs" />
     <Compile Include="Views\PresentView.xaml.cs">
       <DependentUpon>PresentView.xaml</DependentUpon>
     </Compile>
@@ -368,6 +369,10 @@
     <Compile Include="Views\StylesView.xaml.cs">
       <DependentUpon>StylesView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\Present\AutoPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Present\ManualPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -381,10 +386,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Present\PresenterControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Text\TextControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
