@@ -1,7 +1,11 @@
 ﻿using Appear.Domain;
+using Appear.Events;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,28 +23,60 @@ namespace Appear.Controls.Present
     /// <summary>
     /// Interaction logic for ManualPanel.xaml
     /// </summary>
-    public partial class ManualPanel : UserControl
+    public partial class ManualPanel : UserControl, INotifyPropertyChanged
     {
         public ManualPanel()
         {
             InitializeComponent();
         }
 
-        public Asset[] Assets
+        private bool hasSelection { get; set; } = false;
+        public bool HasSelection
         {
-            get { return (Asset[])GetValue(AssetsProperty); }
-            set
-            {
-                SetValue(AssetsProperty, value);
-            }
+            get { return hasSelection; }
+            set { hasSelection = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<Asset> Assets
+        {
+            get { return (ObservableCollection<Asset>)GetValue(AssetsProperty); }
+            set { SetValue(AssetsProperty, value); }
         }
 
         public static readonly DependencyProperty AssetsProperty =
            DependencyProperty.Register(
            "Assets",
-           typeof(Asset[]),
+           typeof(ObservableCollection<Asset>),
            typeof(ManualPanel),
-           new UIPropertyMetadata(new Asset[3])
-       );
+           new UIPropertyMetadata(AssetPropertyChangedHandler)
+        );
+
+        public static void AssetPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            (sender as ManualPanel).OnPropertyChanged("Assets");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public static readonly RoutedEvent SelectionChangedEvent =
+            EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble,
+                typeof(RoutedEventHandler), typeof(ManualPanel));
+
+        public event RoutedEventHandler SelectionChanged
+        {
+            add { AddHandler(SelectionChangedEvent, value); }
+            remove { RemoveHandler(SelectionChangedEvent, value); }
+        }
+
+        public void OnAssetSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            HasSelection = true;
+            List<Asset> assets = new List<Asset>() { (sender as ListView).SelectedItem as Asset };
+            RaiseEvent(new SelectedAssetChangedEventArgs(SelectionChangedEvent, assets));
+        }
     }
 }

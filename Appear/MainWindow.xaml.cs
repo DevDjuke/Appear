@@ -178,9 +178,16 @@ namespace Appear
             window_presents.Closed += new EventHandler(StopPresenting);
             window_presents.NextAsset += new EventHandler(NextAsset);
             window_presents.PreviousAsset += new EventHandler(PrevAsset);
+            window_presents.SelectedAsset += new EventHandler(SelectedAsset);
             SurrenderFocus(window_presents);
             this.Visibility = Visibility.Visible;
         }
+
+        private void SelectedAsset(object sender, EventArgs e)
+        {
+            (Content as MainView).PresenterControl.Present(((PresentWindow)sender).selectedAsset);
+        }
+
 
         private void NextAsset(object sender, EventArgs e)
         {

@@ -9,8 +9,7 @@
         <StackPanel>
             <StackPanel Orientation="Vertical">
                 <pres:PicturePreview Assets="{Binding Assets}"></pres:PicturePreview>
-                <!--<pres:ManualPanel Assets="{Binding Assets}"></pres:ManualPanel>-->
-                <pres:ManualPanel></pres:ManualPanel>
+                <pres:ManualPanel Assets="{Binding Assets}"></pres:ManualPanel>
             </StackPanel>
         </StackPanel>
     </DockPanel>

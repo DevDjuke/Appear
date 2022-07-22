@@ -62,11 +62,8 @@ namespace Appear.Controls.Present
 
         public ObservableCollection<Asset> Assets
         {
-            get { return (ObservableCollection<Asset>)GetValue(AssetsProperty); }
-            set
-            {
-                SetValue(AssetsProperty, value);
-            }
+            get { return (ObservableCollection<Asset>)GetValue(AssetsProperty);}
+            set { SetValue(AssetsProperty, value); }
         }
 
         public static readonly DependencyProperty AssetsProperty =
@@ -153,6 +150,12 @@ namespace Appear.Controls.Present
             }
 
             return value;
+        }
+
+        public void SelectedAsset(Asset asset)
+        {
+            previewIndex = Assets.IndexOf(asset);
+            UpdatePreviews();
         }
     }
 }

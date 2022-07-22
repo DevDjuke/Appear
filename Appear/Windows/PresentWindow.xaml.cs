@@ -1,4 +1,5 @@
 ﻿using Appear.Controls.Buttons;
+using Appear.Controls.Present;
 using Appear.Domain;
 using Appear.Events;
 using Appear.Views;
@@ -24,6 +25,8 @@ namespace Appear.Windows
     /// </summary>
     public partial class PresentWindow : Window
     {
+        public Asset selectedAsset;
+
         public event EventHandler NextAsset;
         protected void OnNextAsset()
         {
@@ -44,6 +47,16 @@ namespace Appear.Windows
             }
         }
 
+        public event EventHandler SelectedAsset;
+        protected void OnSelectedAsset()
+        {
+            if (SelectedAsset != null)
+            {
+                SelectedAsset(this, EventArgs.Empty);
+                (Content as PresentView).PicturePreview.SelectedAsset(selectedAsset);
+            }
+        }
+
         public PresentWindow(List<Asset> assets)
         {
             Content = new PresentView(assets);
@@ -51,6 +64,8 @@ namespace Appear.Windows
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));
+
+            AddHandler(ManualPanel.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -59,6 +74,12 @@ namespace Appear.Windows
 
             switch (arg.Action)
             {
+                case "NextAsset":
+                    OnNextAsset();
+                    break;
+                case "PreviousAsset":
+                    OnPreviousAsset();
+                    break;
                 case "CloseDialog":
                     Close();
                     break;
@@ -73,17 +94,19 @@ namespace Appear.Windows
             
             switch (arg.Action)
             {
-                case "NextAsset":
-                    this.OnNextAsset();
-                    break;
-                case "PreviousAsset":
-                    this.OnPreviousAsset();
+                case "SelectedAsset":
+                    OnSelectedAsset();
                     break;
                 default:
                     break;
             }
         }
 
+        private void AssetSelectionChangedEventHandler(object sender, RoutedEventArgs e)
+        {
+            SelectedAssetChangedEventArgs arg = (SelectedAssetChangedEventArgs)e;
+            selectedAsset = arg.Assets[0];
+        }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {

@@ -90,5 +90,14 @@ namespace Appear.Controls.Present
             selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : assets.Count - 1;
             Path = assets[selectedIndex].Path;
         }
+
+        public void Present(Asset asset)
+        {
+            if (Assets.Contains(asset))
+            {
+                selectedIndex = Assets.IndexOf(asset);
+                Path = asset.Path;
+            }
+        }
     }
 }
