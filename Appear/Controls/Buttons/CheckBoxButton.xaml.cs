@@ -56,19 +56,22 @@ namespace Appear.Controls.Buttons
                 typeof(CheckBoxButton),
                 new UIPropertyMetadata(IdPropertyChangedHandler));
 
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register(
+                "IsChecked",
+                typeof(bool),
+                typeof(CheckBoxButton),
+                new UIPropertyMetadata(IsCheckedPropertyChangedHandler));
+
+        public static void IsCheckedPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            ((CheckBoxButton)sender).IsChecked = (bool)e.NewValue;
+        }
+
+
         public static void IdPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            switch (e.NewValue)
-            {
-                case "StartUpMax":
-                    ((CheckBoxButton)sender).IsChecked = Properties.Settings.Default.MaxOnStart;
-                    break;
-                case "StartUpUpdate":
-                    ((CheckBoxButton)sender).IsChecked = Properties.Settings.Default.UpdateOnStart;
-                    break;
-                default:
-                    break;
-            }
+            ((CheckBoxButton)sender).Id = (string)e.NewValue;
         }
 
         public CheckBoxButton()

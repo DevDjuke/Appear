@@ -32,6 +32,13 @@ namespace Appear.Controls.Present
             set { time = value; OnPropertyChanged(); }
         }
 
+        private bool isPlaying { get; set; } = false;
+        public bool IsPlaying
+        {
+            get { return isPlaying; }
+            set { isPlaying = value; OnPropertyChanged(); }
+        }
+
         public AutoPanel()
         {
             timer = new Timer();
@@ -39,8 +46,6 @@ namespace Appear.Controls.Present
             timer.Interval = 1000;
 
             InitializeComponent();
-
-            timer.Start();
         }
 
         public static readonly RoutedEvent TimerTickEvent =
@@ -71,6 +76,20 @@ namespace Appear.Controls.Present
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public void Timer(bool start)
+        {
+            if (start)
+            {
+                timer.Start();
+            }
+            else
+            {
+                timer.Stop();
+                IsPlaying = false;
+                Time = "8";
+            }
         }
     }
 }

@@ -49,6 +49,14 @@ namespace Appear.Views
             }
         }
 
+        public AutoPanel AutoPanel
+        {
+            get
+            {
+                return this.GetChildOfType<AutoPanel>();
+            }
+        }
+
         public PresentView(List<Asset> assets)
         {
             Assets = new ObservableCollection<Asset>(assets);

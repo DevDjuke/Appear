@@ -1,16 +1,17 @@
-﻿<Page x:Class="Appear.Views.StylesView"
+﻿<core:ObservablePage x:Class="Appear.Views.StylesView" x:Name="StylesWindowView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:contr="clr-namespace:Appear.Controls"
       xmlns:bar="clr-namespace:Appear.Controls.Bars"
+      xmlns:core="clr-namespace:Appear.Core"
       xmlns:butt="clr-namespace:Appear.Controls.Buttons">
-    <DockPanel>
+    <DockPanel DataContext="{Binding ElementName=StylesWindowView}">
         <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
         <StackPanel Orientation="Vertical">
             <contr:SelectionList Source="DockPositions" Text="MenuBar Dock" OverWriteDefault="True"></contr:SelectionList>
             <contr:SelectionList Source="Styles" Text="Theme" OverWriteDefault="True"></contr:SelectionList>
-            <butt:CheckBoxButton Margin="0,20,0,0" Text="Maximize on Startup" Id="StartUpMax"></butt:CheckBoxButton>
-            <butt:CheckBoxButton Text="Check for updates on Startup" Id="StartUpUpdate"></butt:CheckBoxButton>
+            <butt:CheckBoxButton Margin="0,20,0,0" Text="Maximize on Startup" Id="StartUpMax" IsChecked="{Binding MaxOnStartUp}"></butt:CheckBoxButton>
+            <butt:CheckBoxButton Text="Check for updates on Startup" Id="StartUpUpdate" IsChecked="{Binding UpdateOnStartUp}"></butt:CheckBoxButton>
         </StackPanel>
     </DockPanel>
-</Page>
+</core:ObservablePage>

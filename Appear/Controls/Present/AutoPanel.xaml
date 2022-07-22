@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Appear.Controls.Present"
+             xmlns:butt="clr-namespace:Appear.Controls.Buttons"
              mc:Ignorable="d">
     <Grid DataContext="{Binding ElementName=AutoPanelControl}" Margin="20">
         <Grid.RowDefinitions>
@@ -22,8 +23,9 @@
         <TextBlock Grid.ColumnSpan="3" FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Center" Text="Next in" Grid.Column="0" Grid.Row="0"></TextBlock>
         <TextBlock Grid.ColumnSpan="3" FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Center" Text="{Binding Time}" Grid.Column="0" Grid.Row="1"></TextBlock>
 
-
         <TextBlock FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Left" Text="Next After (s):" Grid.Column="0" Grid.Row="3"></TextBlock>
         <TextBlock FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Left" Text="Enable Auto Play:" Grid.Column="0" Grid.Row="4"></TextBlock>
+
+        <butt:CheckBoxButton Grid.Column="2" Grid.Row="4" Id="StartAuto" IsChecked="{Binding IsPlaying}"></butt:CheckBoxButton>
     </Grid>
 </UserControl>

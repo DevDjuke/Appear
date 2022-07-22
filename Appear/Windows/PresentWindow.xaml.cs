@@ -68,6 +68,16 @@ namespace Appear.Windows
             AddHandler(AutoPanel.TimerTickEvent, new RoutedEventHandler(TimerTickEventHandler));
             AddHandler(ManualPanel.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
             AddHandler(SelectionList.SelectionChangedEvent, new RoutedEventHandler(SelectionChangedEventHandler));
+            AddHandler(CheckBoxButton.CheckboxToggledEvent, new RoutedEventHandler(CheckboxToggledEventHandler));
+        }
+
+        private void CheckboxToggledEventHandler(object sender, RoutedEventArgs e)
+        {
+            CheckBoxToggledEventArgs args = (CheckBoxToggledEventArgs)e;
+            if (args.Id.Equals("StartAuto"))
+            {
+                (Content as PresentView).AutoPanel.Timer(args.IsChecked);
+            }
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -143,6 +153,7 @@ namespace Appear.Windows
             switch (value)
             {
                 case "MANUAL":
+                    (Content as PresentView).AutoPanel.Timer(false);
                     (Content as PresentView).IsManualMode = true;
                     break;
                 case "AUTO PLAY":
