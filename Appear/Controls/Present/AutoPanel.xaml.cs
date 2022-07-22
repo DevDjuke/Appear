@@ -46,6 +46,7 @@ namespace Appear.Controls.Present
             timer.Interval = 1000;
 
             InitializeComponent();
+
         }
 
         public static readonly RoutedEvent TimerTickEvent =

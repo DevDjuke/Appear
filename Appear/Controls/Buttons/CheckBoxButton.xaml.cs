@@ -23,11 +23,10 @@ namespace Appear.Controls.Buttons
     /// </summary>
     public partial class CheckBoxButton : UserControl, INotifyPropertyChanged
     {
-        private bool isChecked { get; set; }
         public bool IsChecked
         {
-            get { return isChecked; }
-            set { isChecked = value; OnPropertyChanged(); }
+            get { return (bool)GetValue(IsCheckedProperty); }
+            set { SetValue(IsCheckedProperty, value); }
         }
 
         public string Text

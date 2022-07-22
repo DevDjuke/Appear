@@ -26,6 +26,6 @@
         <TextBlock FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Left" Text="Next After (s):" Grid.Column="0" Grid.Row="3"></TextBlock>
         <TextBlock FontFamily="Verdana" FontWeight="DemiBold" HorizontalAlignment="Left" Text="Enable Auto Play:" Grid.Column="0" Grid.Row="4"></TextBlock>
 
-        <butt:CheckBoxButton Grid.Column="2" Grid.Row="4" Id="StartAuto" IsChecked="{Binding IsPlaying}"></butt:CheckBoxButton>
+        <butt:CheckBoxButton Grid.Column="2" Grid.Row="4" Id="StartAuto" IsChecked="{Binding IsPlaying, Mode=TwoWay}"></butt:CheckBoxButton>
     </Grid>
 </UserControl>

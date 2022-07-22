@@ -113,7 +113,7 @@ namespace Appear.Controls
 
         private void OnSelectionChanged(object sender, RoutedEventArgs e)
         {
-            if(!(sender as ComboBox).SelectedValue.Equals(Properties.Settings.Default[Source].ToString()))
+            if(!OverWriteDefault || !(sender as ComboBox).SelectedValue.Equals(Properties.Settings.Default[Source].ToString()))
             {
                 SelectedItem = (sender as ComboBox).SelectedValue as string;
 
