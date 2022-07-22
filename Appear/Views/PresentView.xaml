@@ -3,14 +3,24 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:bar="clr-namespace:Appear.Controls.Bars"
-      xmlns:pres="clr-namespace:Appear.Controls.Present">
+      xmlns:pres="clr-namespace:Appear.Controls.Present"
+      xmlns:conv="clr-namespace:Appear.Converters"
+      xmlns:cont="clr-namespace:Appear.Controls">
+    <Page.Resources>
+        <conv:BooleanToVisibilityConverter x:Key="isVisible"></conv:BooleanToVisibilityConverter>
+        <core:ValueConverterGroup x:Key="isVisibleInvert">
+            <conv:BooleanInverter></conv:BooleanInverter>
+            <conv:BooleanToVisibilityConverter></conv:BooleanToVisibilityConverter>
+        </core:ValueConverterGroup>
+    </Page.Resources>
     <DockPanel DataContext="{Binding ElementName=PresentWindowView}">
         <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
-        <StackPanel>
+        <DockPanel>
+            <cont:SelectionList Width="200" Source="Modes" DockPanel.Dock="Bottom" OverWriteDefault="False"></cont:SelectionList>
             <StackPanel Orientation="Vertical">
                 <pres:PicturePreview Assets="{Binding Assets}"></pres:PicturePreview>
-                <pres:ManualPanel Assets="{Binding Assets}"></pres:ManualPanel>
+                <pres:ManualPanel Visibility="{Binding IsManualMode, Converter={StaticResource isVisible}}" Assets="{Binding Assets}"></pres:ManualPanel>
             </StackPanel>
-        </StackPanel>
+        </DockPanel>
     </DockPanel>
 </core:ObservablePage>

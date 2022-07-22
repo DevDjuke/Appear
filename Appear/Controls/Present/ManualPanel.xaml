@@ -28,7 +28,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding ElementName=ManualPanelControl}">
             <butt:IconButton Action="PreviousAsset"></butt:IconButton>
-            <butt:TextButton Text="SELECTED" Action="SelectedAsset" IsEnabled="{Binding HasSelection}"></butt:TextButton>
+            <butt:TextButton Text="PRESENT" Action="SelectedAsset" IsEnabled="{Binding HasSelection}"></butt:TextButton>
             <butt:IconButton Action="NextAsset"></butt:IconButton>
         </StackPanel>
     </StackPanel>

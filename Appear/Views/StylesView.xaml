@@ -7,8 +7,8 @@
     <DockPanel>
         <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
         <StackPanel Orientation="Vertical">
-            <contr:SelectionList Source="DockPositions" Text="MenuBar Dock"></contr:SelectionList>
-            <contr:SelectionList Source="Styles" Text="Theme"></contr:SelectionList>
+            <contr:SelectionList Source="DockPositions" Text="MenuBar Dock" OverWriteDefault="True"></contr:SelectionList>
+            <contr:SelectionList Source="Styles" Text="Theme" OverWriteDefault="True"></contr:SelectionList>
             <butt:CheckBoxButton Margin="0,20,0,0" Text="Maximize on Startup" Id="StartUpMax"></butt:CheckBoxButton>
             <butt:CheckBoxButton Text="Check for updates on Startup" Id="StartUpUpdate"></butt:CheckBoxButton>
         </StackPanel>

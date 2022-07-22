@@ -34,6 +34,13 @@ namespace Appear.Views
             set { assets = value; OnPropertyChanged(); }
         }
 
+        private bool isManualMode { get; set; } = true;
+        public bool IsManualMode
+        {
+            get { return isManualMode; }
+            set { isManualMode = value; OnPropertyChanged(); }
+        }
+
         public PicturePreview PicturePreview
         {
             get
@@ -47,7 +54,5 @@ namespace Appear.Views
             Assets = new ObservableCollection<Asset>(assets);
             InitializeComponent();
         }
-
-        
     }
 }

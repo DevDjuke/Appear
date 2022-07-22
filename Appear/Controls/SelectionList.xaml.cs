@@ -29,6 +29,25 @@ namespace Appear.Controls
             set { itemList = value; OnPropertyChanged(); }
         }
 
+        public bool OverWriteDefault
+        {
+            get { return (bool)GetValue(OverWriteDefaultProperty); }
+            set { SetValue(OverWriteDefaultProperty, value); }
+        }
+
+        public static readonly DependencyProperty OverWriteDefaultProperty =
+            DependencyProperty.Register(
+                "OverWriteDefault",
+                typeof(bool),
+                typeof(SelectionList),
+                new UIPropertyMetadata(OverWriteDefaultPropertyChangedHandler));
+
+        public static void OverWriteDefaultPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            bool value = (bool)e.NewValue;
+            ((SelectionList)sender).OverWriteDefault = value;
+        }
+
         public string Source
         {
             get { return (string)GetValue(SourceProperty); }
@@ -98,8 +117,11 @@ namespace Appear.Controls
             {
                 SelectedItem = (sender as ComboBox).SelectedValue as string;
 
-                Properties.Settings.Default[Source] = SelectedItem;
-                Properties.Settings.Default.Save();
+                if (OverWriteDefault)
+                {
+                    Properties.Settings.Default[Source] = SelectedItem;
+                    Properties.Settings.Default.Save();
+                }
 
                 RaiseEvent(new SelectionListChangedEventArgs(SelectionChangedEvent, Source, SelectedItem));            
             }

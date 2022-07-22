@@ -18,4 +18,11 @@
         <sys:String>Nebula</sys:String>
         <sys:String>Sky</sys:String>
     </x:Array>
+
+    <x:Array x:Key="Modes" Type="sys:String"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:sys="clr-namespace:System;assembly=mscorlib">
+        <sys:String>MANUAL</sys:String>
+        <sys:String>AUTO PLAY</sys:String>
+    </x:Array>
 </ResourceDictionary>

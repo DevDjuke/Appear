@@ -1,4 +1,5 @@
-﻿using Appear.Controls.Buttons;
+﻿using Appear.Controls;
+using Appear.Controls.Buttons;
 using Appear.Controls.Present;
 using Appear.Domain;
 using Appear.Events;
@@ -66,6 +67,7 @@ namespace Appear.Windows
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));
 
             AddHandler(ManualPanel.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
+            AddHandler(SelectionList.SelectionChangedEvent, new RoutedEventHandler(SelectionChangedEventHandler));
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -114,6 +116,34 @@ namespace Appear.Windows
             {
                 base.OnMouseLeftButtonDown(e);
                 DragMove();
+            }
+        }
+
+        private void SelectionChangedEventHandler(object sender, RoutedEventArgs e)
+        {
+            SelectionListChangedEventArgs arg = (SelectionListChangedEventArgs)e;
+
+            switch (arg.Id)
+            {
+                case "Modes":
+                    this.OnModeChanged(arg.Value);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void OnModeChanged(string value)
+        {
+            switch (value)
+            {
+                case "MANUAL":
+                    (Content as PresentView).IsManualMode = true;
+                    break;
+                case "AUTO PLAY":
+                    (Content as PresentView).IsManualMode = false;
+                    break;
+                default: break;
             }
         }
     }

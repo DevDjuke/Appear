@@ -26,5 +26,8 @@
     <Setting Name="UpdateOnStart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="Modes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MANUAL</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
