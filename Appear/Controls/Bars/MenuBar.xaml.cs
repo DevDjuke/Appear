@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appear.Controls.Components.Bars
+namespace Appear.Controls.Bars
 {
     /// <summary>
     /// Interaction logic for MenuBar.xaml

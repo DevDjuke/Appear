@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:input="clr-namespace:Appear.Controls.Components.Input"
       xmlns:conv="clr-namespace:Appear.Converters"
-      xmlns:bar="clr-namespace:Appear.Controls.Components.Bars"
+      xmlns:bar="clr-namespace:Appear.Controls.Bars"
       xmlns:panel="clr-namespace:Appear.Controls.Panels.AssetView">
     <Page.Resources>
         <conv:BooleanToVisibilityConverter x:Key="isVisible"></conv:BooleanToVisibilityConverter>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Appear.Views"
       xmlns:conv="clr-namespace:Appear.Converters"
       xmlns:core="clr-namespace:Appear.Core"
-      xmlns:bar="clr-namespace:Appear.Controls.Components.Bars"
+      xmlns:bar="clr-namespace:Appear.Controls.Bars"
       xmlns:list="clr-namespace:Appear.Controls.Components.List"
       xmlns:panel="clr-namespace:Appear.Controls.Panels.MainView">
     <Page.Resources>

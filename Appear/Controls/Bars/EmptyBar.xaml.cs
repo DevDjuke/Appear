@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Appear.Controls.Components.Bars
+namespace Appear.Controls.Bars
 {
     /// <summary>
-    /// Interaction logic for CloseBar.xaml
+    /// Interaction logic for EmptyBar.xaml
     /// </summary>
-    public partial class CloseBar : UserControl
+    public partial class EmptyBar : UserControl
     {
-        public CloseBar()
+        public EmptyBar()
         {
             InitializeComponent();
         }

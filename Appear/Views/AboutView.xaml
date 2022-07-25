@@ -3,11 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:core="clr-namespace:Appear.Core"               
-      xmlns:local="clr-namespace:Appear.Views"
-      xmlns:contr="clr-namespace:Appear.Controls"
-      xmlns:bar="clr-namespace:Appear.Controls.Components.Bars"
-      xmlns:butt="clr-namespace:Appear.Controls.Components.Buttons">
+      xmlns:core="clr-namespace:Appear.Core"         
+      xmlns:bar="clr-namespace:Appear.Controls.Bars">
     <DockPanel DataContext="{Binding ElementName=AboutWindowView}">
         <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
         <TextBlock Margin="10" DockPanel.Dock="Bottom" FontFamily="Verdana" FontStyle="Italic" HorizontalAlignment="Center"> © Pandamonium Labs</TextBlock>

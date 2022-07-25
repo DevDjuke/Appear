@@ -295,10 +295,10 @@
     <Compile Include="Controls\Panels\MainView\AssetLoadPanel.xaml.cs">
       <DependentUpon>AssetLoadPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Components\Bars\CloseBar.xaml.cs">
+    <Compile Include="Controls\Bars\CloseBar.xaml.cs">
       <DependentUpon>CloseBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Components\Bars\EmptyBar.xaml.cs">
+    <Compile Include="Controls\Bars\EmptyBar.xaml.cs">
       <DependentUpon>EmptyBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Components\Buttons\CheckBoxButton.xaml.cs">
@@ -313,7 +313,7 @@
     <Compile Include="Controls\Components\Buttons\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Components\Bars\MenuBar.xaml.cs">
+    <Compile Include="Controls\Bars\MenuBar.xaml.cs">
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Components\List\SelectionList.xaml.cs">
@@ -430,11 +430,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Components\Bars\CloseBar.xaml">
+    <Page Include="Controls\Bars\CloseBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Components\Bars\EmptyBar.xaml">
+    <Page Include="Controls\Bars\EmptyBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -454,7 +454,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Components\Bars\MenuBar.xaml">
+    <Page Include="Controls\Bars\MenuBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
