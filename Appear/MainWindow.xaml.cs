@@ -28,7 +28,6 @@ namespace Appear
 
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
-
             AddHandler(AssetGrid.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
 
             StyleManager.SetTheme();
@@ -60,15 +59,15 @@ namespace Appear
             }
         }
 
-        public static readonly RoutedEvent MenuBarChangedEvent =
-            EventManager.RegisterRoutedEvent("MenuBarChanged", RoutingStrategy.Tunnel,
-                typeof(RoutedEventHandler), typeof(MainWindow));
+        //public static readonly RoutedEvent MenuBarChangedEvent =
+        //    EventManager.RegisterRoutedEvent("MenuBarChanged", RoutingStrategy.Tunnel,
+        //        typeof(RoutedEventHandler), typeof(MainWindow));
 
-        public event RoutedEventHandler MenuBarChanged
-        {
-            add { AddHandler(MenuBarChangedEvent, value); }
-            remove { RemoveHandler(MenuBarChangedEvent, value); }
-        }
+        //public event RoutedEventHandler MenuBarChanged
+        //{
+        //    add { AddHandler(MenuBarChangedEvent, value); }
+        //    remove { RemoveHandler(MenuBarChangedEvent, value); }
+        //}
 
         private void SurrenderFocus(Window window)
         {        

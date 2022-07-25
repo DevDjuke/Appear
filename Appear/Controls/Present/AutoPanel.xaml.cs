@@ -24,8 +24,10 @@ namespace Appear.Controls.Present
     /// </summary>
     public partial class AutoPanel : System.Windows.Controls.UserControl, INotifyPropertyChanged
     {
+        private string timeValue = "8";
+
         private Timer timer;
-        private string time { get; set; } = "8";
+        private string time { get; set; }
         public string Time
         {
             get { return time; }
@@ -41,6 +43,8 @@ namespace Appear.Controls.Present
 
         public AutoPanel()
         {
+            Time = timeValue;
+
             timer = new Timer();
             timer.Tick += new EventHandler(onTimerTick);
             timer.Interval = 1000;
@@ -66,7 +70,7 @@ namespace Appear.Controls.Present
 
             if(value <= 0)
             {
-                value = 8;
+                value = Int32.Parse(timeValue);
                 RaiseEvent(new TimerTickEventArgs(TimerTickEvent));
             }
 
@@ -89,7 +93,23 @@ namespace Appear.Controls.Present
             {
                 timer.Stop();
                 IsPlaying = false;
-                Time = "8";
+                Time = timeValue;
+            }
+        }
+
+        private void OnTimeBoxTextChanged(object sender, RoutedEventArgs e)
+        {
+            string value = ((System.Windows.Controls.TextBox)sender).Text;
+
+            bool canConvert = long.TryParse(value, out _);
+            if (canConvert == true)
+            {
+                timeValue = value;
+
+                if (!timer.Enabled)
+                {
+                    Time = value;
+                }
             }
         }
     }

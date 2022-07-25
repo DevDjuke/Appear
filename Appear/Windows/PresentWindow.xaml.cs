@@ -93,6 +93,7 @@ namespace Appear.Windows
                     OnPreviousAsset();
                     break;
                 case "CloseDialog":
+                    (Content as PresentView).AutoPanel.Timer(false);
                     Close();
                     break;
                 default:
