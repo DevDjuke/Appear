@@ -66,7 +66,7 @@ namespace Appear.Services
                 previousState = WindowState.Normal;
             }
 
-            UpdateStyle(currentState, window);
+            UpdateStyle(currentState);
         }
 
         public static void SetWindowState(Window window, string state)
@@ -80,13 +80,13 @@ namespace Appear.Services
                         previousState = currentState;
                         currentState = window.WindowState;
                     }
-                    UpdateStyle(currentState, window);
+                    UpdateStyle(currentState);
                     break;
                 case "Restore":
                     window.WindowState = previousState;
                     previousState = currentState;
                     currentState = window.WindowState;
-                    UpdateStyle(currentState, window);
+                    UpdateStyle(currentState);
                     break;
                 case "Present":
                     window.WindowState = WindowState.Maximized;
@@ -104,22 +104,26 @@ namespace Appear.Services
             ApplyTheme(themes[Properties.Settings.Default["Styles"].ToString()]);
         }
 
-        public static void UpdateMenuBar()
+        //public static void UpdateMenuBar()
+        //{
+        //    switch (Properties.Settings.Default["DockPositions"])
+        //    {
+        //        case "Top":
+        //            App.Current.Resources["Corner_Bar"] = new CornerRadius(20, 20, 0, 0);
+        //            break;
+        //        case "Bottom":
+        //            App.Current.Resources["Corner_Bar"] = new CornerRadius(0, 0, 20, 20);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+
+        public static void UpdateStyle()
         {
-            switch (Properties.Settings.Default["DockPositions"])
-            {
-                case "Top":
-                    App.Current.Resources["Corner_Bar"] = new CornerRadius(20, 20, 0, 0);
-                    break;
-                case "Bottom":
-                    App.Current.Resources["Corner_Bar"] = new CornerRadius(0, 0, 20, 20);
-                    break;
-                default:
-                    break;
-            }
+            StyleManager.UpdateStyle(currentState);
         }
 
-        private static void UpdateStyle(WindowState state, Window window = null)
+        private static void UpdateStyle(WindowState state)
         {
             switch (state)
             {

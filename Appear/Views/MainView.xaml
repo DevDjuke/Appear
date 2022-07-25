@@ -19,6 +19,7 @@
         </core:ValueConverterGroup>
     </Page.Resources>
     <StackPanel DataContext="{Binding ElementName=MainWindowView}" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <pres:PresenterControl Visibility="{Binding IsPresenting, Converter={StaticResource isVisible}}"></pres:PresenterControl>
         <DockPanel Visibility="{Binding IsPresenting, Converter={StaticResource isVisibleInvert}}">
             <StackPanel DockPanel.Dock="{Binding DockPosition}" >
                 <bar:MenuBar></bar:MenuBar>
@@ -33,7 +34,6 @@
                 </DockPanel>
             </StackPanel>
         </DockPanel>
-        <pres:PresenterControl Visibility="{Binding IsPresenting, Converter={StaticResource isVisible}}"></pres:PresenterControl>
     </StackPanel>
   
 </core:ObservablePage>

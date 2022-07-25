@@ -23,7 +23,7 @@ namespace Appear.Controls.Bars
     {
         public MenuBar()
         {
-            StyleManager.UpdateMenuBar();
+            //StyleManager.UpdateS();
             InitializeComponent();
         }
     }

@@ -71,7 +71,7 @@ namespace Appear
         }
 
         private void SurrenderFocus(Window window)
-        {
+        {        
             window.Owner = this;
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             window.Closed += new EventHandler(ReturnFocus);
@@ -87,7 +87,7 @@ namespace Appear
         private void OnMenuBarChanged(object sender, EventArgs e)
         {
             (Content as MainView).DockPosition = Properties.Settings.Default.DockPositions;
-            StyleManager.UpdateMenuBar();
+            StyleManager.UpdateStyle();
         }
 
         private void OnAssetListChanged(object sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace Appear
                     window_assets.AssetListChanged += new EventHandler(OnAssetListChanged);
                     SurrenderFocus(window_assets);
                     break;
-                case "PresentAsset":
+                case "PresentAsset":              
                     StartPresenting();
                     break;
                 default:
@@ -173,14 +173,15 @@ namespace Appear
         {
             this.Visibility = Visibility.Hidden;
             StyleManager.SetWindowState(this, "Present");
+            (Content as MainView).PresenterControl.SetDimensions(this);
             (Content as MainView).IsPresenting = true;
             PresentWindow window_presents = new PresentWindow(SelectedAssets);
+            this.Visibility = Visibility.Visible;
+            SurrenderFocus(window_presents);
             window_presents.Closed += new EventHandler(StopPresenting);
             window_presents.NextAsset += new EventHandler(NextAsset);
             window_presents.PreviousAsset += new EventHandler(PrevAsset);
             window_presents.SelectedAsset += new EventHandler(SelectedAsset);
-            SurrenderFocus(window_presents);
-            this.Visibility = Visibility.Visible;
         }
 
         private void SelectedAsset(object sender, EventArgs e)
