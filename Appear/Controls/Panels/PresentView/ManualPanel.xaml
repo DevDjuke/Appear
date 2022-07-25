@@ -26,9 +26,9 @@
         </ListView>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding ElementName=ManualPanelControl}">
-            <butt:IconButton Action="PreviousAsset"></butt:IconButton>
+            <butt:IconButton Icon="left" Action="PreviousAsset"></butt:IconButton>
             <butt:TextButton Text="PRESENT" Action="SelectedAsset" IsEnabled="{Binding HasSelection}"></butt:TextButton>
-            <butt:IconButton Action="NextAsset"></butt:IconButton>
+            <butt:IconButton Icon="right" Action="NextAsset"></butt:IconButton>
         </StackPanel>
     </StackPanel>
     
