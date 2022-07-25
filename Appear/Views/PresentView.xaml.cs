@@ -1,5 +1,4 @@
-﻿using Appear.Controls.Control;
-using Appear.Controls.Present;
+﻿using Appear.Controls.Panels.PresentView;
 using Appear.Core;
 using Appear.Domain;
 using System;
@@ -41,11 +40,11 @@ namespace Appear.Views
             set { isManualMode = value; OnPropertyChanged(); }
         }
 
-        public PicturePreview PicturePreview
+        public PicturePreviewPanel PicturePreview
         {
             get
             {
-                return this.GetChildOfType<PicturePreview>();
+                return this.GetChildOfType<PicturePreviewPanel>();
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using Appear.Controls;
-using Appear.Controls.AssetGrid;
-using Appear.Controls.Control;
-using Appear.Controls.Present;
+using Appear.Controls.Components.List;
+using Appear.Controls.Panels.MainView;
 using Appear.Core;
 using Appear.Events;
 using Appear.Services;
@@ -34,18 +33,18 @@ namespace Appear.Views
                 return this.GetChildOfType<ControlPanel>();
             }
         }
-        public AssetGrid AssetGrid
+        public ImageGrid AssetGrid
         {
             get
             {
-                return this.GetChildOfType<AssetGrid>();
+                return this.GetChildOfType<ImageGrid>();
             }
         }
-        public PresenterControl PresenterControl
+        public PresenterControlPanel PresenterControl
         {
             get
             {
-                return this.GetChildOfType<PresenterControl>();
+                return this.GetChildOfType<PresenterControlPanel>();
             }
         }
 

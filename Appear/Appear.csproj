@@ -256,23 +256,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\Present\AutoPanel.xaml.cs">
+    <Compile Include="Controls\Panels\PresentView\AutoPanel.xaml.cs">
       <DependentUpon>AutoPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Present\ManualPanel.xaml.cs">
+    <Compile Include="Controls\Panels\PresentView\ManualPanel.xaml.cs">
       <DependentUpon>ManualPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Present\PicturePreview.xaml.cs">
-      <DependentUpon>PicturePreview.xaml</DependentUpon>
+    <Compile Include="Controls\Panels\PresentView\PicturePreviewPanel.xaml.cs">
+      <DependentUpon>PicturePreviewPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Present\ImagePresenter.xaml.cs">
+    <Compile Include="Controls\Components\Image\ImagePresenter.xaml.cs">
       <DependentUpon>ImagePresenter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Present\PresenterControl.xaml.cs">
-      <DependentUpon>PresenterControl.xaml</DependentUpon>
+    <Compile Include="Controls\Panels\MainView\PresenterControlPanel.xaml.cs">
+      <DependentUpon>PresenterControlPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\ObservablePage.cs" />
     <Compile Include="Events\TimerTickEventArgs.cs" />
+    <Compile Include="Services\SceneManager.cs" />
     <Compile Include="Views\PresentView.xaml.cs">
       <DependentUpon>PresentView.xaml</DependentUpon>
     </Compile>
@@ -282,43 +283,43 @@
     <Compile Include="Windows\AssetWindow.xaml.cs">
       <DependentUpon>AssetWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AssetGrid\AssetGrid.xaml.cs">
-      <DependentUpon>AssetGrid.xaml</DependentUpon>
+    <Compile Include="Controls\Components\List\ImageGrid.xaml.cs">
+      <DependentUpon>ImageGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AssetList\AssetList.xaml.cs">
-      <DependentUpon>AssetList.xaml</DependentUpon>
+    <Compile Include="Controls\Panels\AssetView\AssetFolderListPanel.xaml.cs">
+      <DependentUpon>AssetFolderListPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AssetList\AssetListItem.xaml.cs">
+    <Compile Include="Controls\Components\List\AssetListItem.xaml.cs">
       <DependentUpon>AssetListItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AssetLoader.xaml.cs">
-      <DependentUpon>AssetLoader.xaml</DependentUpon>
+    <Compile Include="Controls\Panels\MainView\AssetLoadPanel.xaml.cs">
+      <DependentUpon>AssetLoadPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Bars\CloseBar.xaml.cs">
+    <Compile Include="Controls\Components\Bars\CloseBar.xaml.cs">
       <DependentUpon>CloseBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Bars\EmptyBar.xaml.cs">
+    <Compile Include="Controls\Components\Bars\EmptyBar.xaml.cs">
       <DependentUpon>EmptyBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Buttons\CheckBoxButton.xaml.cs">
+    <Compile Include="Controls\Components\Buttons\CheckBoxButton.xaml.cs">
       <DependentUpon>CheckBoxButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Control\ControlPanel.xaml.cs">
+    <Compile Include="Controls\Panels\MainView\ControlPanel.xaml.cs">
       <DependentUpon>ControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FolderEntry.xaml.cs">
+    <Compile Include="Controls\Components\Input\FolderEntry.xaml.cs">
       <DependentUpon>FolderEntry.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Buttons\IconButton.xaml.cs">
+    <Compile Include="Controls\Components\Buttons\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Bars\MenuBar.xaml.cs">
+    <Compile Include="Controls\Components\Bars\MenuBar.xaml.cs">
       <DependentUpon>MenuBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SelectionList.xaml.cs">
+    <Compile Include="Controls\Components\List\SelectionList.xaml.cs">
       <DependentUpon>SelectionList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Buttons\TextButton.xaml.cs">
+    <Compile Include="Controls\Components\Buttons\TextButton.xaml.cs">
       <DependentUpon>TextButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\BooleanInverter.cs" />
@@ -369,23 +370,23 @@
     <Compile Include="Views\StylesView.xaml.cs">
       <DependentUpon>StylesView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\Present\AutoPanel.xaml">
+    <Page Include="Controls\Panels\PresentView\AutoPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Present\ManualPanel.xaml">
+    <Page Include="Controls\Panels\PresentView\ManualPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Present\PicturePreview.xaml">
+    <Page Include="Controls\Panels\PresentView\PicturePreviewPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Present\ImagePresenter.xaml">
+    <Page Include="Controls\Components\Image\ImagePresenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Present\PresenterControl.xaml">
+    <Page Include="Controls\Panels\MainView\PresenterControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -413,55 +414,55 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\AssetGrid\AssetGrid.xaml">
+    <Page Include="Controls\Components\List\ImageGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\AssetList\AssetList.xaml">
+    <Page Include="Controls\Panels\AssetView\AssetFolderListPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\AssetList\AssetListItem.xaml">
+    <Page Include="Controls\Components\List\AssetListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\AssetLoader.xaml">
+    <Page Include="Controls\Panels\MainView\AssetLoadPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Bars\CloseBar.xaml">
+    <Page Include="Controls\Components\Bars\CloseBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Bars\EmptyBar.xaml">
+    <Page Include="Controls\Components\Bars\EmptyBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Buttons\CheckBoxButton.xaml">
+    <Page Include="Controls\Components\Buttons\CheckBoxButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Control\ControlPanel.xaml">
+    <Page Include="Controls\Panels\MainView\ControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\FolderEntry.xaml">
+    <Page Include="Controls\Components\Input\FolderEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Buttons\IconButton.xaml">
+    <Page Include="Controls\Components\Buttons\IconButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Bars\MenuBar.xaml">
+    <Page Include="Controls\Components\Bars\MenuBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SelectionList.xaml">
+    <Page Include="Controls\Components\List\SelectionList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Buttons\TextButton.xaml">
+    <Page Include="Controls\Components\Buttons\TextButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

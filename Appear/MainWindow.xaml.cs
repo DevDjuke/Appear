@@ -1,5 +1,5 @@
-﻿using Appear.Controls.AssetGrid;
-using Appear.Controls.Buttons;
+﻿using Appear.Controls.Components.Buttons;
+using Appear.Controls.Components.List;
 using Appear.Domain;
 using Appear.Events;
 using Appear.Services;
@@ -28,7 +28,7 @@ namespace Appear
 
             AddHandler(TextButton.TextButtonClickedEvent, new RoutedEventHandler(TextButtonClickedEventHandler));
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
-            AddHandler(AssetGrid.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
+            AddHandler(ImageGrid.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
 
             StyleManager.SetTheme();
             StyleManager.SetPreferences(this);

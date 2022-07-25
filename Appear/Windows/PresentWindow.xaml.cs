@@ -1,6 +1,7 @@
 ﻿using Appear.Controls;
-using Appear.Controls.Buttons;
-using Appear.Controls.Present;
+using Appear.Controls.Components.Buttons;
+using Appear.Controls.List;
+using Appear.Controls.Panels.PresentView;
 using Appear.Domain;
 using Appear.Events;
 using Appear.Views;

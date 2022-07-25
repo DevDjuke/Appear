@@ -1,5 +1,5 @@
 ﻿using Appear.Controls;
-using Appear.Controls.AssetList;
+using Appear.Controls.Panels.AssetView;
 using Appear.Core;
 using Appear.Events;
 using System;
@@ -25,11 +25,11 @@ namespace Appear.Views
     /// </summary>
     public partial class AssetView : Page
     {
-        public AssetList AssetList
+        public AssetFolderListPanel AssetList
         {
             get
             {
-                return this.GetChildOfType<AssetList>();
+                return this.GetChildOfType<AssetFolderListPanel>();
             }
         }
 

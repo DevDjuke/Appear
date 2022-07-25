@@ -4,13 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Appear.Views"
-      xmlns:contr="clr-namespace:Appear.Controls"
       xmlns:conv="clr-namespace:Appear.Converters"
       xmlns:core="clr-namespace:Appear.Core"
-      xmlns:bar="clr-namespace:Appear.Controls.Bars"
-      xmlns:ass="clr-namespace:Appear.Controls.AssetGrid"
-      xmlns:cont="clr-namespace:Appear.Controls.Control"
-      xmlns:pres="clr-namespace:Appear.Controls.Present">
+      xmlns:bar="clr-namespace:Appear.Controls.Components.Bars"
+      xmlns:list="clr-namespace:Appear.Controls.Components.List"
+      xmlns:panel="clr-namespace:Appear.Controls.Panels.MainView">
     <Page.Resources>
         <conv:BooleanToVisibilityConverter x:Key="isVisible"></conv:BooleanToVisibilityConverter>
         <core:ValueConverterGroup x:Key="isVisibleInvert">
@@ -19,18 +17,18 @@
         </core:ValueConverterGroup>
     </Page.Resources>
     <StackPanel DataContext="{Binding ElementName=MainWindowView}" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <pres:PresenterControl Visibility="{Binding IsPresenting, Converter={StaticResource isVisible}}"></pres:PresenterControl>
+        <panel:PresenterControlPanel Visibility="{Binding IsPresenting, Converter={StaticResource isVisible}}"></panel:PresenterControlPanel>
         <DockPanel Visibility="{Binding IsPresenting, Converter={StaticResource isVisibleInvert}}">
             <StackPanel DockPanel.Dock="{Binding DockPosition}" >
                 <bar:MenuBar></bar:MenuBar>
             </StackPanel>
             <StackPanel Margin="20" VerticalAlignment="Center" >
-                <contr:AssetLoader Visibility="{Binding HasAssets, Converter={StaticResource isVisibleInvert}}"></contr:AssetLoader>
+                <panel:AssetLoadPanel Visibility="{Binding HasAssets, Converter={StaticResource isVisibleInvert}}"></panel:AssetLoadPanel>
                 <DockPanel Visibility="{Binding HasAssets, Converter={StaticResource isVisible}}">
                     <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
-                        <cont:ControlPanel></cont:ControlPanel>
+                        <panel:ControlPanel></panel:ControlPanel>
                     </StackPanel>
-                    <ass:AssetGrid></ass:AssetGrid>
+                    <list:ImageGrid></list:ImageGrid>
                 </DockPanel>
             </StackPanel>
         </DockPanel>

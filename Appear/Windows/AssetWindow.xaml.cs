@@ -1,6 +1,8 @@
 ﻿using Appear.Controls;
-using Appear.Controls.AssetList;
-using Appear.Controls.Buttons;
+using Appear.Controls.Components;
+using Appear.Controls.Components.Buttons;
+using Appear.Controls.Components.Input;
+using Appear.Controls.Components.List;
 using Appear.Events;
 using Appear.Services;
 using Appear.Views;
