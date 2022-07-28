@@ -1,8 +1,11 @@
 ﻿using Appear.Controls.Components.Buttons;
 using Appear.Controls.Components.List;
 using Appear.Domain;
+using Appear.Domain.Enum;
 using Appear.Events;
 using Appear.Services;
+using Appear.Services.Data;
+using Appear.Services.Data.Domain;
 using Appear.Views;
 using Appear.Windows;
 using System;
@@ -20,9 +23,7 @@ namespace Appear
         List<Asset> SelectedAssets;
 
         public MainWindow()
-        {
-            //DataManager.DatabaseSetup();
-
+        {   
             Content = new MainView();
             InitializeComponent();
 
@@ -30,8 +31,7 @@ namespace Appear
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
             AddHandler(ImageGrid.SelectionChangedEvent, new RoutedEventHandler(AssetSelectionChangedEventHandler));
 
-            StyleManager.SetTheme();
-            StyleManager.SetPreferences(this);
+            StyleManager.StartUp(this);
 
             Loaded += OnLoad;
         }
@@ -59,16 +59,6 @@ namespace Appear
             }
         }
 
-        //public static readonly RoutedEvent MenuBarChangedEvent =
-        //    EventManager.RegisterRoutedEvent("MenuBarChanged", RoutingStrategy.Tunnel,
-        //        typeof(RoutedEventHandler), typeof(MainWindow));
-
-        //public event RoutedEventHandler MenuBarChanged
-        //{
-        //    add { AddHandler(MenuBarChangedEvent, value); }
-        //    remove { RemoveHandler(MenuBarChangedEvent, value); }
-        //}
-
         private void SurrenderFocus(Window window)
         {        
             window.Owner = this;
@@ -80,13 +70,16 @@ namespace Appear
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
-            StyleManager.SetTheme();
+            string theme = ((ThemeChangedEventArgs)e).Theme;
+            StyleManager.SetCurrentStyle(theme);
         }
 
         private void OnMenuBarChanged(object sender, EventArgs e)
         {
-            (Content as MainView).DockPosition = Properties.Settings.Default.DockPositions;
+            string position = ((MenuBarChangedEventArgs)e).Position;
+            SettingsManager.SetDockPosition((DockPosition)Enum.Parse(typeof(DockPosition), position));
             StyleManager.UpdateStyle();
+            (Content as MainView).DockPosition = StyleManager.GetUserSettings().DockPosition.ToString();            
         }
 
         private void OnAssetListChanged(object sender, EventArgs e)
@@ -110,7 +103,7 @@ namespace Appear
 
             switch (arg.Action)
             {
-                case "MaxMain":
+                case IconButtonAction.MaxMain:
                     if (this.WindowState == WindowState.Maximized)
                     {
                         StyleManager.SetWindowState(this, "Restore");
@@ -122,14 +115,14 @@ namespace Appear
                         (Content as MainView).AssetGrid.SetWidth(this);
                     }
                     break;
-                case "OpenInfo":
+                case IconButtonAction.OpenInfo:
                     AboutWindow window_about = new AboutWindow();
                     SurrenderFocus(window_about);
                     break;
-                case "CloseStyles":
+                case IconButtonAction.CloseStyles:
                     IsEnabled = true;
                     break;
-                case "CloseMain":
+                case IconButtonAction.CloseMain:
                     Close();
                     break;
                 default:

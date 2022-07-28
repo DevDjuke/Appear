@@ -1,6 +1,8 @@
 ﻿using Appear.Controls.Panels.PresentView;
 using Appear.Core;
 using Appear.Domain;
+using Appear.Domain.Enum;
+using Appear.Services.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,11 +35,26 @@ namespace Appear.Views
             set { assets = value; OnPropertyChanged(); }
         }
 
+        private List<string> modes { get; set; } = Enum.GetNames(typeof(PresentMode)).ToList();
+        public List<string> Modes
+        {
+            get { return modes; }
+            set { modes = value; OnPropertyChanged(); }
+        }
+
         private bool isManualMode { get; set; } = true;
         public bool IsManualMode
         {
             get { return isManualMode; }
             set { isManualMode = value; OnPropertyChanged(); }
+        }
+
+        private string presentMode { get; set; } = SettingsManager.DefaultPresentMode.ToString();
+
+        public string PresentMode
+        {
+            get { return presentMode; }
+            set { presentMode = value; OnPropertyChanged(); }
         }
 
         public PicturePreviewPanel PicturePreview

@@ -3,8 +3,10 @@ using Appear.Controls.Components;
 using Appear.Controls.Components.Buttons;
 using Appear.Controls.Components.Input;
 using Appear.Controls.Components.List;
+using Appear.Domain.Enum;
 using Appear.Events;
 using Appear.Services;
+using Appear.Services.Data.Domain;
 using Appear.Views;
 using System;
 using System.Collections.Generic;
@@ -53,7 +55,7 @@ namespace Appear.Windows
 
             switch (arg.Action)
             {
-                case "CloseDialog":
+                case IconButtonAction.CloseDialog:
                     Close();
                     break;
                 default:

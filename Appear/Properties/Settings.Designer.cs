@@ -25,60 +25,12 @@ namespace Appear.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Top")]
-        public string DockPositions {
-            get {
-                return ((string)(this["DockPositions"]));
-            }
-            set {
-                this["DockPositions"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
-        public string Styles {
-            get {
-                return ((string)(this["Styles"]));
-            }
-            set {
-                this["Styles"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.Collections.Specialized.StringCollection Assets {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Assets"]));
             }
             set {
                 this["Assets"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool MaxOnStart {
-            get {
-                return ((bool)(this["MaxOnStart"]));
-            }
-            set {
-                this["MaxOnStart"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
-        public string Release {
-            get {
-                return ((string)(this["Release"]));
-            }
-            set {
-                this["Release"] = value;
             }
         }
         
@@ -108,25 +60,13 @@ namespace Appear.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UpdateOnStart {
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        public string Release {
             get {
-                return ((bool)(this["UpdateOnStart"]));
+                return ((string)(this["Release"]));
             }
             set {
-                this["UpdateOnStart"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MANUAL")]
-        public string Modes {
-            get {
-                return ((string)(this["Modes"]));
-            }
-            set {
-                this["Modes"] = value;
+                this["Release"] = value;
             }
         }
     }

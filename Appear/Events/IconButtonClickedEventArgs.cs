@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appear.Domain.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,10 @@ namespace Appear.Events
 {
     public class IconButtonClickedEventArgs : RoutedEventArgs
     {
-        private string action;
-        public string Action { get { return action; } }
+        private IconButtonAction action;
+        public IconButtonAction Action { get { return action; } }
 
-        public IconButtonClickedEventArgs(RoutedEvent e, string action) : base(e)
+        public IconButtonClickedEventArgs(RoutedEvent e, IconButtonAction action) : base(e)
         {
             this.action = action;
         }

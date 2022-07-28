@@ -1,4 +1,6 @@
 ﻿using Appear.Core;
+using Appear.Domain.Enum;
+using Appear.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,18 +24,46 @@ namespace Appear.Views
     /// </summary>
     public partial class StylesView : ObservablePage
     {
-        private bool maxOnStartUp { get; set; } = Properties.Settings.Default.MaxOnStart;
+        private bool maxOnStartUp { get; set; } = StyleManager.GetUserSettings().MaximizeOnStart;
         public bool MaxOnStartUp
         {
             get { return maxOnStartUp; }
             set { maxOnStartUp = value; OnPropertyChanged(); }
         }
 
-        private bool updateOnStartUp { get; set; } = Properties.Settings.Default.UpdateOnStart;
+        private bool updateOnStartUp { get; set; } = StyleManager.GetUserSettings().UpdateOnStart;
         public bool UpdateOnStartUp
         {
             get { return updateOnStartUp; }
             set { updateOnStartUp = value; OnPropertyChanged(); }
+        }
+
+        private string currentDockPosition { get; set; } = StyleManager.GetUserSettings().DockPosition.ToString();
+        public string CurrentDockPosition
+        {
+            get { return currentDockPosition; }
+            set { currentDockPosition = value; OnPropertyChanged(); }
+        }
+
+        private string currentStyle { get; set; } = StyleManager.CurrentStyle().Name;
+        public string CurrentStyle
+        {
+            get { return currentStyle; }
+            set { currentStyle = value; OnPropertyChanged(); }
+        }
+
+        private List<string> dockPositions { get; set; } = Enum.GetNames(typeof(DockPosition)).ToList();
+        public List<string> DockPositions
+        {
+            get { return dockPositions; }
+            set { dockPositions = value; OnPropertyChanged(); }
+        }
+
+        private List<string> styles { get; set; } = StyleManager.GetStyleNames();
+        public List<string> Styles
+        {
+            get { return styles; }
+            set { styles = value; OnPropertyChanged(); }
         }
 
         public StylesView()

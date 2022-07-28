@@ -16,7 +16,7 @@
     <DockPanel DataContext="{Binding ElementName=PresentWindowView}">
         <bar:CloseBar DockPanel.Dock="Top"></bar:CloseBar>
         <DockPanel>
-            <list:SelectionList Width="200" Source="Modes" DockPanel.Dock="Bottom" OverWriteDefault="False"></list:SelectionList>
+            <list:SelectionList Width="200" Source="{Binding Modes}" DockPanel.Dock="Bottom" SelectedItem="{Binding PresentMode}" Id="PresentMode"></list:SelectionList>
             <StackPanel Orientation="Vertical">
                 <panel:PicturePreviewPanel Assets="{Binding Assets}"></panel:PicturePreviewPanel>
                 <panel:ManualPanel Visibility="{Binding IsManualMode, Converter={StaticResource isVisible}}" Assets="{Binding Assets}"></panel:ManualPanel>

@@ -2,20 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Appear.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DockPositions" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Top</Value>
-    </Setting>
-    <Setting Name="Styles" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Default</Value>
-    </Setting>
     <Setting Name="Assets" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="MaxOnStart" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Release" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.1</Value>
     </Setting>
     <Setting Name="Name" Type="System.String" Scope="User">
       <Value Profile="(Default)">Agnostic Albatros</Value>
@@ -23,11 +11,8 @@
     <Setting Name="URL" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="UpdateOnStart" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Modes" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MANUAL</Value>
+    <Setting Name="Release" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

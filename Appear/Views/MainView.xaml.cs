@@ -4,6 +4,7 @@ using Appear.Controls.Panels.MainView;
 using Appear.Core;
 using Appear.Events;
 using Appear.Services;
+using Appear.Services.Data.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,7 +72,7 @@ namespace Appear.Views
 
         public MainView()
         {
-            DockPosition = Properties.Settings.Default.DockPositions;
+            DockPosition = StyleManager.GetUserSettings().DockPosition.ToString();
             HasAssets = AssetManager.HasAssets();
             IsPresenting = false;
 

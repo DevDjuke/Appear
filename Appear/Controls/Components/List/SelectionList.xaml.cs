@@ -1,4 +1,6 @@
 ﻿using Appear.Events;
+using Appear.Services;
+using Appear.Services.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -15,59 +17,50 @@ namespace Appear.Controls.List
     {
         #region PROPERTIES
 
-        private string selectedItem;
-        public string SelectedItem
-        {
-            get { return selectedItem; }
-            set { selectedItem = value; OnPropertyChanged(); }
-        }
-
-        private ObservableCollection<string> itemList; 
+        private ObservableCollection<string> itemList;
         public ObservableCollection<string> ItemList
         {
             get { return itemList; }
             set { itemList = value; OnPropertyChanged(); }
         }
 
-        public bool OverWriteDefault
+        public string SelectedItem
         {
-            get { return (bool)GetValue(OverWriteDefaultProperty); }
-            set { SetValue(OverWriteDefaultProperty, value); }
+            get { return (string)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
         }
 
-        public static readonly DependencyProperty OverWriteDefaultProperty =
+        public static readonly DependencyProperty SelectedItemProperty =
             DependencyProperty.Register(
-                "OverWriteDefault",
-                typeof(bool),
+                "SelectedItem",
+                typeof(string),
                 typeof(SelectionList),
-                new UIPropertyMetadata(OverWriteDefaultPropertyChangedHandler));
+                new UIPropertyMetadata(SelectedItemPropertyChangedHandler));
 
-        public static void OverWriteDefaultPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        public List<string> Source
         {
-            bool value = (bool)e.NewValue;
-            ((SelectionList)sender).OverWriteDefault = value;
-        }
-
-        public string Source
-        {
-            get { return (string)GetValue(SourceProperty); }
+            get { return (List<string>)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }
         }
 
         public static readonly DependencyProperty SourceProperty =
             DependencyProperty.Register(
                 "Source",
-                typeof(string),
+                typeof(List<string>),
                 typeof(SelectionList),
                 new UIPropertyMetadata(SourcePropertyChangedHandler));
 
         public static void SourcePropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            string value = e.NewValue as string;
+            List<string> value = e.NewValue as List<string>;
             ((SelectionList)sender).Source = value;
-            string[] res = Application.Current.FindResource(value) as string[];
-            ((SelectionList)sender).ItemList = new ObservableCollection<string>(res);
-            ((SelectionList)sender).SelectedItem = Properties.Settings.Default[value].ToString();
+            ((SelectionList)sender).ItemList = new ObservableCollection<string>(value);
+        }
+
+        public static void SelectedItemPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            string value = e.NewValue as string;
+            ((SelectionList)sender).SelectedItem = value;
         }
 
         public string Text
@@ -87,6 +80,25 @@ namespace Appear.Controls.List
         {
             string value = e.NewValue as string;
             ((SelectionList)sender).Text = value;
+        }
+
+        public string Id
+        {
+            get { return (string)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
+        }
+
+        public static readonly DependencyProperty IdProperty=
+            DependencyProperty.Register(
+                "Id",
+                typeof(string),
+                typeof(SelectionList),
+                new UIPropertyMetadata(IdPropertyChangedHandler));
+
+        public static void IdPropertyChangedHandler(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            string value = e.NewValue as string;
+            ((SelectionList)sender).Id = value;
         }
         #endregion
 
@@ -113,18 +125,8 @@ namespace Appear.Controls.List
 
         private void OnSelectionChanged(object sender, RoutedEventArgs e)
         {
-            if(!OverWriteDefault || !(sender as ComboBox).SelectedValue.Equals(Properties.Settings.Default[Source].ToString()))
-            {
-                SelectedItem = (sender as ComboBox).SelectedValue as string;
-
-                if (OverWriteDefault)
-                {
-                    Properties.Settings.Default[Source] = SelectedItem;
-                    Properties.Settings.Default.Save();
-                }
-
-                RaiseEvent(new SelectionListChangedEventArgs(SelectionChangedEvent, Source, SelectedItem));            
-            }
+            SelectedItem = (sender as ComboBox).SelectedValue as string;
+            RaiseEvent(new SelectionListChangedEventArgs(SelectionChangedEvent, Id, SelectedItem));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Appear.Events;
+﻿using Appear.Domain.Enum;
+using Appear.Events;
 using Appear.Services;
 using System;
 using System.Collections.Generic;
@@ -78,7 +79,7 @@ namespace Appear.Controls.Components.Buttons
 
         private void OnClick(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new IconButtonClickedEventArgs(IconButtonClickedEvent, Action));
+            RaiseEvent(new IconButtonClickedEventArgs(IconButtonClickedEvent, (IconButtonAction)Enum.Parse(typeof(IconButtonAction), Action)));
         }
     }
 }

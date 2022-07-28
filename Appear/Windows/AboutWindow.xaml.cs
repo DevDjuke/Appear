@@ -1,4 +1,5 @@
 ﻿using Appear.Controls.Components.Buttons;
+using Appear.Domain.Enum;
 using Appear.Events;
 using Appear.Views;
 using System;
@@ -36,7 +37,7 @@ namespace Appear.Windows
 
             switch (arg.Action)
             {
-                case "CloseDialog":
+                case IconButtonAction.CloseDialog:
                     Close();
                     break;
                 default:

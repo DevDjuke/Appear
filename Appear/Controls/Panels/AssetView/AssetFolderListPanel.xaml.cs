@@ -1,5 +1,6 @@
 ﻿using Appear.Events;
 using Appear.Services;
+using Appear.Services.Data.Domain;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

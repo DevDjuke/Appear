@@ -1,22 +1,11 @@
-﻿using Appear.Controls;
-using Appear.Controls.Components.Buttons;
+﻿using Appear.Controls.Components.Buttons;
 using Appear.Controls.List;
+using Appear.Domain.Enum;
 using Appear.Events;
-using Appear.Services;
+using Appear.Services.Data;
 using Appear.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Appear.Windows
 {
@@ -26,20 +15,20 @@ namespace Appear.Windows
     public partial class StylesWindow : Window
     {
         public event EventHandler ThemeChanged;
-        protected void OnThemeChanged()
+        protected void OnThemeChanged(string theme)
         {
             if(ThemeChanged != null)
             {
-                ThemeChanged(this, EventArgs.Empty);
+                ThemeChanged(this, new ThemeChangedEventArgs() { Theme = theme});
             }
         }
 
         public event EventHandler MenuBarChanged;
-        protected void OnMenuBarChanged()
+        protected void OnMenuBarChanged(string position)
         {
             if (MenuBarChanged != null)
             {
-                MenuBarChanged(this, EventArgs.Empty);
+                MenuBarChanged(this, new MenuBarChangedEventArgs() { Position = position });
             }
         }
 
@@ -59,7 +48,7 @@ namespace Appear.Windows
 
             switch (arg.Action)
             {
-                case "CloseDialog":
+                case IconButtonAction.CloseDialog:
                     Close();
                     break;
                 default:
@@ -73,11 +62,11 @@ namespace Appear.Windows
 
             switch (arg.Id)
             {
-                case "Styles":
-                    this.OnThemeChanged();
+                case "Style":
+                    this.OnThemeChanged(arg.Value);
                     break;
-                case "DockPositions":
-                    this.OnMenuBarChanged();
+                case "DockPosition":
+                    this.OnMenuBarChanged(arg.Value);
                     break;
                 default:
                     break;
@@ -91,12 +80,10 @@ namespace Appear.Windows
             switch (arg.Id)
             {
                 case "StartUpMax":
-                    Properties.Settings.Default.MaxOnStart = arg.IsChecked;
-                    Properties.Settings.Default.Save();
+                    SettingsManager.SetMaxOnStart(arg.IsChecked);
                     break;
                 case "StartUpUpdate":
-                    Properties.Settings.Default.UpdateOnStart = arg.IsChecked;
-                    Properties.Settings.Default.Save();
+                    SettingsManager.SetUpdateOnStart(arg.IsChecked);
                     break;
                 default:
                     break;

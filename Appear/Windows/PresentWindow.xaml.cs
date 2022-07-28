@@ -3,6 +3,7 @@ using Appear.Controls.Components.Buttons;
 using Appear.Controls.List;
 using Appear.Controls.Panels.PresentView;
 using Appear.Domain;
+using Appear.Domain.Enum;
 using Appear.Events;
 using Appear.Views;
 using System;
@@ -87,13 +88,13 @@ namespace Appear.Windows
 
             switch (arg.Action)
             {
-                case "NextAsset":
+                case IconButtonAction.NextAsset:
                     OnNextAsset();
                     break;
-                case "PreviousAsset":
+                case IconButtonAction.PreviousAsset:
                     OnPreviousAsset();
                     break;
-                case "CloseDialog":
+                case IconButtonAction.CloseDialog:
                     (Content as PresentView).AutoPanel.Timer(false);
                     Close();
                     break;
@@ -142,7 +143,7 @@ namespace Appear.Windows
 
             switch (arg.Id)
             {
-                case "Modes":
+                case "PresentMode":
                     this.OnModeChanged(arg.Value);
                     break;
                 default:
@@ -154,11 +155,11 @@ namespace Appear.Windows
         {
             switch (value)
             {
-                case "MANUAL":
+                case "Manual":
                     (Content as PresentView).AutoPanel.Timer(false);
                     (Content as PresentView).IsManualMode = true;
                     break;
-                case "AUTO PLAY":
+                case "Auto Play":
                     (Content as PresentView).IsManualMode = false;
                     break;
                 default: break;

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appear.Services
+namespace Appear.Events
 {
-    public static class SceneManager
+    public class MenuBarChangedEventArgs : EventArgs
     {
-
+        public string Position { get; set; }
     }
 }
