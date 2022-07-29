@@ -55,7 +55,7 @@ namespace Appear.Controls.Panels.MainView
             }
         }
 
-        private int selectedIndex = 0;
+        public int selectedIndex = 0;
 
         public PresenterControlPanel()
         {

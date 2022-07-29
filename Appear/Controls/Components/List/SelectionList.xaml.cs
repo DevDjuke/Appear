@@ -17,6 +17,13 @@ namespace Appear.Controls.List
     {
         #region PROPERTIES
 
+        private bool hasText { get; set; } = false;
+        public bool HasText
+        {
+            get { return hasText; }
+            set { hasText = value; OnPropertyChanged(); }
+        }
+
         private ObservableCollection<string> itemList;
         public ObservableCollection<string> ItemList
         {
@@ -80,6 +87,7 @@ namespace Appear.Controls.List
         {
             string value = e.NewValue as string;
             ((SelectionList)sender).Text = value;
+            ((SelectionList)sender).HasText = !string.IsNullOrEmpty(value);
         }
 
         public string Id

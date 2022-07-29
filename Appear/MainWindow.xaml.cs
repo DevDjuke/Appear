@@ -159,6 +159,7 @@ namespace Appear
         {
             StyleManager.SetWindowState(this, "StopPresenting");           
             (Content as MainView).IsPresenting = false;
+            (Content as MainView).PresenterControl.selectedIndex = 0;
         }
 
         private void StartPresenting()

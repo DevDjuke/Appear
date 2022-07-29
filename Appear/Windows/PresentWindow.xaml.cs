@@ -159,7 +159,7 @@ namespace Appear.Windows
                     (Content as PresentView).AutoPanel.Timer(false);
                     (Content as PresentView).IsManualMode = true;
                     break;
-                case "Auto Play":
+                case "Auto":
                     (Content as PresentView).IsManualMode = false;
                     break;
                 default: break;

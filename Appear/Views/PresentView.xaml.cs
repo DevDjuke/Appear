@@ -1,4 +1,5 @@
-﻿using Appear.Controls.Panels.PresentView;
+﻿using Appear.Controls.Panels.MainView;
+using Appear.Controls.Panels.PresentView;
 using Appear.Core;
 using Appear.Domain;
 using Appear.Domain.Enum;
