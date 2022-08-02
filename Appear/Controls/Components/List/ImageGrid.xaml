@@ -7,12 +7,13 @@
              xmlns:conv="clr-namespace:Appear.Converters">
     <UserControl.Resources>
         <conv:HeightToActualHeightConverter x:Key="reduceHeight"></conv:HeightToActualHeightConverter>
+        <conv:DisplayWidthToDoubleConverter x:Key="toDouble"></conv:DisplayWidthToDoubleConverter>
 
         <DataTemplate x:Key="ItemTemplate">
             <WrapPanel>
-                <Image Width="100">
+                <Image Width="{Binding DisplayWidth, ElementName=ImageGridControl, Converter={StaticResource toDouble}}">
                     <Image.Source>
-                        <BitmapImage DecodePixelWidth="200" UriSource="{Binding Path}"/>
+                        <BitmapImage UriSource="{Binding Path}"/>
                     </Image.Source>
                 </Image>
             </WrapPanel>

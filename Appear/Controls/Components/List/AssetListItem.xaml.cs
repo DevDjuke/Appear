@@ -52,7 +52,7 @@ namespace Appear.Controls.Components.List
 
         private void RemoveAsset(object sender, RoutedEventArgs e)
         {
-            RaiseEvent(new UpdateAssetsEventArgs(RemoveAssetEvent, Text, UpdateAssetsEventArgs.ActionType.REMOVE));
+            RaiseEvent(new UpdateFoldersEventArgs(RemoveAssetEvent, Text, UpdateFoldersEventArgs.ActionType.REMOVE));
         }
     }
 }

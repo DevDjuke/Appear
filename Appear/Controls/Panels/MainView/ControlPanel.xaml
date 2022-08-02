@@ -6,7 +6,7 @@
              xmlns:butt="clr-namespace:Appear.Controls.Components.Buttons"
              Width="300">
     <StackPanel DataContext="{Binding ElementName=ControlPanelControl}">
-        <TextBlock Text="{Binding AssetName}"></TextBlock>
+        <TextBlock Text="{Binding Asset.Name}"></TextBlock>
         <butt:TextButton Text="PRESENT" Action="PresentAsset" Size="150"></butt:TextButton>
     </StackPanel>
 </UserControl>

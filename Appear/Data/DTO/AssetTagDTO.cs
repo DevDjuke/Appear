@@ -8,23 +8,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Appear.Domain
 {
-    [Table("sceneassets")]
-    public class SceneAsset
+    [Table("assettags")]
+    public class AssetTagDTO
     {
         [Column("Id")]
         [Key]
         public int Id { get; set; }
 
-        [Column("sceneId")]
-        public int SceneId { get; set; }
-
-        [ForeignKey("SceneId")]
-        public Scene Scene { get; set; }
+        [Column("tagId")]
+        public int TagId { get; set; }
 
         [Column("assetId")]
         public int AssetId { get; set; }
-
-        [ForeignKey("AssetId")]
-        public Asset Asset { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Appear.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Assets" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="Name" Type="System.String" Scope="User">
       <Value Profile="(Default)">Agnostic Albatros</Value>
     </Setting>

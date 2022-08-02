@@ -26,13 +26,16 @@ namespace Appear.Data
             
         }
 
-        //public DbSet<Asset> Assets { get; set; }
-        //public DbSet<AssetTag> AssetTags { get; set; }
-        //public DbSet<FileType> FileTypes { get; set; }
-        //public DbSet<MediaType> MediaTypes { get; set; }
+        public DbSet<AssetDTO> Assets { get; set; }
+        public DbSet<FolderDTO> Folders { get; set; }
+        public DbSet<FileTypeDTO> FileTypes { get; set; }
+        public DbSet<MediaTypeDTO> MediaTypes { get; set; }
         //public DbSet<Scene> Scenes { get; set; }
-        //public DbSet<SceneAsset> SceneAssets { get; set; }
         //public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<SceneAssetDTO> SceneAssets { get; set; }
+        public DbSet<AssetTagDTO> AssetTags { get; set; }
+
 
         public DbSet<ColorDTO> Colors { get; set; }
         public DbSet<StyleDTO> Styles { get; set; }

@@ -14,7 +14,7 @@
             <Border.CornerRadius>10</Border.CornerRadius>
             <Border.BorderThickness>1</Border.BorderThickness>
         </Border>
-        <Border Margin="5,0" Height="180" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Gray"  Width="180">
+        <Border Margin="5,0" Height="180" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray"  Width="180">
             <Border.CornerRadius>10</Border.CornerRadius>
             <Border.BorderThickness>1</Border.BorderThickness>
             <Image Margin="0,5"

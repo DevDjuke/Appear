@@ -15,6 +15,8 @@ namespace Appear.Data.DO
 
         [Column("dockposition")]
         public string DockPosition { get; set; }
+        [Column("displaywidth")]
+        public string DisplayWidth { get; set; }
 
         [Column("maxonstart")]
         public int MaximizeOnStart { get; set; }

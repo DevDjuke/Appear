@@ -84,5 +84,12 @@ namespace Appear.Services.Data
                 default: return "";
             }
         }
+
+        internal static void SetDisplayWidth(DisplayWidth displayWidth)
+        {
+            var settings = UserSettings();
+            settings.DisplayWidth = displayWidth;
+            UserSettingRepository.Update(settings);
+        }
     }
 }

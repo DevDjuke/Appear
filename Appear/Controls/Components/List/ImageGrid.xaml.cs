@@ -1,6 +1,9 @@
 ﻿using Appear.Core;
 using Appear.Domain;
+using Appear.Domain.Enum;
 using Appear.Events;
+using Appear.Services.Data;
+using Appear.Services.Data.Domain;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,9 +17,6 @@ using System.Windows.Data;
 
 namespace Appear.Controls.Components.List
 {
-    /// <summary>
-    /// Interaction logic for AssetGrid.xaml
-    /// </summary>
     public partial class ImageGrid : UserControl, INotifyPropertyChanged
     {
         private ObservableCollection<AssetCollection> assets;
@@ -40,11 +40,16 @@ namespace Appear.Controls.Components.List
             set { viewWidth = value; OnPropertyChanged(); }
         }
 
-        private double imagew { get; set; }
-        public double Imagew
+        private DisplayWidth displayWidth { get; set; }
+        public DisplayWidth DisplayWidth
         {
-            get { return imagew; }
-            set { imagew = value; OnPropertyChanged(); }
+            get { return displayWidth; }
+            set 
+            { 
+                displayWidth = value;
+                ColumnCount = (int)Math.Floor(ViewWidth / DisplayWidth.ToDouble()); 
+                OnPropertyChanged(); 
+            }
         }
 
         public ImageGrid()
@@ -56,8 +61,7 @@ namespace Appear.Controls.Components.List
         public void SetWidth(Window window)
         {
             ViewWidth = window.Width - 500;
-            Imagew = 100;
-            ColumnCount = (int)Math.Floor(ViewWidth / Imagew);            
+            DisplayWidth = SettingsManager.UserSettings().DisplayWidth;
 
             ObservableCollection<AssetCollection> temp = assets;
             Assets = new ObservableCollection<AssetCollection>();
@@ -66,32 +70,7 @@ namespace Appear.Controls.Components.List
 
         public void UpdateGrid()
         {
-            Assets = new ObservableCollection<AssetCollection>();
-            foreach (string folder in Properties.Settings.Default.Assets)
-            {
-                AddToGrid(folder);
-            }
-        }
-
-        public void AddToGrid(string folder)
-        {
-            string[] extensions = { ".png", ".jpg" };
-
-            AssetCollection collection = new AssetCollection();
-            collection.Path = folder;
-            collection.Assets = new ObservableCollection<Asset>();
-
-            foreach (string path in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories)
-                    .Where(s => extensions.Any(ext => ext == Path.GetExtension(s))))
-            {
-                collection.Assets.Add(new Asset
-                {
-                    Path = path,
-                    Name = path.Split('\\').Last()
-                });
-            }
-
-            Assets.Add(collection);
+            Assets = new ObservableCollection<AssetCollection>(AssetManager.Get());
         }
 
         public static readonly RoutedEvent SelectionChangedEvent =

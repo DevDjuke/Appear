@@ -45,6 +45,13 @@ namespace Appear.Views
             set { currentDockPosition = value; OnPropertyChanged(); }
         }
 
+        private string currentDisplayWidth { get; set; } = StyleManager.GetUserSettings().DisplayWidth.ToString();
+        public string CurrentDisplayWidth
+        {
+            get { return currentDisplayWidth; }
+            set { currentDisplayWidth = value; OnPropertyChanged(); }
+        }
+
         private string currentStyle { get; set; } = StyleManager.CurrentStyle().Name;
         public string CurrentStyle
         {
@@ -57,6 +64,13 @@ namespace Appear.Views
         {
             get { return dockPositions; }
             set { dockPositions = value; OnPropertyChanged(); }
+        }
+
+        private List<string> displayWidths { get; set; } = Enum.GetNames(typeof(DisplayWidth)).ToList();
+        public List<string> DisplayWidths
+        {
+            get { return displayWidths; }
+            set { displayWidths = value; OnPropertyChanged(); }
         }
 
         private List<string> styles { get; set; } = StyleManager.GetStyleNames();

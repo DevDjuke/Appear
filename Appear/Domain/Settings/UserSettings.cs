@@ -15,6 +15,7 @@ namespace Appear.Domain.Settings
     {
         public int Id { get; set; }
         public DockPosition DockPosition { get; set; }
+        public DisplayWidth DisplayWidth { get; set; }
         public bool MaximizeOnStart { get; set; }
         public bool UpdateOnStart { get; set; }
 

@@ -18,7 +18,7 @@ namespace Appear.Domain
         [Column("name")]
         public string Name { get; set; }
 
-        public ICollection<AssetTag> AssetTags { get; set; }
+        public ICollection<AssetTagDTO> AssetTags { get; set; }
 
     }
 }

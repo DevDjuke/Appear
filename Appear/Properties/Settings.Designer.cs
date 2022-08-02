@@ -25,17 +25,6 @@ namespace Appear.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection Assets {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Assets"]));
-            }
-            set {
-                this["Assets"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Agnostic Albatros")]
         public string Name {
             get {

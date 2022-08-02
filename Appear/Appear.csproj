@@ -315,25 +315,44 @@
     <Compile Include="Controls\Panels\MainView\PresenterControlPanel.xaml.cs">
       <DependentUpon>PresenterControlPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DisplayWidthToDoubleConverter.cs" />
     <Compile Include="Core\ObservablePage.cs" />
     <Compile Include="Data\AppearContext.cs" />
+    <Compile Include="Data\DTO\AssetDTO.cs" />
     <Compile Include="Data\DTO\ColorDTO.cs" />
+    <Compile Include="Data\DTO\FileTypeDTO.cs" />
+    <Compile Include="Data\DTO\FolderDTO.cs" />
+    <Compile Include="Data\DTO\MediaTypeDTO.cs" />
     <Compile Include="Data\DTO\StyleDTO.cs" />
     <Compile Include="Data\DTO\UserSettingsDTO.cs" />
+    <Compile Include="Data\Repos\AssetRepository.cs" />
+    <Compile Include="Data\Repos\AssetTagRepository.cs" />
+    <Compile Include="Data\Repos\FileTypeRepository.cs" />
+    <Compile Include="Data\Repos\FolderRepository.cs" />
+    <Compile Include="Data\Repos\MediaTypeRepository.cs" />
+    <Compile Include="Data\Repos\SceneAssetRepository.cs" />
     <Compile Include="Data\Repos\SceneRepository.cs" />
     <Compile Include="Data\Repos\StyleRepository.cs" />
     <Compile Include="Data\Repos\UserSettingRepository.cs" />
+    <Compile Include="Domain\Enum\DisplayWidth.cs" />
     <Compile Include="Domain\Enum\DockPosition.cs" />
     <Compile Include="Domain\Enum\IconButtonAction.cs" />
+    <Compile Include="Domain\Enum\MediaTypeDesc.cs" />
     <Compile Include="Domain\Enum\PresentMode.cs" />
-    <Compile Include="Domain\SceneAsset.cs" />
+    <Compile Include="Data\DTO\SceneAssetDTO.cs" />
+    <Compile Include="Domain\Folder.cs" />
     <Compile Include="Domain\Settings\AppSettings.cs" />
     <Compile Include="Domain\Settings\Style.cs" />
     <Compile Include="Domain\Settings\UserSettings.cs" />
+    <Compile Include="Events\DisplayWidthChangedEventArgs.cs" />
     <Compile Include="Events\MenuBarChangedEventArgs.cs" />
     <Compile Include="Events\ThemeChangedEventArgs.cs" />
     <Compile Include="Events\TimerTickEventArgs.cs" />
+    <Compile Include="Services\Data\Domain\FileTypeManager.cs" />
+    <Compile Include="Services\Data\Domain\FolderManager.cs" />
+    <Compile Include="Services\Data\Domain\MediaTypeManager.cs" />
     <Compile Include="Services\Data\Domain\SceneManager.cs" />
+    <Compile Include="Services\Data\EnumHelper.cs" />
     <Compile Include="Services\Data\SettingsManager.cs" />
     <Compile Include="Views\PresentView.xaml.cs">
       <DependentUpon>PresentView.xaml</DependentUpon>
@@ -390,7 +409,7 @@
     <Compile Include="Core\Extensions.cs" />
     <Compile Include="Domain\Asset.cs" />
     <Compile Include="Domain\Computed\AssetCollection.cs" />
-    <Compile Include="Domain\AssetTag.cs" />
+    <Compile Include="Data\DTO\AssetTagDTO.cs" />
     <Compile Include="Domain\FileType.cs" />
     <Compile Include="Domain\MediaType.cs" />
     <Compile Include="Domain\Scene.cs" />
@@ -401,12 +420,11 @@
     <Compile Include="Events\SelectedAssetChangedEventArgs.cs" />
     <Compile Include="Events\SelectionListChangedEventArgs.cs" />
     <Compile Include="Events\TextButtonClickedEventArgs.cs" />
-    <Compile Include="Events\UpdateAssetsEventArgs.cs" />
+    <Compile Include="Events\UpdateFoldersEventArgs.cs" />
     <Compile Include="Windows\Dialogs\OkDialog.xaml.cs">
       <DependentUpon>OkDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\Data\Domain\AssetManager.cs" />
-    <Compile Include="Services\Data\DataManager.cs" />
     <Compile Include="Services\Data\StyleManager.cs" />
     <Compile Include="Services\VersionHelper.cs" />
     <Compile Include="Services\WindowsService.cs" />

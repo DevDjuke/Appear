@@ -45,8 +45,8 @@ namespace Appear.Windows
             InitializeComponent();
 
             AddHandler(IconButton.IconButtonClickedEvent, new RoutedEventHandler(IconButtonClickedEventHandler));
-            AddHandler(FolderEntry.UpdateAssetsEvent, new RoutedEventHandler(UpdateAssetsEventHandler));
-            AddHandler(AssetListItem.RemoveAssetEvent, new RoutedEventHandler(UpdateAssetsEventHandler));
+            AddHandler(FolderEntry.UpdateAssetsEvent, new RoutedEventHandler(UpdateFoldersEventHandler));
+            AddHandler(AssetListItem.RemoveAssetEvent, new RoutedEventHandler(UpdateFoldersEventHandler));
         }
 
         private void IconButtonClickedEventHandler(object sender, RoutedEventArgs e)
@@ -63,19 +63,19 @@ namespace Appear.Windows
             }
         }
 
-        private void UpdateAssetsEventHandler(object sender, RoutedEventArgs e)
+        private void UpdateFoldersEventHandler(object sender, RoutedEventArgs e)
         {
-            UpdateAssetsEventArgs args = (UpdateAssetsEventArgs)e;
-            if (args.Action == UpdateAssetsEventArgs.ActionType.ADD)
+            UpdateFoldersEventArgs args = (UpdateFoldersEventArgs)e;
+            if (args.Action == UpdateFoldersEventArgs.ActionType.ADD)
             {
-                AssetManager.AddAsset(args.AssetPath.ToString());
+                FolderManager.Add(args.Path);
             }
-            else if (args.Action == UpdateAssetsEventArgs.ActionType.REMOVE)
+            else if (args.Action == UpdateFoldersEventArgs.ActionType.REMOVE)
             {
-                AssetManager.RemoveAsset(args.AssetPath.ToString());
+                FolderManager.Remove(args.Path);
             }
 
-            (Content as AssetView).AssetList.UpdateAssetsEventHandler();
+            (Content as AssetView).AssetList.UpdateFoldersventHandler();
 
             this.OnAssetListChanged();
         }

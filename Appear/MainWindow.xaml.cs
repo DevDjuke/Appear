@@ -82,11 +82,19 @@ namespace Appear
             (Content as MainView).DockPosition = StyleManager.GetUserSettings().DockPosition.ToString();            
         }
 
+        private void OnDisplayWidthChanged(object sender, EventArgs e)
+        {
+            string value = ((DisplayWidthChangedEventArgs)e).DisplayWidth;
+            DisplayWidth displayWidth = (DisplayWidth)Enum.Parse(typeof(DisplayWidth), value);
+            SettingsManager.SetDisplayWidth(displayWidth);
+            (Content as MainView).AssetGrid.DisplayWidth = displayWidth;
+        }
+
         private void OnAssetListChanged(object sender, EventArgs e)
         {
-            (Content as MainView).HasAssets = AssetManager.HasAssets();
+            (Content as MainView).HasAssets = FolderManager.HasFolders();
 
-            if (AssetManager.HasAssets())
+            if (FolderManager.HasFolders())
             {
                 (Content as MainView).AssetGrid.UpdateGrid();   
             }
@@ -140,6 +148,7 @@ namespace Appear
                     StylesWindow window_styles = new StylesWindow();
                     window_styles.ThemeChanged += new EventHandler(OnThemeChanged);
                     window_styles.MenuBarChanged += new EventHandler(OnMenuBarChanged);
+                    window_styles.DisplayWidthChanged += new EventHandler(OnDisplayWidthChanged);
                     SurrenderFocus(window_styles);
                     break;
                 case "OpenAssets":

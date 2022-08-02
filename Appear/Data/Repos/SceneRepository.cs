@@ -5,7 +5,6 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Appear.Services.Data.DataManager;
 
 namespace Appear.Data.Repos
 {

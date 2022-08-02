@@ -1,24 +1,26 @@
-﻿using System;
+﻿using Appear.Domain;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appear.Domain
+namespace Appear.Data.DTO
 {
-    [Table("scenes")]
-    public class Scene
+    [Table("assets")]
+    public class AssetDTO
     {
         [Column("Id")]
-        [Key]
         public int Id { get; set; }
 
         [Column("name")]
         public string Name { get; set; }
 
+        [Column("folderId")]
+        public int FolderId { get; set; }
 
-        public ICollection<SceneAssetDTO> SceneAssets { get; set; }
+        [Column("filetypeId")]
+        public int FileTypeId { get; set; }
     }
 }

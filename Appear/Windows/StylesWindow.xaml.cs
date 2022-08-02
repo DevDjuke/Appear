@@ -23,6 +23,15 @@ namespace Appear.Windows
             }
         }
 
+        public event EventHandler DisplayWidthChanged;
+        protected void OnDisplayWidthChanged(string displayWidth)
+        {
+            if (DisplayWidthChanged != null)
+            {
+                DisplayWidthChanged(this, new DisplayWidthChangedEventArgs() { DisplayWidth = displayWidth });
+            }
+        }
+
         public event EventHandler MenuBarChanged;
         protected void OnMenuBarChanged(string position)
         {
@@ -67,6 +76,9 @@ namespace Appear.Windows
                     break;
                 case "DockPosition":
                     this.OnMenuBarChanged(arg.Value);
+                    break;
+                case "DisplayWidth":
+                    this.OnDisplayWidthChanged(arg.Value);
                     break;
                 default:
                     break;

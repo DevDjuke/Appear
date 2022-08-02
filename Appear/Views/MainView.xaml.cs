@@ -73,7 +73,8 @@ namespace Appear.Views
         public MainView()
         {
             DockPosition = StyleManager.GetUserSettings().DockPosition.ToString();
-            HasAssets = AssetManager.HasAssets();
+            //HasAssets = AssetManager.HasAssets();
+            HasAssets = FolderManager.HasFolders();
             IsPresenting = false;
 
             InitializeComponent();

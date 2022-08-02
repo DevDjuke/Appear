@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:list="clr-namespace:Appear.Controls.Components.List">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="10,20" Height="Auto" DataContext="{Binding ElementName=AssetFolderListControl}">
-        <ListView ItemsSource="{Binding Assets}" Height="300" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,10">
+        <ListView ItemsSource="{Binding Folders}" Height="300" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,10">
             <ListView.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"/>

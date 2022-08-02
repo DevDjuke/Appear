@@ -49,6 +49,7 @@ namespace Appear.Data.Repos
             return new UserSettings()
             {
                 DockPosition = (DockPosition)Enum.Parse(typeof(DockPosition), dto.DockPosition),
+                DisplayWidth = (DisplayWidth)Enum.Parse(typeof(DisplayWidth), dto.DisplayWidth),
                 Id = dto.Id,
                 MaximizeOnStart = Convert.ToBoolean(dto.MaximizeOnStart),
                 UpdateOnStart = Convert.ToBoolean(dto.UpdateOnStart),
@@ -62,6 +63,7 @@ namespace Appear.Data.Repos
             {
                 Id = settings.Id,
                 DockPosition = Enum.GetName(typeof(DockPosition), settings.DockPosition),
+                DisplayWidth = Enum.GetName(typeof(DisplayWidth), settings.DisplayWidth),
                 StyleId = settings.StyleId,
                 MaximizeOnStart = Convert.ToInt32(settings.MaximizeOnStart),
                 UpdateOnStart = Convert.ToInt32(settings.UpdateOnStart),

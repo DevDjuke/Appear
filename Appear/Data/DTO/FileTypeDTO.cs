@@ -6,19 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appear.Domain
+namespace Appear.Data.DTO
 {
-    [Table("scenes")]
-    public class Scene
+    [Table("fileTypes")]
+
+    public class FileTypeDTO
     {
         [Column("Id")]
         [Key]
         public int Id { get; set; }
 
-        [Column("name")]
-        public string Name { get; set; }
+        [Column("extension")]
+        public string Extension { get; set; }
 
-
-        public ICollection<SceneAssetDTO> SceneAssets { get; set; }
+        [Column("mediaTypeId")]
+        public int MediaTypeId { get; set; }
     }
 }

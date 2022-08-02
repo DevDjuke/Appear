@@ -1,53 +1,35 @@
-﻿using Appear.Events;
-using Appear.Services;
-using Appear.Services.Data.Domain;
-using System;
-using System.Collections.Generic;
+﻿using Appear.Services.Data.Domain;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Appear.Controls.Panels.AssetView
 {
-    /// <summary>
-    /// Interaction logic for AssetList.xaml
-    /// </summary>
     public partial class AssetFolderListPanel : UserControl, INotifyPropertyChanged
     {
-        private ObservableCollection<string> assets { get; set; }
-        public ObservableCollection<string> Assets
+        private ObservableCollection<string> folders { get; set; }
+        public ObservableCollection<string> Folders
         {
-            get { return assets; }
-            set { assets = value; OnPropertyChanged(); }
+            get { return folders; }
+            set { folders = value; OnPropertyChanged(); }
         }
 
         public AssetFolderListPanel()
         {
-            SetAssetList();
+            SetFolderList();
             InitializeComponent();
         }
 
-        private void SetAssetList()
+        private void SetFolderList()
         {
-            if (AssetManager.HasAssets())
+            if (FolderManager.HasFolders())
             {
-                Assets = new ObservableCollection<string>(Properties.Settings.Default.Assets.Cast<string>().ToList());
+                Folders = new ObservableCollection<string>(FolderManager.GetFolderPaths());
             }
             else
             {
-                Assets = new ObservableCollection<string>();
+                Folders = new ObservableCollection<string>();
             }
         }
 
@@ -57,9 +39,9 @@ namespace Appear.Controls.Panels.AssetView
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public void UpdateAssetsEventHandler()
+        public void UpdateFoldersventHandler()
         {
-            SetAssetList();
+            SetFolderList();
         }
     }
 }

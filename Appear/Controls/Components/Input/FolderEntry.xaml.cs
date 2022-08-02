@@ -42,7 +42,7 @@ namespace Appear.Controls.Components.Input
             switch (arg.Action)
             {
                 case "AddAsset":
-                    RaiseEvent(new UpdateAssetsEventArgs(UpdateAssetsEvent, Text, UpdateAssetsEventArgs.ActionType.ADD));
+                    RaiseEvent(new UpdateFoldersEventArgs(UpdateAssetsEvent, Text, UpdateFoldersEventArgs.ActionType.ADD));
                     break;
                 default:
                     break;
@@ -70,7 +70,7 @@ namespace Appear.Controls.Components.Input
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     Text = dlg.SelectedPath;
-                    RaiseEvent(new UpdateAssetsEventArgs(UpdateAssetsEvent, Text, UpdateAssetsEventArgs.ActionType.ADD));
+                    RaiseEvent(new UpdateFoldersEventArgs(UpdateAssetsEvent, Text, UpdateFoldersEventArgs.ActionType.ADD));
                 }
             }
         }
