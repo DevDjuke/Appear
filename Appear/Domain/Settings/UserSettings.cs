@@ -20,5 +20,15 @@ namespace Appear.Domain.Settings
         public bool UpdateOnStart { get; set; }
 
         public int StyleId { get; set; }
+
+        public UserSettingsDTO ToDTO() => new UserSettingsDTO()
+        {
+            Id = Id,
+            DockPosition = System.Enum.GetName(typeof(DockPosition), DockPosition),
+            DisplayWidth = System.Enum.GetName(typeof(DisplayWidth), DisplayWidth),
+            StyleId = StyleId,
+            MaximizeOnStart = Convert.ToInt32(MaximizeOnStart),
+            UpdateOnStart = Convert.ToInt32(UpdateOnStart),
+        };
     }
 }

@@ -348,9 +348,11 @@
     <Compile Include="Events\MenuBarChangedEventArgs.cs" />
     <Compile Include="Events\ThemeChangedEventArgs.cs" />
     <Compile Include="Events\TimerTickEventArgs.cs" />
+    <Compile Include="Services\Data\Domain\AssetTagManager.cs" />
     <Compile Include="Services\Data\Domain\FileTypeManager.cs" />
     <Compile Include="Services\Data\Domain\FolderManager.cs" />
     <Compile Include="Services\Data\Domain\MediaTypeManager.cs" />
+    <Compile Include="Services\Data\Domain\SceneAssetManager.cs" />
     <Compile Include="Services\Data\Domain\SceneManager.cs" />
     <Compile Include="Services\Data\EnumHelper.cs" />
     <Compile Include="Services\Data\SettingsManager.cs" />

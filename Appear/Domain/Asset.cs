@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appear.Data.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,5 +16,16 @@ namespace Appear.Domain
         public string Path { get; set; }
         public int FolderId { get; set; }
         public int FileTypeId { get; set; }
+
+        public AssetDTO ToDTO()
+        {
+            return new AssetDTO()
+            {
+
+                FileTypeId = this.FileTypeId,
+                Id = this.Id,
+                Name = this.Name
+            };
+        }
     }
 }

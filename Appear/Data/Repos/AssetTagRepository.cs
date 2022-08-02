@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Appear.Data.Repos
 {
-    public static class AssetTagRepository
+    public class AssetTagRepository
     {
-        public static void Add(AssetTagDTO dto)
+        public void Add(AssetTagDTO dto)
         {
             using (var db = new AppearContext())
             {
@@ -17,7 +17,7 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static void Remove(AssetTagDTO dto)
+        public void Remove(AssetTagDTO dto)
         {
             using (var db = new AppearContext())
             {
@@ -25,7 +25,7 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static List<AssetTagDTO> GetByAsset(int assetId)
+        public List<AssetTagDTO> GetByAsset(int assetId)
         {
             using (var db = new AppearContext())
             {

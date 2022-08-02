@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Appear.Domain.Enum;
+using Appear.Domain.Settings;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -26,5 +28,18 @@ namespace Appear.Data.DO
 
         [Column("styleId")]
         public int StyleId { get; set; }
+
+        public UserSettings ToUserSettings()
+        {
+            return new UserSettings()
+            {
+                DockPosition = (DockPosition)Enum.Parse(typeof(DockPosition), DockPosition),
+                DisplayWidth = (DisplayWidth)Enum.Parse(typeof(DisplayWidth), DisplayWidth),
+                Id = Id,
+                MaximizeOnStart = Convert.ToBoolean(MaximizeOnStart),
+                UpdateOnStart = Convert.ToBoolean(UpdateOnStart),
+                StyleId = StyleId,
+            };
+        }
     }
 }

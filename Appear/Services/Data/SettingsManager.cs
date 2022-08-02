@@ -17,11 +17,18 @@ namespace Appear.Services.Data
             get { return PresentMode.Manual; }
         }
 
+        private static UserSettingRepository _userRepository = null;
+        private static UserSettingRepository userRepository()
+        {
+            if (_userRepository == null) _userRepository = new UserSettingRepository();
+            return _userRepository;
+        }
+
         public static UserSettings UserSettings()
         {
             if(userSettings == null)
             {
-                userSettings = UserSettingRepository.GetUserSettings();
+                userSettings = userRepository().GetUserSettings();
             }
 
             return userSettings;
@@ -31,28 +38,28 @@ namespace Appear.Services.Data
         {
             var settings = UserSettings();
             settings.StyleId = styleId;
-            UserSettingRepository.Update(settings);
+            userRepository().Update(settings);
         }
 
         public static void SetMaxOnStart(bool value)
         {
             var settings = UserSettings();
             settings.MaximizeOnStart = value;
-            UserSettingRepository.Update(settings);
+            userRepository().Update(settings);
         }
 
         public static void SetUpdateOnStart(bool value)
         {
             var settings = UserSettings();
             settings.UpdateOnStart = value;
-            UserSettingRepository.Update(settings);
+            userRepository().Update(settings);
         }
 
         public static void SetDockPosition(DockPosition position)
         {
             var settings = UserSettings();
             settings.DockPosition = position;
-            UserSettingRepository.Update(settings);
+            userRepository().Update(settings);
         }
 
         public static string GetSettingByValue(string value)
@@ -66,7 +73,7 @@ namespace Appear.Services.Data
                 case "Modes":
                     return Enum.GetName(typeof(PresentMode), SettingsManager.DefaultPresentMode);
                 case "Styles":
-                    return StyleRepository.GetCurrentStyle().Name;
+                    return StyleManager.CurrentStyle().Name;
                 default: return "";
             }
         }
@@ -80,7 +87,7 @@ namespace Appear.Services.Data
                 case "DockPosition":
                     return Enum.GetName(typeof(DockPosition), settings.DockPosition);
                 case "PresentMode":
-                    return SettingsManager.DefaultPresentMode.ToString();
+                    return DefaultPresentMode.ToString();
                 default: return "";
             }
         }
@@ -89,7 +96,7 @@ namespace Appear.Services.Data
         {
             var settings = UserSettings();
             settings.DisplayWidth = displayWidth;
-            UserSettingRepository.Update(settings);
+            userRepository().Update(settings);
         }
     }
 }

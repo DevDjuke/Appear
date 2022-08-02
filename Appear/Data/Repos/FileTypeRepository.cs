@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Appear.Data.Repos
 {
-    public static class FileTypeRepository
+    public class FileTypeRepository
     {
-        public static List<FileType> GetByMediaType(int mediaTypeId)
+        public List<FileType> GetByMediaType(int mediaTypeId)
         {
             List<FileType> result = new List<FileType>();
             List<FileTypeDTO> fileTypes = null;
@@ -29,16 +29,6 @@ namespace Appear.Data.Repos
             }
 
             return result;
-        }
-
-        public static FileType ToFileType(this FileTypeDTO dto)
-        {
-            return new FileType()
-            {
-                Id = dto.Id,
-                Extension = dto.Extension,
-                MediaType = MediaTypeRepository.Get(dto.MediaTypeId)
-            };
         }
     }
 }

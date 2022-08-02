@@ -10,10 +10,17 @@ namespace Appear.Services.Data.Domain
 {
     public static class FileTypeManager
     {
+        private static FileTypeRepository _repository = null;
+        private static FileTypeRepository repository()
+        {
+            if (_repository == null) _repository = new FileTypeRepository();
+            return _repository;
+        }
+
         public static List<string> GetFileExtensions(MediaType mediaType)
         {
             List<string> extensions = new List<string>();
-            var filetypes = FileTypeRepository.GetByMediaType(mediaType.Id);
+            var filetypes = repository().GetByMediaType(mediaType.Id);
 
             foreach (var filetype in filetypes)
             {

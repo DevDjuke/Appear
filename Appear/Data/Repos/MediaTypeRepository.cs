@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Appear.Data.Repos
 {
-    public static class MediaTypeRepository
+    public class MediaTypeRepository
     {
-        public static MediaType Get(int id)
+        public MediaType Get(int id)
         {
             MediaType result = null;
             MediaTypeDTO mediaType = null;
@@ -28,7 +28,7 @@ namespace Appear.Data.Repos
             return result;
         }
 
-        public static MediaType Get(string name)
+        public MediaType Get(string name)
         {
             MediaType result = null;
             MediaTypeDTO mediaType = null;
@@ -44,15 +44,6 @@ namespace Appear.Data.Repos
             }
 
             return result;
-        }
-
-        public static MediaType ToMediaType(this MediaTypeDTO dto)
-        {
-            return new MediaType()
-            {
-                Id = dto.Id,
-                Name = dto.Name
-            };
         }
     }
 }

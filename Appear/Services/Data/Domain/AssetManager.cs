@@ -13,54 +13,34 @@ namespace Appear.Services.Data.Domain
 {
     public static class AssetManager
     {
+        private static AssetRepository _repository = null;
+        private static AssetRepository repository()
+        {
+            if( _repository == null ) _repository = new AssetRepository();
+            return _repository;
+        }
+
         public static void AddAsset(string name, string folderPath)
         {
-            Folder folder = FolderRepository.Get(folderPath);
-            if(folder == null)
-            {
-                folder = CreateFolder(folderPath);
-            }
-
-            AssetRepository.Add(new Asset()
+            Folder folder = FolderManager.GetOrCreate(folderPath);
+            repository().Add(new Asset()
             {
                 Path = folderPath + "/" + name,
                 FolderId = folder.Id,
                 Name = name,
             });
-        }
-
-        private static Folder CreateFolder(string folderPath)
-        {
-            FolderRepository.Add(new Folder() { Path = folderPath});
-            return FolderRepository.Get(folderPath);
-        }
+        }     
 
         public static void RemoveAsset(Asset asset)
         {
-            List<SceneAssetDTO> sceneAssets = SceneAssetRepository.GetByAsset(asset.Id);
-            if(sceneAssets != null)
-            {
-                foreach(SceneAssetDTO dto in sceneAssets)
-                {
-                    SceneAssetRepository.Remove(dto);
-                }
-            }
-
-            List<AssetTagDTO> assetTags = AssetTagRepository.GetByAsset(asset.Id);
-            if (sceneAssets != null)
-            {
-                foreach (AssetTagDTO dto in assetTags)
-                {
-                    AssetTagRepository.Remove(dto);
-                }
-            }
-
-            AssetRepository.Remove(asset);
+            SceneAssetManager.RemoveReferences(asset);
+            AssetTagManager.RemoveReferences(asset);
+            repository().Remove(asset);
         }
 
         public static bool HasAssets()
         {
-            return AssetRepository.HasAssets();
+            return repository().HasAssets();
         }
 
         public static List<AssetCollection> Get()

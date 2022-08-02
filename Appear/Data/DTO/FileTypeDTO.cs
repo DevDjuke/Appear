@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Appear.Data.Repos;
+using Appear.Domain;
+using Appear.Services.Data.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,5 +24,15 @@ namespace Appear.Data.DTO
 
         [Column("mediaTypeId")]
         public int MediaTypeId { get; set; }
+
+        public FileType ToFileType()
+        {
+            return new FileType()
+            {
+                Id = Id,
+                Extension = Extension,
+                MediaType = MediaTypeManager.Get(MediaTypeId)
+            };
+        }
     }
 }

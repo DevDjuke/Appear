@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Appear.Data.Repos
 {
-    public static class AssetRepository
+    public class AssetRepository
     {
-        public static bool HasAssets()
+        public bool HasAssets()
         {
             bool result = false;
 
@@ -22,7 +22,7 @@ namespace Appear.Data.Repos
             return result;
         }
 
-        public static void Add(Asset asset)
+        public void Add(Asset asset)
         {
             using (var db = new AppearContext())
             {
@@ -30,23 +30,12 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static void Remove(Asset asset)
+        public void Remove(Asset asset)
         {
             using (var db = new AppearContext())
             {
                 db.Assets.Remove(asset.ToDTO());
             }
-        }
-
-        public static AssetDTO ToDTO(this Asset asset)
-        {
-            return new AssetDTO()
-            {
-
-                FileTypeId = asset.FileTypeId,
-                Id = asset.Id,
-                Name = asset.Name
-            };
         }
     }
 }

@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 
 namespace Appear.Data.DTO
 {
@@ -30,5 +32,28 @@ namespace Appear.Data.DTO
 
         [Column("comboboxcolorId")]
         public int CBBox_ColorId { get; set; }
+
+        public Domain.Settings.Style ToStyle()
+        {
+            using (var db = new AppearContext())
+            {
+                return new Domain.Settings.Style()
+                {
+                    Id = Id,
+                    Name = Name,
+                    BackgroundColor = new Tuple<string, Color>(
+                        "Background", (db.Colors.Where(x => x.Id == BG_ColorId).SingleOrDefault()).ToColor()),
+                    BarBackgroundColor = new Tuple<string, Color>(
+                        "Background_Bar", db.Colors.Where(x => x.Id == Bar_ColorId).SingleOrDefault().ToColor()),
+                    ButtonColor = new Tuple<string, Color>(
+                        "Button_Base", db.Colors.Where(x => x.Id == Button_ColorId).SingleOrDefault().ToColor()),
+                    ButtonHighLighColor = new Tuple<string, Color>(
+                        "Button_HighLight", db.Colors.Where(x => x.Id == Button_HL_ColorId).SingleOrDefault().ToColor()),
+                    ComboBoxColor = new Tuple<string, Color>(
+                        "ComboBoxNormalBorderBrush", db.Colors.Where(x => x.Id == CBBox_ColorId).SingleOrDefault().ToColor()),
+                };
+            }
+        }
+
     }
 }

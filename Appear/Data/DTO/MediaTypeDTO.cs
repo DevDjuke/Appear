@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appear.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -16,5 +17,14 @@ namespace Appear.Data.DTO
 
         [Column("name")]
         public string Name { get; set; }
+
+        public MediaType ToMediaType()
+        {
+            return new MediaType()
+            {
+                Id = Id,
+                Name = Name
+            };
+        }
     }
 }

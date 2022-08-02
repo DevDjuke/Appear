@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Appear.Data.Repos
 {
-    public static class SceneAssetRepository
+    public class SceneAssetRepository
     {
-        public static void Add(SceneAssetDTO dto)
+        public void Add(SceneAssetDTO dto)
         {
             using(var db = new AppearContext())
             {
@@ -17,7 +17,7 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static void Remove(SceneAssetDTO dto)
+        public void Remove(SceneAssetDTO dto)
         {
             using (var db = new AppearContext())
             {
@@ -25,7 +25,7 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static List<SceneAssetDTO> GetByAsset(int assetId)
+        public List<SceneAssetDTO> GetByAsset(int assetId)
         {
             using (var db = new AppearContext())
             {

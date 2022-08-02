@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Appear.Data.Repos
 {
-    public static class FolderRepository
+    public class FolderRepository
     {
-        public static void Remove(Folder folder)
+        public void Remove(Folder folder)
         {
             using (var db = new AppearContext())
             {
@@ -22,7 +22,7 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static Folder Get(string path)
+        public Folder Get(string path)
         {
             FolderDTO folder = null;
             Folder result = null;
@@ -39,7 +39,7 @@ namespace Appear.Data.Repos
             return result;
         }
 
-        public static void Add(Folder folder)
+        public void Add(Folder folder)
         {
             using (var db = new AppearContext())
             {
@@ -48,7 +48,7 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static int Count()
+        public int Count()
         {
             using (var db = new AppearContext())
             {
@@ -56,7 +56,7 @@ namespace Appear.Data.Repos
             }
         }
 
-        public static List<Folder> GetAll()
+        public List<Folder> GetAll()
         {
             List<FolderDTO> folders = new List<FolderDTO>();
             List<Folder> result = new List<Folder>();
@@ -71,22 +71,6 @@ namespace Appear.Data.Repos
             }
 
             return result;
-        }
-
-        public static FolderDTO ToDTO(this Folder folder)
-        {
-            FolderDTO dto = new FolderDTO();
-            dto.Path = folder.Path;
-            return dto;
-        }
-        
-        public static Folder ToFolder(this FolderDTO dto)
-        {
-            return new Folder()
-            {
-                Id = dto.Id,
-                Path = dto.Path
-            };
         }
     }
 }

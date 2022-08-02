@@ -23,17 +23,24 @@ namespace Appear.Services
         {
             if(currentStyle == null)
             {
-                currentStyle = StyleRepository.GetCurrentStyle();
+                currentStyle = repository().GetCurrentStyle();
             }
 
             return currentStyle;
         }
 
+        private static StyleRepository _repository = null;
+        private static StyleRepository repository()
+        {
+            if (_repository == null) _repository = new StyleRepository();
+            return _repository;
+        }
+
         public static void SetCurrentStyle(string name)
         {
-            currentStyle = StyleRepository.GetStyleByName(name);
+            currentStyle = repository().GetStyleByName(name);
             SettingsManager.SetStyle(currentStyle.Id);
-            StyleManager.SetTheme();
+            SetTheme();
         }
 
         public static void StartUp(Window window)
@@ -44,7 +51,7 @@ namespace Appear.Services
 
         public static void SetPreferences(Window window)
         {
-            if (UserSettingRepository.GetUserSettings().MaximizeOnStart)
+            if (SettingsManager.UserSettings().MaximizeOnStart)
             {
                 currentState = WindowState.Normal;
                 SetWindowState(window, "Maximize");
@@ -141,7 +148,7 @@ namespace Appear.Services
         public static List<string> GetStyleNames()
         {
             var list = new List<string>();
-            var styles = StyleRepository.GetAll();
+            var styles = repository().GetAll();
 
             foreach(var style in styles)
             {

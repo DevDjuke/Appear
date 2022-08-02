@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appear.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,5 +17,14 @@ namespace Appear.Data.DTO
         public int Id { get; set; }
         [Column("path")]
         public string Path { get; set; }
+
+        public Folder ToFolder()
+        {
+            return new Folder()
+            {
+                Id = Id,
+                Path = Path
+            };
+        }
     }
 }

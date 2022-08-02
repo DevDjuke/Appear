@@ -11,9 +11,21 @@ namespace Appear.Services.Data.Domain
 {
     public static class MediaTypeManager
     {
+        private static MediaTypeRepository _repository = null;
+        private static MediaTypeRepository repository()
+        {
+            if (_repository == null) _repository = new MediaTypeRepository();
+            return _repository;
+        }
+
         public static MediaType GetByType(MediaTypeDesc type)
         {
-            return MediaTypeRepository.Get(type.ToString());
+            return repository().Get(type.ToString());
+        }
+
+        public static MediaType Get(int mediaTypeId)
+        {
+            return repository().Get(mediaTypeId);
         }
     }
 }
